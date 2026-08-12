@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>市民調査 | ミズルシ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-sky-50 text-slate-800">
+
+<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-xl text-white">💧</div>
+        <div class="font-bold text-slate-900">ミズルシ</div>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
+        <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+        <a href="survey.html" class="rounded-lg bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-700">市民調査</a>
+        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
+        <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+        <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+      </nav>
+
+      <button id="menuButton" class="rounded-lg p-2 md:hidden">☰</button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+      <a href="index.html" class="block px-3 py-2">ホーム</a>
+      <a href="map.html" class="block px-3 py-2">マップ</a>
+      <a href="survey.html" class="block px-3 py-2 font-bold text-teal-700">市民調査</a>
+      <a href="ai.html" class="block px-3 py-2">AI予測</a>
+      <a href="learn.html" class="block px-3 py-2">学ぶ</a>
+      <a href="Login.html" class="block px-3 py-2">参加者設定・ランキング</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="bg-gradient-to-br from-teal-100 via-white to-sky-100">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <span class="text-sm font-bold tracking-widest text-teal-600">CITIZEN SURVEY</span>
+    <h1 class="mt-2 text-4xl font-black text-slate-900">市民調査に参加する</h1>
+    <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+      身近な水辺を観察して、その情報を地域の水環境データとして共有しましょう。
+    </p>
+  </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+  <div class="rounded-2xl border border-teal-100 bg-white p-6 shadow-sm sm:p-8">
+    <div class="flex items-start gap-4">
+      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-100 text-2xl">
+        👀
+      </div>
+      <div>
+        <h2 class="text-2xl font-black text-slate-900">五感を使って水を観察する</h2>
+        <p class="mt-2 leading-7 text-slate-600">
+          水の色、におい、透明感など、まずは五感を使って身近な水環境を観察してみましょう。
+          さらに測定機器などを使うことで、さまざまな水質項目を記録できます。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="text-3xl">⚗️</div>
+      <h3 class="mt-4 text-lg font-bold">pH</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        水が酸性・中性・アルカリ性のどの程度なのかを示す指標です。
+      </p>
+      <span class="mt-4 inline-block rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-500">任意項目</span>
+    </div>
+
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="text-3xl">🌬️</div>
+      <h3 class="mt-4 text-lg font-bold">DO</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        水中に溶けている酸素の量です。水中の生物の生息環境を考える際に重要です。
+      </p>
+      <span class="mt-4 inline-block rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-500">任意項目</span>
+    </div>
+
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="text-3xl">🧪</div>
+      <h3 class="mt-4 text-lg font-bold">COD75</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        水中の有機物などによる汚れの程度を評価するために使われる指標です。
+      </p>
+      <span class="mt-4 inline-block rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-500">任意項目</span>
+    </div>
+
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="text-3xl">🔬</div>
+      <h3 class="mt-4 text-lg font-bold">BOD75</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        微生物が水中の有機物を分解するときに消費する酸素量に関係する指標です。
+      </p>
+      <span class="mt-4 inline-block rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-500">任意項目</span>
+    </div>
+
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="text-3xl">💨</div>
+      <h3 class="mt-4 text-lg font-bold">SS</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        水中に浮遊している粒子状物質の量を示す指標です。水の濁りとも関係します。
+      </p>
+      <span class="mt-4 inline-block rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-500">任意項目</span>
+    </div>
+
+    <div class="rounded-2xl bg-gradient-to-br from-sky-50 to-teal-50 p-6">
+      <div class="text-3xl">👃</div>
+      <h3 class="mt-4 text-lg font-bold">五感観察</h3>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        色、におい、見た目、周囲の環境などを観察して記録します。
+      </p>
+      <span class="mt-4 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">基本観察</span>
+    </div>
+
+  </div>
+
+  <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+    <p class="text-sm leading-7 text-amber-900">
+      <strong>※ 測定項目について：</strong>
+      pH、DO、COD75、BOD75、SSなどの測定は任意項目です。
+      無理のない範囲で、安全に配慮して調査してください。
+    </p>
+  </div>
+
+  <div class="mt-12">
+    <div class="mb-5">
+      <span class="text-sm font-bold tracking-widest text-teal-600">DATA ENTRY</span>
+      <h2 class="mt-2 text-2xl font-black text-slate-900">調査結果を送信する</h2>
+      <p class="mt-1 text-sm text-slate-500">以下のWebフォームから直接回答・送信できます。</p>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+      <iframe
+        src="https://ee.kobotoolbox.org/x/YhdiF2vk"
+        title="調査回答フォーム"
+        class="h-[800px] w-full border-0"
+        loading="lazy"
+        allow="geolocation">
+      </iframe>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<footer id="footer" class="border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col justify-between gap-4 sm:flex-row">
+      <div>
+        <div class="font-bold text-slate-900">💧 ミズルシ</div>
+        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      </div>
+      <div class="text-sm text-slate-500 space-y-1">
+        <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
+        <div>
+          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  document.getElementById('menuButton').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>

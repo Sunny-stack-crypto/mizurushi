@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+    });
+  });
+
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ミズルシ | 市民参加型サイエンスプロジェクト</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            water: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1'
+            },
+            teal: {
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="bg-sky-50 text-slate-800">
+
+<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-xl text-white">
+          💧
+        </div>
+        <div>
+          <div class="font-bold text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        <a href="index.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ホーム</a>
+        <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+        <a href="survey.html" onclick="return startSurvey()" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
+        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
+        <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+        <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+      </nav>
+
+      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+        ☰
+      </button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+      <a href="survey.html" onclick="return startSurvey()" class="block rounded-lg px-3 py-2">市民調査</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
+      <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+      <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-sky-100 via-white to-teal-50"></div>
+  <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <span class="inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700">
+          🌊 市民参加型シチズンサイエンス
+        </span>
+
+      <h1 class="mt-6 text-4xl font-black leading-snug tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+        人と水、<br>
+        <span class="text-sky-500">みんなで照らす</span><span class="relative inline-block z-10 after:absolute after:bottom-1 after:left-0 after:-z-10 after:h-3 after:w-full after:bg-sky-100/80">道しるべ</span>
+      </h1>
+
+        <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+          川や湖、身近な水をみんなで調べて、
+          地域の水環境を見える化する<br>
+          市民参加型の環境調査プロジェクトです。
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="survey.html" onclick="return startSurvey()"
+             class="rounded-xl bg-sky-600 px-6 py-3 text-center font-bold text-white shadow-lg shadow-sky-200 transition hover:bg-sky-700">
+            市民調査に参加する →
+          </a>
+          <a href="map.html"
+             class="rounded-xl border border-sky-200 bg-white px-6 py-3 text-center font-bold text-sky-700 hover:bg-sky-50">
+            水質マップを見る
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-3xl bg-gradient-to-br from-sky-400 to-teal-500 p-1 shadow-2xl">
+          <div class="rounded-[1.35rem] bg-white p-8">
+            <div class="flex items-center justify-center py-10">
+              <div class="text-center">
+                <div class="text-8xl">💧</div>
+                <div class="mt-5 text-2xl font-black text-slate-800">水を調べる。</div>
+                <div class="mt-2 text-slate-500">地域を知る。未来につなげる。</div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 border-t border-slate-100 pt-5 text-center">
+              <div>
+                <div class="text-xl font-black text-sky-600">GIS</div>
+                <div class="text-xs text-slate-500">水質マップ</div>
+              </div>
+              <div>
+                <div class="text-xl font-black text-teal-600">市民</div>
+                <div class="text-xs text-slate-500">参加型調査</div>
+              </div>
+              <div>
+                <div class="text-xl font-black text-indigo-600">AI</div>
+                <div class="text-xs text-slate-500">NTU予測</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <span class="text-sm font-bold uppercase tracking-widest text-sky-600">News</span>
+      <h2 class="mt-2 text-3xl font-black text-slate-900">新着情報</h2>
+    </div>
+    <span class="hidden text-sm text-slate-500 sm:block">環境調査の最新情報</span>
+  </div>
+
+  <div class="mt-8 grid gap-6 lg:grid-cols-3">
+<article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+  <div class="flex items-center justify-between">
+    <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700">重要なお知らせ</span>
+    <time class="text-xs text-slate-400">2026.08.13</time>
+  </div>
+  <h3 class="mt-5 text-xl font-bold text-slate-900">
+    必ず、以下の文書をご確認ください！
+  </h3>
+  <p class="mt-3 leading-7 text-slate-600">
+    サイトの利用とリサーチを安全安心なものとするため、<strong>必ずご確認ください。<br></strong>
+    安全マニュアルとプライバシーポリシー、免責事項の資料をサイトのフッター(ページの一番下)のリンクからダウンロードできます。<br>
+    利用前に必ずご確認ください！
+  </p>
+  <a href="#footer" onclick="document.getElementById('footer').scrollIntoView({ behavior: 'smooth' }); return false;" class="mt-5 inline-block text-sm font-bold text-sky-600">
+    詳しく見る →
+  </a>
+</article>
+
+    <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+      <div class="flex items-center justify-between">
+        <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-sky-700">調査情報</span>
+        <time class="text-xs text-slate-400">2026.08.10</time>
+      </div>
+      <h3 class="mt-5 text-xl font-bold text-slate-900">
+        夏の水質調査にご参加ください！
+      </h3>
+      <p class="mt-3 leading-7 text-slate-600">
+        身近な水辺の観察結果をぜひお寄せください。
+      </p>
+      <a href="survey.html" onclick="return startSurvey()" class="mt-5 inline-block text-sm font-bold text-sky-600">
+        詳しく見る →
+      </a>
+    </article>
+
+    <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+      <div class="flex items-center justify-between">
+        <span class="rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">データ</span>
+        <time class="text-xs text-slate-400">2026.08.10</time>
+      </div>
+      <h3 class="mt-5 text-xl font-bold text-slate-900">
+        水質GISマップを更新しました
+      </h3>
+      <p class="mt-3 leading-7 text-slate-600">
+        公共用水域水質測定データをもとにしたGISマップを更新しました。
+      </p>
+      <a href="map.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
+        マップを見る →
+      </a>
+    </article>
+
+    <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+      <div class="flex items-center justify-between">
+        <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold text-indigo-700">AI</span>
+        <time class="text-xs text-slate-400">2026.08.10</time>
+      </div>
+      <h3 class="mt-5 text-xl font-bold text-slate-900">
+        NTU予測AIがBeta公開されました
+      </h3>
+      <p class="mt-3 leading-7 text-slate-600">
+        水サンプルの写真から濁度（NTU）を予測するAIモデルの試験版を公開しました。
+      </p>
+      <a href="ai.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
+        AIを試す →
+      </a>
+    </article>
+
+  </div>
+</section>
+
+<section class="bg-white py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <span class="text-sm font-bold uppercase tracking-widest text-teal-600">Explore</span>
+      <h2 class="mt-2 text-3xl font-black text-slate-900">プロジェクトを知る</h2>
+    </div>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+      <a href="map.html" class="group rounded-2xl bg-sky-50 p-6 transition hover:bg-sky-100">
+        <div class="text-4xl">🗺️</div>
+        <h3 class="mt-5 text-lg font-bold">水質マップ</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600">
+          公共用水域の水質データを地図から確認できます。
+        </p>
+        <div class="mt-4 text-sm font-bold text-sky-600">マップを見る →</div>
+      </a>
+
+      <a href="survey.html" onclick="return startSurvey()" class="group rounded-2xl bg-teal-50 p-6 transition hover:bg-teal-100">
+        <div class="text-4xl">🔬</div>
+        <h3 class="mt-5 text-lg font-bold">市民調査</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600">
+          五感を使った水質調査に参加してみましょう。
+        </p>
+        <div class="mt-4 text-sm font-bold text-teal-600">参加する →</div>
+      </a>
+
+      <a href="ai.html" class="group rounded-2xl bg-indigo-50 p-6 transition hover:bg-indigo-100">
+        <div class="text-4xl">🤖</div>
+        <h3 class="mt-5 text-lg font-bold">AI予測</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600">
+          水サンプルの写真から濁度を予測するBeta版AIです。
+        </p>
+        <div class="mt-4 text-sm font-bold text-indigo-600">AIを試す →</div>
+      </a>
+
+      <a href="learn.html" class="group rounded-2xl bg-amber-50 p-6 transition hover:bg-amber-100">
+        <div class="text-4xl">📚</div>
+        <h3 class="mt-5 text-lg font-bold">用語を学ぶ</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600">
+          水質調査で使われる専門用語をわかりやすく解説します。
+        </p>
+        <div class="mt-4 text-sm font-bold text-amber-700">学んでみる →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="participant-id" class="mx-auto mt-10 max-w-2xl px-4 sm:px-6">
+  <div class="rounded-2xl border border-sky-100 bg-white p-6 text-center shadow-sm sm:p-8">
+    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-2xl">
+      🪪
+    </div>
+
+    <h2 class="mt-4 text-xl font-bold text-slate-900">
+      参加者IDを発行する
+    </h2>
+
+    <p class="mt-2 text-sm leading-relaxed text-slate-600">
+      4桁の英数字IDを発行します。<br>
+      このIDにポイントが記録されます。
+    </p>
+
+    <div class="mt-5 rounded-xl bg-sky-50 px-5 py-4">
+      <p class="text-xs font-medium text-slate-500">あなたの参加者ID</p>
+      <div class="mt-1 flex items-center justify-center gap-2">
+        <p id="user-id-output" class="font-mono text-3xl font-bold tracking-[0.25em] text-sky-700">
+          ----
+        </p>
+        <button id="copy-btn" type="button" onclick="copyUserId()" class="hidden rounded bg-sky-100 px-2 py-1 text-xs font-semibold text-sky-700 hover:bg-sky-200">
+          コピー
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:justify-center">
+      <button
+        type="button"
+        onclick="issueUserId()"
+        class="rounded-lg bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-700">
+        新しいIDを発行する
+      </button>
+
+      <button
+        type="button"
+        onclick="startSurvey()"
+        class="rounded-lg bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700">
+        このIDで調査を始める
+      </button>
+    </div>
+
+    <div class="mt-6 border-t border-slate-100 pt-5">
+      <p class="text-sm font-semibold text-slate-700">
+        以前発行したIDを使う
+      </p>
+
+      <div class="mt-3 flex gap-2">
+        <input
+          id="restore-user-id"
+          type="text"
+          maxlength="4"
+          placeholder="ここにコードを入れてください"
+          class="min-w-0 flex-1 rounded-lg border border-sky-200 px-4 py-3 text-center font-mono uppercase tracking-widest outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+        >
+
+        <button
+          type="button"
+          onclick="restoreUserId()"
+          class="rounded-lg border border-sky-200 px-4 py-3 text-sm font-semibold text-sky-700 hover:bg-sky-50">
+          IDを使う
+        </button>
+      </div>
+    </div>
+
+    <p id="id-message" class="mt-4 text-xs font-medium text-slate-500"></p>
+  </div>
+</section>
+</main>
+
+<footer id="footer" class="border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col justify-between gap-4 sm:flex-row">
+      <div>
+        <div class="font-bold text-slate-900">💧 ミズルシ</div>
+        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      </div>
+      <div class="text-sm text-slate-500 space-y-1">
+        <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
+        <div>
+          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("menuButton").addEventListener("click", () => {
+    document.getElementById("mobileMenu").classList.toggle("hidden");
+  });
+
+  const USER_ID_STORAGE_KEY = "water-project-user-id";
+
+  // SupabaseのEdge Function URL
+  const ISSUE_USER_ID_URL =
+    "https://dgmdupdzylxewgsxygtr.supabase.co/functions/v1/issue-user-code";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedUserId = localStorage.getItem(USER_ID_STORAGE_KEY);
+
+    if (savedUserId) {
+      showUserId(savedUserId);
+      setMessage("この端末に保存されている参加者IDです。");
+    }
+  });
+
+  function showUserId(userId) {
+    document.getElementById("user-id-output").innerText = userId;
+    document.getElementById("copy-btn").classList.remove("hidden");
+  }
+
+  function setMessage(message, isError = false) {
+    const el = document.getElementById("id-message");
+    el.innerText = message;
+    el.className = isError 
+      ? "mt-4 text-xs font-medium text-red-500" 
+      : "mt-4 text-xs font-medium text-slate-500";
+  }
+
+  function copyUserId() {
+    const userId = document.getElementById("user-id-output").innerText;
+    if (userId && userId !== "----") {
+      navigator.clipboard.writeText(userId);
+      setMessage("IDをクリップボードにコピーしました！");
+    }
+  }
+
+  async function issueUserId() {
+    const savedUserId = localStorage.getItem(USER_ID_STORAGE_KEY);
+
+    if (savedUserId) {
+      showUserId(savedUserId);
+      setMessage("すでにID（" + savedUserId + "）を持っています。「このIDで調査を始める」を押すか、別のIDを入力してください。");
+      return;
+    }
+
+    setMessage("IDを発行しています…");
+
+    try {
+      const response = await fetch(ISSUE_USER_ID_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.status !== "success") {
+        throw new Error(result.message || "IDを発行できませんでした。");
+      }
+
+      const userId = result.user_code;
+
+      localStorage.setItem(USER_ID_STORAGE_KEY, userId);
+      showUserId(userId);
+
+      setMessage(
+        "IDを発行しました。スクリーンショットやメモで保管してください。"
+      );
+    } catch (error) {
+      console.error(error);
+      setMessage(
+        "IDを発行できませんでした。時間をおいて再試行してください。",
+        true
+      );
+    }
+  }
+
+  function restoreUserId() {
+    const input = document.getElementById("restore-user-id");
+    const userId = input.value.trim().toUpperCase();
+
+    if (!/^[A-Z0-9]{4}$/.test(userId)) {
+      setMessage("4桁の半角英数字で入力してください。", true);
+      return;
+    }
+
+    localStorage.setItem(USER_ID_STORAGE_KEY, userId);
+    showUserId(userId);
+    input.value = "";
+
+    setMessage("参加者ID（" + userId + "）をこの端末に保存しました。");
+  }
+
+  function startSurvey() {
+    const userId = localStorage.getItem(USER_ID_STORAGE_KEY);
+
+    if (!userId) {
+      document.getElementById("participant-id").scrollIntoView({
+        behavior: "smooth"
+      });
+
+      setMessage("先に新しいIDを発行するか、以前のIDを入力してください。", true);
+      return false;
+    }
+
+    // アンケート画面にIDを引き継いで遷移
+    window.location.href =
+      "survey.html?user_code=" + encodeURIComponent(userId);
+
+    return false;
+  }
+</script>
+
+</body>
+</html>

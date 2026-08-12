@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【Beta】濁度（NTU）AI予測ツール | ミズルシ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+
+<body class="bg-sky-50 text-slate-800">
+
+<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-xl text-white">💧</div>
+        <div class="font-bold text-slate-900">ミズルシ</div>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
+        <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
+        <a href="ai.html" class="rounded-lg bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700">AI予測</a>
+        <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+        <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+      </nav>
+
+      <button id="menuButton" class="rounded-lg p-2 md:hidden">☰</button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+      <a href="index.html" class="block px-3 py-2">ホーム</a>
+      <a href="map.html" class="block px-3 py-2">マップ</a>
+      <a href="survey.html" class="block px-3 py-2">市民調査</a>
+      <a href="ai.html" class="block px-3 py-2 text-indigo-700 font-bold">AI予測</a>
+      <a href="learn.html" class="block px-3 py-2">学ぶ</a>
+      <a href="Login.html" class="block px-3 py-2">参加者設定・ランキング</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="bg-gradient-to-br from-indigo-100 via-white to-sky-100">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="rounded-full bg-indigo-600 px-3 py-1 text-xs font-bold text-white">BETA</span>
+      <span class="text-sm font-bold tracking-widest text-indigo-600">AI MODEL</span>
+    </div>
+
+    <h1 class="mt-4 text-4xl font-black text-slate-900">
+      【Beta】濁度（NTU）AI予測ツール
+    </h1>
+
+    <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+      水サンプルの写真を利用して、濁度（NTU）の予測に挑戦する実験的なAIツールです。<br>
+      このAIモデルの詳しい情報については、<a href="ai_mechanism.html" class="text-indigo-600 hover:underline">このリンク</a>を参照してください。
+    </p>
+  </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+  <div class="grid gap-6 lg:grid-cols-3">
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-2xl">🥛</div>
+      <h2 class="mt-5 font-bold">1. 水を採取</h2>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        調査対象の水サンプルをコップなどの容器に採取します。
+      </p>
+    </div>
+
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-2xl">📷</div>
+      <h2 class="mt-5 font-bold">2. 写真を撮影</h2>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        白い背景であること、透明のコップに入っていること、十分な照明条件を揃えた水サンプルを撮影します。<br>
+        詳しい情報については、<a href="https://docs.google.com/document/d/1kvvgRzwAvUk4Y_RbsmW_dd8ejPro7uIPGq6e_EnArig/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">撮影ガイド</a>を参照してください。
+      </p>
+    </div>
+
+    <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 text-2xl">🤖</div>
+      <h2 class="mt-5 font-bold">3. AIに送信</h2>
+      <p class="mt-2 text-sm leading-6 text-slate-600">
+        AIモデルが画像から濁度（NTU）を予測します。
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <div class="mb-5">
+      <span class="text-sm font-bold tracking-widest text-indigo-600">AI PREDICTION</span>
+      <h2 class="mt-2 text-2xl font-black text-slate-900">AI水質測定ツール</h2>
+    </div>
+
+    <div class="mx-auto max-w-lg overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
+      <div class="bg-gradient-to-r from-sky-600 to-teal-500 px-6 py-7 text-center text-white">
+        <div class="mb-2 text-3xl">🌊</div>
+        <h3 class="text-xl font-bold sm:text-2xl">AI水質測定ツール <span class="text-sm font-medium">（ベータ版）</span></h3>
+        <p class="mt-2 text-sm text-sky-50">写真から水の濁り（NTU）を推定します</p>
+      </div>
+
+      <div class="p-6 sm:p-8">
+        <div class="rounded-xl bg-sky-50 p-4 text-sm leading-relaxed text-slate-600">
+          <p class="font-semibold text-sky-800">写真をアップロードしてください</p>
+          <p class="mt-1">
+            コップに採取した水サンプルを、白い紙などを背景にして撮影すると、より安定した判定につながります。
+          </p>
+        </div>
+
+        <label for="image-upload" class="mt-6 flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-sky-200 bg-white px-4 py-5 text-center text-sm font-semibold text-sky-700 transition hover:border-sky-400 hover:bg-sky-50">
+          <span class="text-xl">📷</span>
+          <span>水の写真を選択</span>
+        </label>
+        <input type="file" id="image-upload" accept="image/*" class="sr-only" onchange="handleImageUpload(event)">
+
+        <img id="preview" alt="アップロードした水サンプル写真" class="mt-5 hidden w-full rounded-xl border border-sky-100 object-cover shadow-sm">
+
+        <div class="mt-6 rounded-xl border border-sky-100 bg-sky-50 p-5 text-center">
+          <p id="status" class="text-sm font-medium text-slate-600">🤖 AIモデルを読み込み中...</p>
+          <p id="ntu-output" class="mt-3 text-3xl font-bold text-sky-700">-- NTU</p>
+          <p id="category-output" class="mt-2 text-base font-semibold text-slate-700"></p>
+        </div>
+
+        <div class="mt-6 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-500">
+          <p class="font-semibold text-slate-600">⚠️ ご注意</p>
+          <p class="mt-1">
+            このツールは、写真から目に見える「透明度（濁り）」のみを推定します。飲用や遊泳の安全性を保証するものではありません。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+    <p class="text-sm leading-7 text-amber-900">
+      <strong>Beta版について：</strong>
+      このAIによる予測値は研究・実験目的の参考情報です。公的な水質測定結果や安全性の判断を保証するものではありません。
+    </p>
+  </div>
+
+  <div class="mt-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-6 sm:p-8">
+    <div class="flex gap-4">
+      <div class="text-3xl shrink-0">💡</div>
+      <div class="w-full">
+        <h2 class="font-bold text-indigo-900 text-lg">研究へのご協力をお願いします！</h2>
+        <p class="mt-2 text-sm leading-7 text-indigo-800">
+          コップに採取した水サンプルを白い背景で撮影して送信することで、AIの精度向上にご協力いただけます。
+          AIモデルの改善にご協力いただける方は、ぜひ以下のフォームにお答えください。
+        </p>
+
+        <div class="mt-6">
+          <div class="mb-3">
+            <span class="text-xs font-bold tracking-widest text-teal-600">DATA ENTRY</span>
+            <h3 class="text-xl font-bold text-slate-900">調査結果を送信する</h3>
+          </div>
+
+          <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <iframe src="https://ee.kobotoolbox.org/x/jFdvSGis" class="w-full h-[650px] border-0" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<footer id="footer" class="border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col justify-between gap-4 sm:flex-row">
+      <div>
+        <div class="font-bold text-slate-900">💧 ミズルシ</div>
+        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      </div>
+      <div class="text-sm text-slate-500 space-y-1">
+        <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
+        <div>
+          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // モバイルメニューの開閉制御
+  document.getElementById('menuButton').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
+  // Teachable MachineのモデルURL
+  const MODEL_URL = "https://teachablemachine.withgoogle.com/models/BkXnTQocQ/";
+  const MIDPOINTS = [15, 60, 150];
+  let model;
+
+  // ページ読み込み時にAIモデルをロード
+  async function initModel() {
+    try {
+      const modelURL = MODEL_URL + "model.json";
+      const metadataURL = MODEL_URL + "metadata.json";
+
+      model = await tmImage.load(modelURL, metadataURL);
+      document.getElementById("status").innerText = "写真をアップロードしてください";
+    } catch (error) {
+      console.error(error);
+      document.getElementById("status").innerText = "❌ AIモデルの読み込みに失敗しました。";
+    }
+  }
+
+  initModel();
+
+  // 写真選択時の処理
+  async function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    if (!model) {
+      document.getElementById("status").innerText = "⌛ AIモデルを読み込み中です。少し待ってから再度お試しください。";
+      return;
+    }
+
+    const imgElement = document.getElementById("preview");
+    imgElement.src = URL.createObjectURL(file);
+    imgElement.classList.remove("hidden");
+
+    document.getElementById("status").innerText = "🔍 写真を解析中...";
+    document.getElementById("ntu-output").innerText = "-- NTU";
+    document.getElementById("category-output").innerText = "";
+
+    imgElement.onload = async () => {
+      const predictions = await model.predict(imgElement);
+      calculateNTU(predictions);
+      URL.revokeObjectURL(imgElement.src);
+    };
+  }
+
+  // NTU計算処理
+  function calculateNTU(predictions) {
+    let estimatedNTU = 0;
+
+    for (let i = 0; i < predictions.length; i++) {
+      estimatedNTU += predictions[i].probability * MIDPOINTS[i];
+    }
+
+    document.getElementById("status").innerText = "推定された水の濁り";
+    document.getElementById("ntu-output").innerText = `約 ${estimatedNTU.toFixed(1)} NTU`;
+
+    let categoryText = "";
+    if (estimatedNTU < 30) {
+      categoryText = "評価：とても透明（High Clarity）";
+    } else if (estimatedNTU < 90) {
+      categoryText = "評価：少し濁っている（Moderate Clarity）";
+    } else {
+      categoryText = "評価：濁っている／泥水（Low Clarity）";
+    }
+
+    document.getElementById("category-output").innerText = categoryText;
+  }
+</script>
+
+</body>
+</html>
