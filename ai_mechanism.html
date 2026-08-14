@@ -1,129 +1,197 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-
-<body class="bg-sky-50 text-slate-800 p-6">
-  <main class="mx-auto max-w-7xl">
-    
-    <div class="inline-block rounded-lg bg-sky-600 px-5 py-3 shadow-sm hover:bg-sky-700 transition-colors">
-      <h3 class="text-sm font-semibold">
-        <a href="index.html" class="text-white hover:underline flex items-center gap-1">
-          ← ホームへ戻る🏠
-        </a>
-      </h3>
-    </div>
-
-  </main>
-</body>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIモデルの仕組み | ミズルシ</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            water: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1'
+            },
+            teal: {
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 
+<body class="bg-sky-50 text-slate-800 flex flex-col min-h-screen">
 
-    <h1 class="mt-2 text-4xl font-bold text-slate-900">
-      AIモデルの仕組み
-    </h1>
-
-    <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
       
-      <div class="rounded-xl bg-white p-6 shadow-sm">      
-        <h2 class="text-xl font-bold text-slate-900">1. 用途について</h2>
-        <p class="mt-3 text-base leading-relaxed text-slate-600">
-          このAIモデルは、写真から水の濁り（濁度）を推定するために開発されました。<br><br>
-          具体的には、写真に写った水の色や透明度などの特徴を分析し、NTU（Nephelometric Turbidity Unit）という単位で濁度を予測します。
-          濁度の計算方法は、GoogleのTeachable Machineを使用し、Low Turbidity（濁度が低い）、Medium Turbidity（濁度が中程度）、High Turbidity（濁度が高い）の3つのカテゴリに分類して学習させています。<br><br>
-          Google Teachable Machineが判断した割合をもとに、NTUの値を算出しています。<br>
-          各段階ごとに代表的なNTU値を設定しておき、AIが判定した割合と掛け算をしてNTUを算出する仕組みです。<br><br>
-          例えば、Low Turbidityが80%、Medium Turbidityが15%、High Turbidityが5%の場合、NTUは約33と算出されます。
-        </p>
-      </div>
+      <a href="index.html" class="flex items-center gap-3">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="h-9 w-auto object-contain" 
+        />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
+      </a>
 
-      <div class="rounded-xl bg-white p-6 shadow-sm">      
-        <h2 class="text-xl font-bold text-slate-900">2. 学習データソースと作成手順</h2>
-        <p class="mt-3 text-base leading-relaxed text-slate-600">
-          モデルの作成に当たり、以下の信頼できるオープンソースからデータを採取して学習を行いました。
-        </p>
-        <ul class="mt-2 list-disc pl-5 text-base text-slate-600 space-y-1">
+      <nav class="hidden items-center gap-1 md:flex">
+        <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
+        <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
+        <a href="ai.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">AI予測</a>
+        <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+        <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+      </nav>
+
+      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+        ☰
+      </button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+      <a href="survey.html" class="block rounded-lg px-3 py-2">市民調査</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2 font-semibold text-sky-700">AI予測</a>
+      <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+      <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 flex-1">
+  <h1 class="text-3xl font-black text-slate-900 sm:text-4xl">
+    AIモデルの仕組み
+  </h1>
+
+  <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+    
+    <div class="rounded-xl bg-white p-6 shadow-sm border border-sky-100">      
+      <h2 class="text-xl font-bold text-slate-900">1. 用途について</h2>
+      <p class="mt-3 text-base leading-relaxed text-slate-600">
+        このAIモデルは、写真から水の濁り（濁度）を推定するために開発されました。<br><br>
+        具体的には、写真に写った水の色や透明度などの特徴を分析し、NTU（Nephelometric Turbidity Unit）という単位で濁度を予測します。
+        濁度の計算方法は、GoogleのTeachable Machineを使用し、Low Turbidity（濁度が低い）、Medium Turbidity（濁度が中程度）、High Turbidity（濁度が高い）の3つのカテゴリに分類して学習させています。<br><br>
+        Google Teachable Machineが判断した割合をもとに、NTUの値を算出しています。<br>
+        各段階ごとに代表的なNTU値を設定しておき、AIが判定した割合と掛け算をしてNTUを算出する仕組みです。<br><br>
+        例えば、Low Turbidityが80%、Medium Turbidityが15%、High Turbidityが5%の場合、NTUは約33と算出されます。
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white p-6 shadow-sm border border-sky-100">      
+      <h2 class="text-xl font-bold text-slate-900">2. 学習データソースと作成手順</h2>
+      <p class="mt-3 text-base leading-relaxed text-slate-600">
+        モデルの作成に当たり、以下の信頼できるオープンソースからデータを採取して学習を行いました。
+      </p>
+      <ul class="mt-2 list-disc pl-5 text-base text-slate-600 space-y-1">
+        <li>
+          ソース1 
+          <a href="https://universe.roboflow.com/klasifikasi-air/water-tqccx/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
+            （外部サイト）
+          </a>
+        </li>
+        <li>
+          ソース2 
+          <a href="https://universe.roboflow.com/aly-pr3t0/water-turbidity-ntu-2xp4g/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
+            （外部サイト）
+          </a>
+        </li>
+      </ul>
+
+      <div class="mt-4 pt-4 border-t border-slate-100 text-base leading-relaxed text-slate-600">
+        <p class="font-semibold text-slate-800">【Teachable Machineによる作成手順】</p>
+        <ol class="mt-2 space-y-3 list-decimal pl-5">
           <li>
-            ソース1 
-            <a href="https://universe.roboflow.com/klasifikasi-air/water-tqccx/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
-              （外部サイト）
-            </a>
+            <strong>データの準備:</strong> 上記のデータソースから適切な画像を収集しました。
           </li>
           <li>
-            ソース2 
-            <a href="https://universe.roboflow.com/aly-pr3t0/water-turbidity-ntu-2xp4g/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
-              （外部サイト）
-            </a>
+            <strong>モデルの学習:</strong> 項目を「濁度が高い」「濁度が中程度」「濁度が低い」の3つに分類して学習を行いました。各項目には上記オープンソースから取得した画像約100枚を使用し、背景や照明条件を揃えて判定精度を高めました。
           </li>
-        </ul>
+          <li>
+            <strong>モデルの評価:</strong> 学習に使用していないテスト用写真で汎用性を確認しました。<br>
+            透明の水を「濁度が低い」(Low Turbidity)と判定するなど、概ね正しい判定ができることを確認しました。
+          </li>
+        </ol>
 
-        <div class="mt-4 pt-4 border-t border-slate-100 text-base leading-relaxed text-slate-600">
-          <p class="font-semibold text-slate-800">【Teachable Machineによる作成手順】</p>
-          <ol class="mt-2 space-y-3 list-decimal pl-5">
-            <li>
-              <strong>データの準備:</strong> 上記のデータソースから適切な画像を収集しました。
-            </li>
-            <li>
-              <strong>モデルの学習:</strong> 項目を「濁度が高い」「濁度が中程度」「濁度が低い」の3つに分類して学習を行いました。各項目には上記オープンソースから取得した画像約100枚を使用し、背景や照明条件を揃えて判定精度を高めました。
-            </li>
-            <li>
-              <strong>モデルの評価:</strong> 学習に使用していないテスト用写真で汎用性を確認しました。<br>
-              透明の水を「濁度が低い」(Low Turbidity)と判定するなど、概ね正しい判定ができることを確認しました。
-            </li>
-          </ol>
-
-          <div class="mt-5 rounded-lg border border-sky-100 bg-sky-50/50 p-4 text-center">
-            <p class="text-sm font-semibold text-slate-600 mb-2">▼ 評価結果（Kommodo）</p>
-            <a href="https://kommodo.ai/i/jxTdL9QkxSjWZqayu7TF" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-sky-600 text-white font-bold text-sm hover:bg-sky-700 transition-colors shadow-sm">
-              🔗 Kommodoで評価結果を開く ↗
-            </a>
-          </div>
+        <div class="mt-5 rounded-lg border border-sky-100 bg-sky-50/50 p-4 text-center">
+          <p class="text-sm font-semibold text-slate-600 mb-2">▼ 評価結果（Kommodo）</p>
+          <a href="https://kommodo.ai/i/jxTdL9QkxSjWZqayu7TF" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg bg-sky-600 text-white font-bold text-sm hover:bg-sky-700 transition-colors shadow-sm">
+            Kommodoで評価結果を開く ↗
+          </a>
         </div>
       </div>
-
-      <div class="rounded-xl bg-white p-6 shadow-sm">      
-        <h2 class="text-xl font-bold text-slate-900">3. 判定の注意点</h2>
-        <p class="mt-3 text-base leading-relaxed text-slate-600">
-          現在のモデルでは、写真の背景や照明条件によって判定結果が変わる場合があります。<br><br>
-          そのため、白い背景であること、透明のコップに入っていること、十分な照明条件を揃えた水サンプルを撮影することが正確な判定の条件となっています。<br><br>
-          このモデルの精度を高めるため、今後はより多くの学習データを収集し、モデルの改善を行う予定です。<br><br>
-          そのために、皆さんのご協力をお願いしています。ぜひ身近な水辺で水質調査を行い、写真と測定値(目視でもかまいません！)を共有してください。<br><br>
-          調査に参加するには、<a href="ai.html" class="text-sky-600 font-semibold hover:underline">こちらのリンク</a>を参照してください。
-        </p>
-      </div>
-
     </div>
-  </main>
+
+    <div class="rounded-xl bg-white p-6 shadow-sm border border-sky-100">      
+      <h2 class="text-xl font-bold text-slate-900">3. 判定の注意点</h2>
+      <p class="mt-3 text-base leading-relaxed text-slate-600">
+        現在のモデルでは、写真の背景や照明条件によって判定結果が変わる場合があります。<br><br>
+        そのため、白い背景であること、透明のコップに入っていること、十分な照明条件を揃えた水サンプルを撮影することが正確な判定の条件となっています。<br><br>
+        このモデルの精度を高めるため、今後はより多くの学習データを収集し、モデルの改善を行う予定です。<br><br>
+        そのために、皆さんのご協力をお願いしています。ぜひ身近な水辺で水質調査を行い、写真と測定値(目視でもかまいません！)を共有してください。<br><br>
+        調査に参加するには、<a href="ai.html" class="text-sky-600 font-semibold hover:underline">こちらのリンク</a>を参照してください。
+      </p>
+    </div>
+
+  </div>
+</main>
 
 <footer id="footer" class="border-t border-slate-200 bg-white">
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-between gap-4 sm:flex-row">
-      <div>
-        <div class="font-bold text-slate-900">💧 ミズルシ</div>
-        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      <div class="flex flex-col items-start">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+        >
+        <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
       </div>
-      <div class="text-sm text-slate-500 space-y-1">
+
+      <div class="space-y-1 text-sm text-slate-500">
         <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
         <div>
-          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
         </div>
         <div>
-          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
         </div>
         <div>
-          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
         </div>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  document.getElementById("menuButton").addEventListener("click", () => {
+    document.getElementById("mobileMenu").classList.toggle("hidden");
+  });
+</script>
 
 </body>
 </html>

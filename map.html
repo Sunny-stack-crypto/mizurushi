@@ -21,12 +21,21 @@
 
 <body class="bg-sky-50 text-slate-800">
 
+
 <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
+      
       <a href="index.html" class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-xl text-white">💧</div>
-        <div class="font-bold text-slate-900">ミズルシ</div>
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="h-9 w-auto object-contain" 
+        />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
       </a>
 
       <nav class="hidden items-center gap-1 md:flex">
@@ -61,7 +70,7 @@
       このサイトでは、環境省が発表した公共用水域水質測定データを基に作成したGISを無料で公開しています。<br>
       地図の読み込みには時間がかかる場合があります。ご了承ください。<br>
       毎月31日に更新しています！(更新日が前後する場合があります。ご了承ください。)<br>
-      ⚠️：読み込みが遅い場合は、ブラウザを更新するか地図をズームしてみてください。<br>
+      読み込みが遅い場合は、ブラウザを更新するか地図をズームしてみてください。<br>
       ズームすればするほど表示されるデータ量が減るため、読み込みが速くなります。
     </p>
   </div>
@@ -90,7 +99,7 @@
   <div id="spotFormContainer" class="hidden mt-6 rounded-2xl border border-teal-200 bg-teal-50 p-6 shadow-sm">
     <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-lg font-bold text-teal-900">📍 おすすめの水辺スポットを教えてください！</h3>
+        <h3 class="text-lg font-bold text-teal-900">おすすめの水辺スポットを教えてください！</h3>
         <p class="mt-1 text-sm text-teal-700">お気に入りの場所やよく行く水辺の追加申請はこちらから受付けしています。</p>
       </div>
       <a href="https://forms.gle/PgDtsTgCsH8kf38z9" target="_blank" rel="noopener noreferrer" 
@@ -136,11 +145,16 @@
 <footer id="footer" class="border-t border-slate-200 bg-white">
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-between gap-4 sm:flex-row">
-      <div>
-        <div class="font-bold text-slate-900">💧 ミズルシ</div>
-        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      <div class="flex flex-col items-start">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+        >
+        <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
       </div>
-      <div class="text-sm text-slate-500 space-y-1">
+
+      <div class="space-y-1 text-sm text-slate-500">
         <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
         <div>
           <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
@@ -174,7 +188,6 @@
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      // 1. ボタンのアクティブ状態の見た目を切り替え
       buttons.forEach(btn => {
         btn.classList.remove('bg-sky-600', 'text-white');
         btn.classList.add('border', 'border-slate-200');
@@ -182,10 +195,7 @@
       button.classList.remove('border', 'border-slate-200');
       button.classList.add('bg-sky-600', 'text-white');
 
-      // 2. 選択された年度に応じてマップ・フォーム・メッセージの表示制御
       const year = button.dataset.year;
-
-      // 「水辺スポット」が選ばれた時だけフォーム案内を表示
       if (year === '水辺スポット') {
         spotFormContainer.classList.remove('hidden');
       } else {
@@ -193,11 +203,9 @@
       }
 
       if (year === 'current') {
-        // 「今年のデータ」を選択した時：マップを隠して案内文を表示
         mapContainer.classList.add('hidden');
         noDataMessage.classList.remove('hidden');
       } else {
-        // 過去の年度・水辺スポットを選択した時：マップを表示して案内文を隠す
         noDataMessage.classList.add('hidden');
         mapContainer.classList.remove('hidden');
         
@@ -208,7 +216,6 @@
     });
   });
 
-  // モバイルメニューの開閉制御
   document.getElementById('menuButton').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });

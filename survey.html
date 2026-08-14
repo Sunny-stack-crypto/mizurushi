@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>市民調査 | ミズルシ</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-sky-50 text-slate-800">
@@ -12,9 +13,17 @@
 <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
+      
       <a href="index.html" class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-xl text-white">💧</div>
-        <div class="font-bold text-slate-900">ミズルシ</div>
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="h-9 w-auto object-contain" 
+        />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
       </a>
 
       <nav class="hidden items-center gap-1 md:flex">
@@ -57,7 +66,7 @@
   <div class="rounded-2xl border border-teal-100 bg-white p-6 shadow-sm sm:p-8">
     <div class="flex items-start gap-4">
       <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-100 text-2xl">
-        👀
+        <img src="pictures/five-sense.png" alt="五感観察"/>
       </div>
       <div>
         <h2 class="text-2xl font-black text-slate-900">五感を使って水を観察する</h2>
@@ -72,7 +81,6 @@
   <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
     <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <div class="text-3xl">⚗️</div>
       <h3 class="mt-4 text-lg font-bold">pH</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">
         水が酸性・中性・アルカリ性のどの程度なのかを示す指標です。
@@ -81,7 +89,6 @@
     </div>
 
     <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <div class="text-3xl">🌬️</div>
       <h3 class="mt-4 text-lg font-bold">DO</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">
         水中に溶けている酸素の量です。水中の生物の生息環境を考える際に重要です。
@@ -90,7 +97,6 @@
     </div>
 
     <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <div class="text-3xl">🧪</div>
       <h3 class="mt-4 text-lg font-bold">COD75</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">
         水中の有機物などによる汚れの程度を評価するために使われる指標です。
@@ -99,7 +105,6 @@
     </div>
 
     <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <div class="text-3xl">🔬</div>
       <h3 class="mt-4 text-lg font-bold">BOD75</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">
         微生物が水中の有機物を分解するときに消費する酸素量に関係する指標です。
@@ -108,7 +113,6 @@
     </div>
 
     <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-      <div class="text-3xl">💨</div>
       <h3 class="mt-4 text-lg font-bold">SS</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">
         水中に浮遊している粒子状物質の量を示す指標です。水の濁りとも関係します。
@@ -117,14 +121,69 @@
     </div>
 
     <div class="rounded-2xl bg-gradient-to-br from-sky-50 to-teal-50 p-6">
-      <div class="text-3xl">👃</div>
       <h3 class="mt-4 text-lg font-bold">五感観察</h3>
       <p class="mt-2 text-sm leading-6 text-slate-600">
         色、におい、見た目、周囲の環境などを観察して記録します。
       </p>
       <span class="mt-4 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">基本観察</span>
     </div>
+  </div>
 
+<!--weather feature for users(modified version of https://uiverse.io/Praashoo7/old-dingo-81 using gemini ai-->>
+  <div class="my-8 flex flex-col items-center justify-center">
+    <p style="text-align: center; font-size: 18px; font-family: Arial, Helvetica, sans-serif;">
+      気温などを検索できます。ぜひご活用ください</p>
+
+    <div class="mb-6 flex gap-2">
+      <input 
+        type="text" 
+        id="city-input" 
+        placeholder="都市名を入力 (例: 東京, 大阪)" 
+        class="w-60 rounded-xl border border-slate-300 px-4 py-2 text-sm shadow-sm focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+      />
+      <button 
+        id="search-btn" 
+        class="rounded-xl bg-teal-600 px-5 py-2 text-sm font-bold text-white shadow transition hover:bg-teal-700"
+      >
+        検索
+      </button>
+    </div>
+    <div class="relative w-72 rounded-3xl bg-white p-6 shadow-md border border-slate-100 text-slate-800 transition-all hover:shadow-lg">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-500">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <div id="temp-display" class="text-2xl font-black text-slate-900">-- °C</div>
+            <div id="city-display" class="text-xs font-semibold text-slate-500">都市を選択</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 grid grid-cols-2 gap-3 text-center text-xs text-slate-600">
+        <div class="rounded-xl bg-slate-50 p-2.5">
+          <span class="block text-slate-400">湿度</span>
+          <strong id="humidity-display" class="text-sm font-bold text-slate-800">--%</strong>
+        </div>
+        <div class="rounded-xl bg-slate-50 p-2.5">
+          <span class="block text-slate-400">風速</span>
+          <strong id="wind-display" class="text-sm font-bold text-slate-800">-- km/h</strong>
+        </div>
+        <div class="rounded-xl bg-slate-50 p-2.5">
+          <span class="block text-slate-400">体感温度</span>
+          <strong id="feels-display" class="text-sm font-bold text-slate-800">-- °C</strong>
+        </div>
+        <div class="rounded-xl bg-slate-50 p-2.5">
+          <span class="block text-slate-400">気圧</span>
+          <strong id="pressure-display" class="text-sm font-bold text-slate-800">-- hPa</strong>
+        </div>
+      </div>
+      <div id="status-display" class="mt-4 rounded-xl bg-teal-500 py-1.5 text-center text-xs font-bold text-white">
+        検索可能
+      </div>
+    </div>
   </div>
 
   <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
@@ -159,11 +218,16 @@
 <footer id="footer" class="border-t border-slate-200 bg-white">
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-between gap-4 sm:flex-row">
-      <div>
-        <div class="font-bold text-slate-900">💧 ミズルシ</div>
-        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      <div class="flex flex-col items-start">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+        >
+        <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
       </div>
-      <div class="text-sm text-slate-500 space-y-1">
+
+      <div class="space-y-1 text-sm text-slate-500">
         <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
         <div>
           <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
@@ -179,12 +243,54 @@
   </div>
 </footer>
 
-
 <script>
   document.getElementById('menuButton').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });
-</script>
 
-</body>
-</html>
+  const apiKey = 'e6032c5a65632f0eda8a5a0cb74d2aeb'; 
+  const searchBtn = document.getElementById('search-btn');
+  const cityInput = document.getElementById('city-input');
+
+  const cityDisplay = document.getElementById('city-display');
+  const tempDisplay = document.getElementById('temp-display');
+  const humidityDisplay = document.getElementById('humidity-display');
+  const windDisplay = document.getElementById('wind-display');
+  const feelsDisplay = document.getElementById('feels-display');
+  const pressureDisplay = document.getElementById('pressure-display');
+  const statusDisplay = document.getElementById('status-display');
+
+  async function searchWeather(city) {
+    if (!city) return;
+
+    try {
+      const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)},JP&limit=1&appid=${apiKey}`;
+      const geoResponse = await fetch(geoUrl);
+      const geoData = await geoResponse.json();
+
+      if (!geoData || geoData.length === 0) {
+        throw new Error('都市が見つかりません');
+      }
+      const { lat, lon, name } = geoData[0];
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja`;
+      const weatherResponse = await fetch(weatherUrl);
+      if (!weatherResponse.ok) throw new Error('天気データの取得に失敗しました');
+      const data = await weatherResponse.json();
+      cityDisplay.textContent = `${data.sys.country}, ${city}`; // ユーザーの入力値をそのまま表示する場合
+      tempDisplay.textContent = `${Math.round(data.main.temp)} °C`;
+      humidityDisplay.textContent = `${data.main.humidity}%`;
+      windDisplay.textContent = `${Math.round(data.wind.speed * 3.6)} km/h`;
+      feelsDisplay.textContent = `${Math.round(data.main.feels_like)} °C`;
+      pressureDisplay.textContent = `${data.main.pressure} hPa`;
+      if (statusDisplay && data.weather[0]) {
+        statusDisplay.textContent = data.weather[0].description;
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+  searchBtn.addEventListener('click', () => searchWeather(cityInput.value.trim()));
+  cityInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') searchWeather(cityInput.value.trim());
+  });
+</script>

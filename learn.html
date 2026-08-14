@@ -12,10 +12,17 @@
 <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
-
+      
       <a href="index.html" class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-xl text-white">💧</div>
-        <div class="font-bold text-slate-900">ミズルシ</div>
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="h-9 w-auto object-contain" 
+        />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
       </a>
 
       <nav class="hidden items-center gap-1 md:flex">
@@ -61,62 +68,97 @@
 
     <article class="rounded-2xl border border-sky-100 bg-white p-7 shadow-sm">
       <div class="flex items-center justify-between">
-        <span class="text-4xl">⚗️</span>
+        <span class="text-4xl"><!-- This is add picture here --></span>
       </div>
       <h2 class="mt-5 text-2xl font-black">pH</h2>
       <p class="mt-4 leading-7 text-slate-600">
-        水溶液が酸性・中性・アルカリ性のどの程度なのかを表す指標です。
-        pH 7付近を中性とし、数字が小さいほど酸性、大きいほどアルカリ性になります。
+        0-14の指標で、水が酸性・中性・アルカリ性のどの程度なのかを表す指標です。
+        pH7付近を中性とし、数字が小さいほど酸性、大きいほどアルカリ性になります。
+        水質においては、7（中性）が最高とされています。
+        pHが7より高いでアルカリ性だと、「アンモニア(NH3)」と呼ばれる物質の危険性が増し、魚が死にやすくなります。
+        その他にも、細胞を傷つけたり、多くの悪影響があります。<br>
+        逆に、pHが7より低い酸性に傾きすぎると、酸素をうまく取り込めなくなり死んでしまいます。<br>
+        その他にも、pHの傾きは、微生物の死滅などにもつながるので、とても大切な値なのです。
+        <img src="pictures/pH.png" alt="pH">
       </p>
     </article>
 
     <article class="rounded-2xl border border-teal-100 bg-white p-7 shadow-sm">
       <div class="flex items-center justify-between">
-        <span class="text-4xl">🌬️</span>
+        <span class="text-4xl"><!-- This is add picture here --></span>
       </div>
       <h2 class="mt-5 text-2xl font-black">DO</h2>
       <p class="mt-4 leading-7 text-slate-600">
         Dissolved Oxygen（溶存酸素）の略称です。
-        水中に溶けている酸素の量を表し、水生生物の生息環境を考える上で重要な指標です。
+        水中に溶けている酸素の量を表します。
+        私たちと同じく、魚などの水に住む生き物も酸素が必要です。
+        この値が低すぎると、生き物たちは酸素が足りなくて、死んでしまったり、赤ちゃんがうまく生まれなくなってしまいます。<br>
+        DOは水温にも影響を受けます。水温が高いと、水の中にある酸素が外に逃げてしまいまいます。
+        この結果、水中の酸素がなってしまいます。<br>
+        その他にも、BODやCODにも影響を受けます。
+
       </p>
     </article>
 
     <article class="rounded-2xl border border-indigo-100 bg-white p-7 shadow-sm">
       <div class="flex items-center justify-between">
-        <span class="text-4xl">🧪</span>
+        <span class="text-4xl"><!-- This is add picture here --></span>
       </div>
       <h2 class="mt-5 text-2xl font-black">COD75</h2>
       <p class="mt-4 leading-7 text-slate-600">
         水中の有機物などによる汚れの程度を評価するために使われる指標の一つです。
         CODは化学的酸素要求量を意味します。
+        科学物質を使用して汚れや有機物を分解する際に消費される酸素量を示します。
+        (微生物が消費する酸素をBODといいます)
+        数値が高いほど、酸素の消費が多く、水質が悪いことを意味します。
       </p>
     </article>
 
     <article class="rounded-2xl border border-emerald-100 bg-white p-7 shadow-sm">
       <div class="flex items-center justify-between">
-        <span class="text-4xl">🔬</span>
+        <span class="text-4xl"><!-- This is add picture here --></span>
       </div>
       <h2 class="mt-5 text-2xl font-black">BOD75</h2>
       <p class="mt-4 leading-7 text-slate-600">
         BODは生物化学的酸素要求量を意味します。
-        微生物による有機物の分解と酸素消費に関係する水質指標です。
+        水の中には、たくさんの微生物(大変小さな生き物)がいます。
+        微生物は、水の中の栄養(有機物)を食べて生きています。
+        微生物は食べるとき、酸素を消費します。
+        この時の、消費される酸素を示したのがBOD(Biochemical Oxygen Demand)です。
       </p>
     </article>
 
     <article class="rounded-2xl border border-amber-100 bg-white p-7 shadow-sm">
       <div class="flex items-center justify-between">
-        <span class="text-4xl">💨</span>
+        <span class="text-4xl"><!-- This is add picture here --></span>
       </div>
       <h2 class="mt-5 text-2xl font-black">SS</h2>
       <p class="mt-4 leading-7 text-slate-600">
         Suspended Solids（浮遊物質）の略称です。
-        水中に浮遊している粒子状物質の量を示し、水の濁りとも関係します。
+        TSSと呼ばれることもあります。
+        水中に浮遊している粒子状物質の量を示し、水の濁りのことです。
+        川の流れが不十分だと、汚いものが川にたまってしまうので、SSの値は高くなります。
+        汚いものや栄養がたまりすぎると、生き物に悪い影響を与えてしまいます。
+      </p>
+    </article>
+
+
+    <article class="rounded-2xl border border-amber-100 bg-white p-7 shadow-sm">
+      <div class="flex items-center justify-between">
+        <span class="text-4xl"><!-- This is add picture here --></span>
+      </div>
+      <h2 class="mt-5 text-2xl font-black">75の意味</h2>
+      <p class="mt-4 leading-7 text-slate-600">
+        BOD75やCOD75などの75は、全体のデータを小さい順に並べたとき、下から75%目(3/4)に位置する数値のことです。
+        これによって、全体のうち75%の日数で、どれほどの値以下に保たれているかを知ることができます。
+        「75」のおかげで、大雨などによる極端なデータの変化を予防できます。
+        よって、より正確なデータを得ることができるのです。
       </p>
     </article>
 
     <article class="rounded-2xl border border-purple-100 bg-white p-7 shadow-sm">
       <div class="flex items-center justify-between">
-        <span class="text-4xl">🌫️</span>
+        <span class="text-4xl"><!-- This is add picture here --></span>
       </div>
       <h2 class="mt-5 text-2xl font-black">NTU</h2>
       <p class="mt-4 leading-7 text-slate-600">
@@ -129,7 +171,7 @@
 
     <article class="rounded-2xl border border-rose-100 bg-white p-7 shadow-sm md:col-span-2 lg:col-span-3">
       <div class="flex items-center gap-4">
-        <div class="text-4xl">👀</div>
+        <div class="text-4xl"><!-- This is add picture here --></div>
         <div>
           <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-700">
             市民調査
@@ -194,11 +236,16 @@
 <footer id="footer" class="border-t border-slate-200 bg-white">
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-between gap-4 sm:flex-row">
-      <div>
-        <div class="font-bold text-slate-900">💧 ミズルシ</div>
-        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      <div class="flex flex-col items-start">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+        >
+        <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
       </div>
-      <div class="text-sm text-slate-500 space-y-1">
+
+      <div class="space-y-1 text-sm text-slate-500">
         <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
         <div>
           <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>

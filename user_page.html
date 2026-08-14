@@ -12,9 +12,17 @@
 <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
+      
       <a href="index.html" class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500 text-xl text-white">💧</div>
-        <div class="font-bold text-slate-900">ミズルシ</div>
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="h-9 w-auto object-contain" 
+        />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
       </a>
 
       <nav class="hidden items-center gap-1 md:flex">
@@ -89,20 +97,25 @@
 <footer id="footer" class="border-t border-slate-200 bg-white">
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-between gap-4 sm:flex-row">
-      <div>
-        <div class="font-bold text-slate-900">💧 ミズルシ</div>
-        <p class="mt-1 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      <div class="flex flex-col items-start">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+        >
+        <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
       </div>
-      <div class="text-sm text-slate-500 space-y-1">
+
+      <div class="space-y-1 text-sm text-slate-500">
         <p>お問い合わせはこちらまで: <a href="mailto:contact.citizen.riverproject@gmail.com" class="text-sky-600 hover:underline">contact.citizen.riverproject@gmail.com</a></p>
         <div>
-          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
         </div>
         <div>
-          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
         </div>
         <div>
-          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
         </div>
       </div>
     </div>
@@ -132,7 +145,6 @@
   }
 
   async function fetchUserData() {
-    // コードが無い場合はログイン画面へリダイレクト
     if (!userCode) {
       window.location.href = 'Login.html';
       return;
@@ -165,7 +177,6 @@
       userPointsEl.textContent = myPoints;
     }
 
-    // 自分よりポイントが高い人の人数を数えてランキング順位を計算
     const { count, error: rankError } = await supabase
       .from('profiles')
       .select('*', { count: 'exact', head: true })
@@ -185,7 +196,6 @@
 
   fetchUserData();
 
-  // モバイルメニューの開閉制御
   document.getElementById('menuButton').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });

@@ -1,0 +1,162 @@
+/*//weather feature for users(modified version of https://uiverse.io/Praashoo7/old-dingo-81 using gemini ai/*
+/* From Uiverse.io by Praashoo7 - Japanese Optimization */
+.weather-widget-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 300px;
+  min-height: 320px; 
+}
+
+.weather-widget-wrapper .search-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.weather-widget-wrapper .search-container input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  width: 170px;
+}
+
+.weather-widget-wrapper .search-container button {
+  padding: 8px 14px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.weather-widget-wrapper .cardm {
+  position: relative;
+  width: 250px;
+  height: 130px;
+}
+
+.weather-widget-wrapper .card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 130px;
+  border-radius: 25px;
+  background: whitesmoke;
+  color: black;
+  z-index: 2;
+  transition: .4s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.weather-widget-wrapper .weather {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.weather-widget-wrapper .main {
+  font-size: 1.6em;
+  position: absolute;
+  top: 35px;
+  left: 100px;
+  font-weight: bold;
+}
+
+.weather-widget-wrapper .mainsub {
+  position: absolute;
+  top: 75px;
+  left: 100px;
+  font-size: 0.65em;
+  width: 130px;
+  line-height: 1.2;
+  color: #555;
+}
+
+.weather-widget-wrapper .card2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 130px;
+  border-radius: 25px;
+  background: white;
+  z-index: 1;
+  transition: .4s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.weather-widget-wrapper .card:hover {
+  background-color: #FFE87C;
+  cursor: pointer;
+}
+
+.weather-widget-wrapper .card:hover + .card2 {
+  height: 260px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.weather-widget-wrapper .card:hover + .card2 .lower {
+  top: 140px;
+  opacity: 1;
+}
+
+.weather-widget-wrapper .upper {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  gap: 20px;
+}
+
+.weather-widget-wrapper .humiditytext, 
+.weather-widget-wrapper .airtext {
+  font-size: 0.65em;
+  line-height: 1.2;
+}
+
+.weather-widget-wrapper .lower {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 12px;
+  top: 50px;
+  font-size: 0.65em;
+  transition: .4s ease-in-out;
+  opacity: 0;
+  gap: 8px;
+}
+
+.weather-widget-wrapper .aqi, 
+.weather-widget-wrapper .realfeel, 
+.weather-widget-wrapper .pressure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 68px;
+}
+
+.weather-widget-wrapper .card3 {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 32px;
+  bottom: 0;
+  font-size: 0.8em;
+  font-weight: bold;
+  background: limegreen;
+  color: white;
+}
