@@ -242,16 +242,14 @@
     </div>
   </div>
 </footer>
-
 <script>
   document.getElementById('menuButton').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });
 
-  const apiKey = 'e6032c5a65632f0eda8a5a0cb74d2aeb'; 
+  const WORKER_URL = 'https://shy-block-54ab.sunny-matsuno.workers.dev'; 
   const searchBtn = document.getElementById('search-btn');
   const cityInput = document.getElementById('city-input');
-
   const cityDisplay = document.getElementById('city-display');
   const tempDisplay = document.getElementById('temp-display');
   const humidityDisplay = document.getElementById('humidity-display');
@@ -263,32 +261,38 @@
   async function searchWeather(city) {
     if (!city) return;
 
-    try {
-      const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)},JP&limit=1&appid=${apiKey}`;
-      const geoResponse = await fetch(geoUrl);
-      const geoData = await geoResponse.json();
+    searchBtn.disabled = true;
 
-      if (!geoData || geoData.length === 0) {
-        throw new Error('都市が見つかりません');
+    try {
+      const response = await fetch(`${WORKER_URL}?city=${encodeURIComponent(city)}`);
+      
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || '都市が見つかりません');
       }
-      const { lat, lon, name } = geoData[0];
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja`;
-      const weatherResponse = await fetch(weatherUrl);
-      if (!weatherResponse.ok) throw new Error('天気データの取得に失敗しました');
-      const data = await weatherResponse.json();
-      cityDisplay.textContent = `${data.sys.country}, ${city}`; // ユーザーの入力値をそのまま表示する場合
+
+      const data = await response.json();
+
+      cityDisplay.textContent = `${data.sys.country}, ${city}`;
       tempDisplay.textContent = `${Math.round(data.main.temp)} °C`;
       humidityDisplay.textContent = `${data.main.humidity}%`;
       windDisplay.textContent = `${Math.round(data.wind.speed * 3.6)} km/h`;
       feelsDisplay.textContent = `${Math.round(data.main.feels_like)} °C`;
       pressureDisplay.textContent = `${data.main.pressure} hPa`;
+      
       if (statusDisplay && data.weather[0]) {
         statusDisplay.textContent = data.weather[0].description;
       }
+
     } catch (error) {
       alert(error.message);
+    } finally {
+      setTimeout(() => {
+        searchBtn.disabled = false;
+      }, 2000);
     }
   }
+
   searchBtn.addEventListener('click', () => searchWeather(cityInput.value.trim()));
   cityInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') searchWeather(cityInput.value.trim());
