@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
 <script>
@@ -43,27 +44,35 @@
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="Login.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ログイン</a>
-        <span>Language</span>
+
+        <!-- PC表示用ラッパー -->
+        <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
           <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
           <div id="google_translate_element"></div>
+        </div>
       </nav>
 
-      <button id="menuButton" class="rounded-lg p-2 md:hidden">☰</button>
+      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+        ☰
+      </button>
     </div>
 
     <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
-      <a href="index.html" class="block px-3 py-2">ホーム</a>
-      <a href="map.html" class="block px-3 py-2">マップ</a>
-      <a href="survey.html" class="block px-3 py-2">市民調査</a>
-      <a href="ai.html" class="block px-3 py-2">AI予測</a>
-      <a href="learn.html" class="block px-3 py-2">学ぶ</a>
-      <a href="Login.html" class="block px-3 py-2 font-bold text-sky-700">ログイン</a>
+      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+      <a href="survey.html" class="block rounded-lg px-3 py-2">市民調査</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
+      <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+      <a href="Login.html" class="block rounded-lg px-3 py-2 font-bold text-sky-700">ログイン</a>
+
+      <!-- スマホ表示用ラッパー -->
       <div class="mt-2 border-t border-sky-100 px-3 pt-3">
         <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
           <span>Language</span>
           <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
         </div>
-        <div id="google_translate_element_mobile"></div>
+        <div id="translate-wrapper-mobile"></div>
       </div>
     </nav>
   </div>
