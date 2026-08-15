@@ -12,6 +12,7 @@
 </script>
 
 
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ミズルシ | 市民参加型サイエンスプロジェクト</title>
@@ -49,18 +50,9 @@
       }
     }
   </script>
-
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-
-
+<link rel="stylesheet" href="translation_style.css">
 </head>
-
 <body class="bg-sky-50 text-slate-800">
-
 <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
@@ -84,6 +76,13 @@
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+        
+        <!-- PC用: 言語ラベルとGoogle翻訳ウィジェット -->
+        <div class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <div id="google_translate_element"></div>
+        </div>
       </nav>
 
       <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
@@ -98,6 +97,15 @@
       <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
       <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
       <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+      
+      <!-- スマホ用: 言語ラベルとGoogle翻訳ウィジェット -->
+      <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+        <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+        </div>
+        <div id="google_translate_element_mobile"></div>
+      </div>
     </nav>
   </div>
 </header>
@@ -501,5 +509,5 @@
   }
 </script>
 
-</body>
-</html>
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

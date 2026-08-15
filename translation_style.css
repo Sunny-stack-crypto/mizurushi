@@ -1,0 +1,58 @@
+@charset "UTF-8";
+html {
+  scroll-behavior: smooth;
+}
+
+#google_translate_element,
+#google_translate_element_mobile {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.goog-te-combo {
+  padding: 4px 8px !important;
+  font-size: 13px !important;
+  border-radius: 6px !important;
+  border: 1px solid #cbd5e1 !important;
+  background-color: #ffffff !important;
+  color: #334155 !important;
+  outline: none !important;
+  max-width: 130px !important;
+}
+
+.goog-logo-link,
+.goog-te-gadget span {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+#google_translate_element,
+#google_translate_element_mobile {
+  position: relative;
+}
+
+.goog-te-combo {
+  padding: 6px 10px !important;
+  font-size: 13px !important;
+  border-radius: 8px !important;
+  border: 1px solid #cbd5e1 !important;
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  cursor: pointer;
+}
+
+.goog-te-combo:hover {
+  border-color: #0284c7 !important;
+}
+
+.goog-te-gadget {
+  font-family: inherit !important;
+}
+
+.goog-te-gadget a {
+  color: #0284c7 !important;
+}

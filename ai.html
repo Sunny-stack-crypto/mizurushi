@@ -18,7 +18,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-
+  <link rel="stylesheet" href="translation_style.css">
+  <link rel="stylesheet" href="translation_style.css">
 </head>
 
 <body class="bg-sky-50 text-slate-800">
@@ -39,25 +40,41 @@
         </div>
       </a>
 
-      <nav class="hidden items-center gap-1 md:flex">
+<nav class="hidden items-center gap-1 md:flex">
         <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
         <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
         <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
         <a href="ai.html" class="rounded-lg bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+        <div class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <div id="google_translate_element"></div>
+        </div>
       </nav>
 
-      <button id="menuButton" class="rounded-lg p-2 md:hidden">☰</button>
+      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+        ☰
+      </button>
     </div>
 
     <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
-      <a href="index.html" class="block px-3 py-2">ホーム</a>
-      <a href="map.html" class="block px-3 py-2">マップ</a>
-      <a href="survey.html" class="block px-3 py-2">市民調査</a>
-      <a href="ai.html" class="block px-3 py-2 text-indigo-700 font-bold">AI予測</a>
-      <a href="learn.html" class="block px-3 py-2">学ぶ</a>
-      <a href="Login.html" class="block px-3 py-2">参加者設定・ランキング</a>
+      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+      <a href="survey.html" class="block rounded-lg px-3 py-2">市民調査</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2 font-bold text-indigo-700">AI予測</a>
+      <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+      <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+
+      <!-- スマホ用: 言語表示エリア -->
+      <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+        <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+        </div>
+        <div id="google_translate_element_mobile"></div>
+      </div>
     </nav>
   </div>
 </header>
@@ -296,6 +313,9 @@
     document.getElementById("category-output").innerText = categoryText;
   }
 </script>
+
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>

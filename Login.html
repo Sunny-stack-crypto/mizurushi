@@ -16,8 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ログイン | ミズルシ</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-
+<link rel="stylesheet" href="translation_style.css">
 </head>
 
 <body class="bg-sky-50 text-slate-800 min-h-screen flex flex-col justify-between">
@@ -46,6 +45,9 @@
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="Login.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ログイン</a>
+        <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <div id="google_translate_element"></div>
       </nav>
 
       <button id="menuButton" class="rounded-lg p-2 md:hidden">☰</button>
@@ -58,6 +60,13 @@
       <a href="ai.html" class="block px-3 py-2">AI予測</a>
       <a href="learn.html" class="block px-3 py-2">学ぶ</a>
       <a href="Login.html" class="block px-3 py-2 font-bold text-sky-700">ログイン</a>
+      <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+        <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+        </div>
+        <div id="google_translate_element_mobile"></div>
+      </div>
     </nav>
   </div>
 </header>
@@ -180,6 +189,7 @@
     document.getElementById('mobileMenu').classList.toggle('hidden');
   });
 </script>
-
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
