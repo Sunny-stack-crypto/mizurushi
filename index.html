@@ -2,16 +2,14 @@
 <html lang="ja">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-QE1RW1G56M');
-</script>
-
-
+    gtag('config', 'G-QE1RW1G56M');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,136 +48,136 @@
       }
     }
   </script>
-<link rel="stylesheet" href="translation_style.css">
+  <link rel="stylesheet" href="translation_style.css">
 </head>
 <body class="bg-sky-50 text-slate-800">
-<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
-      
-      <a href="index.html" class="flex items-center gap-3">
-        <img 
-          src="pictures/logo.png" 
-          alt="Logo" 
-          class="h-9 w-auto object-contain" 
-        />
-        <div class="flex flex-col justify-center">
-          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
-          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
-        </div>
-      </a>
-
-<nav class="hidden items-center gap-1 md:flex">
-  <a href="index.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ホーム</a>
-  <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
-  <a href="survey.html" onclick="return startSurvey()" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
-  <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
-  <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
-  <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
-  
-  <!-- PC表示用コンテナ -->
-  <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-    <span>Language</span>
-    <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
-    <div id="google_translate_element"></div>
-  </div>
-</nav>
-      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
-        ☰
-      </button>
-    </div>
-
-<nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
-  <a href="index.html" class="block rounded-lg px-3 py-2 font-semibold text-sky-700">ホーム</a>
-  <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
-  <a href="survey.html" onclick="return startSurvey()" class="block rounded-lg px-3 py-2">市民調査</a>
-  <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
-  <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
-  <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
-  
-  <!-- スマホ表示用コンテナ -->
-  <div class="mt-2 border-t border-sky-100 px-3 pt-3">
-    <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-      <span>Language</span>
-      <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
-    </div>
-    <div id="translate-wrapper-mobile"></div>
-  </div>
-</nav>
-  </div>
-</header>
-
-<main>
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-sky-100 via-white to-teal-50"></div>
-    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-      <div class="grid items-center gap-12 lg:grid-cols-2">
+  <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
         
-        <div>
-          <span class="inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700">
-            市民参加型シチズンサイエンス
-          </span>
-
-          <h1 class="mt-6 text-4xl font-black leading-snug tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-            人と水、<br>
-            <span class="text-sky-500">みんなで照らす</span><span class="relative inline-block z-10 after:absolute after:bottom-1 after:left-0 after:-z-10 after:h-3 after:w-full after:bg-sky-100/80">道しるべ</span>
-          </h1>
-
-          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-            川や湖、身近な水をみんなで調べて、
-            地域の水環境を見える化する<br>
-            市民参加型の環境調査プロジェクトです。
-          </p>
-
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="survey.html" onclick="return startSurvey()"
-               class="rounded-xl bg-sky-600 px-6 py-3 text-center font-bold text-white shadow-lg shadow-sky-200 transition hover:bg-sky-700">
-              市民調査に参加する →
-            </a>
-            <a href="map.html"
-               class="rounded-xl border border-sky-200 bg-white px-6 py-3 text-center font-bold text-sky-700 hover:bg-sky-50">
-              水質マップを見る
-            </a>
+        <a href="index.html" class="flex items-center gap-3">
+          <img 
+            src="pictures/logo.png" 
+            alt="Logo" 
+            class="h-9 w-auto object-contain" 
+          />
+          <div class="flex flex-col justify-center">
+            <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+            <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
           </div>
+        </a>
+
+        <nav class="hidden items-center gap-1 md:flex">
+          <a href="index.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ホーム</a>
+          <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+          <a href="survey.html" onclick="return startSurvey()" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
+          <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
+          <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+          <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+          
+          <!-- PC表示用コンテナ -->
+          <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+            <span>Language</span>
+            <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+            <div id="google_translate_element"></div>
+          </div>
+        </nav>
+
+        <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+          ☰
+        </button>
+      </div>
+
+      <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+        <a href="index.html" class="block rounded-lg px-3 py-2 font-semibold text-sky-700">ホーム</a>
+        <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+        <a href="survey.html" onclick="return startSurvey()" class="block rounded-lg px-3 py-2">市民調査</a>
+        <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
+        <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+        <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+        
+        <!-- スマホ表示用コンテナ -->
+        <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+          <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+            <span>Language</span>
+            <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+          </div>
+          <div id="translate-wrapper-mobile"></div>
         </div>
+      </nav>
+    </div>
+  </header>
 
-        <div class="relative">
-          <div class="rounded-3xl bg-gradient-to-br from-sky-400 to-teal-500 p-1 shadow-2xl">
-            <div class="rounded-[1.35rem] bg-white p-8">
-              <div class="flex items-center justify-center py-10">
-                <div class="text-center">
-                  <div>
-                    <img 
-                      src="pictures/logo.png" 
-                      alt="Logo" 
-                      class="mx-auto h-16 w-auto object-contain"
-                    />
-                  </div>
-                  <div class="mt-5 text-2xl font-black text-slate-800">水を知る。</div>
-                  <div class="mt-2 text-slate-500">地域を知る。未来につなげる。</div>
-                </div>
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-sky-100 via-white to-teal-50"></div>
+      <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          
+          <div>
+            <span class="inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700">
+              市民参加型シチズンサイエンス
+            </span>
+
+            <h1 class="mt-6 text-4xl font-black leading-snug tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+              人と水、<br>
+              <span class="text-sky-500">みんなで照らす</span><span class="relative inline-block z-10 after:absolute after:bottom-1 after:left-0 after:-z-10 after:h-3 after:w-full after:bg-sky-100/80">道しるべ</span>
+            </h1>
+
+            <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+              川や湖、身近な水をみんなで調べて、<br>
+              地域の水環境を見える化する<br>
+              市民参加型の環境調査プロジェクトです。
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="instruction.html"
+                class="rounded-xl bg-sky-600 px-8 py-4 text-center text-lg font-bold text-white shadow-lg shadow-sky-200 transition hover:bg-sky-700">
+                使い方
+                </a>
+              <a href="survey.html"
+                class="rounded-xl border-2 border-sky-600 px-8 py-4 text-center text-lg font-bold text-sky-600 transition hover:bg-sky-50">
+                参加する
+                </a>
               </div>
+            </div>
 
-              <div class="grid grid-cols-3 gap-3 border-t border-slate-100 pt-5 text-center">
-                <div>
-                  <div class="text-xl font-black text-sky-600">GIS</div>
-                  <div class="text-xs text-slate-500">水質マップ</div>
+          <div class="relative">
+            <div class="rounded-3xl bg-gradient-to-br from-sky-400 to-teal-500 p-1 shadow-2xl">
+              <div class="rounded-[1.35rem] bg-white p-8">
+                <div class="flex items-center justify-center py-10">
+                  <div class="text-center">
+                    <div>
+                      <img 
+                        src="pictures/logo.png" 
+                        alt="Logo" 
+                        class="mx-auto h-16 w-auto object-contain"
+                      />
+                    </div>
+                    <div class="mt-5 text-2xl font-black text-slate-800">水を知る。</div>
+                    <div class="mt-2 text-slate-500">地域を知る。未来につなげる。</div>
+                  </div>
                 </div>
-                <div>
-                  <div class="text-xl font-black text-teal-600">市民</div>
-                  <div class="text-xs text-slate-500">参加型調査</div>
-                </div>
-                <div>
-                  <div class="text-xl font-black text-indigo-600">AI</div>
-                  <div class="text-xs text-slate-500">NTU予測</div>
+
+                <div class="grid grid-cols-3 gap-3 border-t border-slate-100 pt-5 text-center">
+                  <div>
+                    <div class="text-xl font-black text-sky-600"><a href="map.html">GIS</a></div>
+                    <div class="text-xs text-slate-500">水質マップ</div>
+                  </div>
+                  <div>
+                    <div class="text-xl font-black text-teal-600"><a href="survey.html">市民</a></div>
+                    <div class="text-xs text-slate-500">参加型調査</div>
+                  </div>
+                  <div>
+                    <div class="text-xl font-black text-indigo-600"><a href="ai.html">AI</a></div>
+                    <div class="text-xs text-slate-500">NTU予測</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-    </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -206,6 +204,25 @@
           利用前に必ずご確認ください！
         </p>
         <a href="#footer" onclick="document.getElementById('footer').scrollIntoView({ behavior: 'smooth' }); return false;" class="mt-5 inline-block text-sm font-bold text-sky-600">
+          詳しく見る →
+        </a>
+      </article>
+
+      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-sky-700">調査情報</span>
+          <time class="text-xs text-slate-400">2026.08.16</time>
+        </div>
+        <h3 class="mt-5 text-xl font-bold text-slate-900">
+          ペットを作ることができます！
+        </h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          ログインをすると、ペットを自作成することができます！<br>
+          ペットのデザインは一度決めると作り直すことはできないので、時間をかけて、気に入るデザインにしてくださいね。
+          テンプレートを使用することもできますが、テンプレートの編集はできないので、ご注意ください。<br>
+          問題が発生した場合は、ページの一番下にあるメールまでお問い合わせください。
+        </p>
+        <a href="Login.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
           詳しく見る →
         </a>
       </article>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QE1RW1G56M');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ウェブサイトについて | ミズルシ</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            water: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1'
+            },
+            teal: {
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <link rel="stylesheet" href="translation_style.css">
+</head>
+
+<body class="flex min-h-screen flex-col bg-sky-50 text-slate-800">
+
+<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-3">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="h-9 w-auto object-contain" 
+        />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
+        <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
+        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
+        <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+        <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+
+        <!-- PC表示用ラッパー -->
+        <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <div id="google_translate_element"></div>
+        </div>
+      </nav>
+
+      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+        ☰
+      </button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+      <a href="survey.html" class="block rounded-lg px-3 py-2">市民調査</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
+      <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+      <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+      
+      <!-- スマホ表示用ラッパー -->
+      <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+        <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+        </div>
+        <div id="translate-wrapper-mobile"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl flex-1 px-4 py-10 sm:px-6 lg:px-8">
+  <h1 class="text-center text-3xl font-black text-slate-900 sm:text-4xl">
+    ウェブサイトについて
+  </h1>
+
+  <!-- 2-Card Grid Layout -->
+  <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+    
+    <!-- Card 1: 目的 -->
+    <div class="rounded-xl border border-sky-100 bg-white p-6 shadow-sm">      
+      <h2 class="text-xl font-bold text-slate-900">1. このウェブサイトの目的</h2>
+      <p class="mt-3 text-lg leading-relaxed text-slate-600">
+        このウェブサイトは、皆さんが身近な「水」を知る目印になることを目的に作られました。
+        私たちの生活に欠かせない要素の一つが「水」です。
+        しかし、水の安定供給が確立された日本社会の中で、水について考える機会は少なくなっているのではないでしょうか。
+        例えば、気が付かないうちに、取り返しのつかない被害を被っているかもしれません。
+        今の私たちは、水が出しているSOSサインに気が付いていないのかもしれません。
+        このウェブサイトは、身近な水という存在について皆さんに気付いてほしいという思いから生まれました。
+        <br>
+        <br>
+        詳しくは、<a href="https://docs.google.com/document/d/1co5sXZb-9LWwr0CStwI2-uCcZkJ4PqLAj31qAmNSJmY/export?format=pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline"><strong>こちら</strong></a>のドキュメントをご覧ください。
+      <br>
+      <br>
+      </p>
+      <p class="mt-3 text-lg leading-relaxed text-slate-600">
+        コメントやご意見をいただけると、ウェブサイトの質を向上させることができます。
+        ぜひ
+        <a href="https://forms.gle/s1BPPAo6c8bAkpnE8" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline"><strong>こちら</strong></a>
+        からお寄せください。
+      </p>
+    </div>
+
+    <!-- Card 2: 使い方 -->
+    <div class="rounded-xl border border-sky-100 bg-white p-6 shadow-sm">      
+      <h2 class="text-xl font-bold text-slate-900">2. このウェブサイトの使い方</h2>
+      <p class="mt-3 text-lg leading-relaxed text-slate-600">
+        このウェブサイトは4つの特徴があります。
+      </p>
+      
+      <ol class="mt-4 list-decimal space-y-4 pl-5 text-lg text-slate-600">
+        <li>
+          <strong class="text-slate-900">調査フォーム</strong>
+          <p class="mt-1 text-base leading-relaxed text-slate-600">
+            簡単なフォームを使って、水質調査の結果を送信することができます。<br>
+            <span class="text-sm text-slate-500">＊参加する前に<a href="index.html" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline"><strong>こちら</strong></a>から必ずIDを発行し、ページの一番下にある注意事項をすべてお読みになってください。</span>
+          </p>
+        </li>
+
+        <li>
+          <strong class="text-slate-900">GISマップ</strong>
+          <p class="mt-1 text-base leading-relaxed text-slate-600">
+            皆さんが集めてくれた情報をもとに、毎月31日にマップのデータを更新します。
+            その他にも、環境省から集めたデータをもとに、2009年から5年周期でデータをまとめています。また、水辺で自然と触れ合える場所を皆さんから募集し、<a href="map.html" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline"><strong>GIS</strong></a>に反映しています。
+          </p>
+        </li>
+
+        <li>
+          <strong class="text-slate-900">AI</strong>
+          <p class="mt-1 text-base leading-relaxed text-slate-600">
+            AIを使って、NTU(水の濁り具合の値)を予想する機能です。今は試験的な運用ですが、
+            皆さんからのデータを使用し、精度を高めていきます。<br>
+            <a href="ai.html" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline"><strong>こちら</strong></a>からお試しください。
+          </p>
+        </li>
+
+        <li>
+          <strong class="text-slate-900">ペット</strong>
+          <p class="mt-1 text-base leading-relaxed text-slate-600">
+            水質調査やAIの改善アンケートに答えていただくと、ポイントが加算されます。そのポイントを使って、ペットの育成が可能です。ペットは自分で作ることも、テンプレートを使うこともできます。<strong>ペットを変えることはできませんので、ご注意ください。</strong>(今後のアップデートで新たに可能になるかもしれません)<br>
+            ペットの育成は<a href="Login.html" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline"><strong>こちら</strong></a>のログインページからログインして行ってください。<br>
+            <span class="text-sm text-slate-500">*ログインには、IDを発行して、フォームに一つ答えていただく必要があります！発行は<a href="index.html" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline"><strong>ホーム</strong></a>の一番下から行ってください。</span>
+          </p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</main>
+</body>
+</html>
+
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
