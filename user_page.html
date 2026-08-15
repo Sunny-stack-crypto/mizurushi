@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-QE1RW1G56M');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QE1RW1G56M');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>マイページ | ミズルシ</title>
   <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="translation_style.css">
+  <link rel="stylesheet" href="translation_style.css">
 </head>
 
 <body class="bg-sky-50 text-slate-800 min-h-screen flex flex-col justify-between">
@@ -26,11 +24,7 @@
     <div class="flex h-16 items-center justify-between">
       
       <a href="index.html" class="flex items-center gap-3">
-        <img 
-          src="pictures/logo.png" 
-          alt="Logo" 
-          class="h-9 w-auto object-contain" 
-        />
+        <img src="pictures/logo.png" alt="Logo" class="h-9 w-auto object-contain" />
         <div class="flex flex-col justify-center">
           <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
           <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
@@ -45,7 +39,7 @@
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="Login.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ログイン</a>
 
-        <!-- PC表示用ラッパー -->
+        <!-- PC Language Selector -->
         <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
           <span>Language</span>
           <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
@@ -54,7 +48,7 @@
       </nav>
 
       <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
-        ☰
+        Menu
       </button>
     </div>
 
@@ -66,7 +60,7 @@
       <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
       <a href="Login.html" class="block rounded-lg px-3 py-2 font-bold text-sky-700">ログイン</a>
 
-      <!-- スマホ表示用ラッパー -->
+      <!-- Mobile Language Selector -->
       <div class="mt-2 border-t border-sky-100 px-3 pt-3">
         <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
           <span>Language</span>
@@ -81,6 +75,7 @@
 <main class="mb-auto">
   <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
     
+    <!-- User Code Header -->
     <div class="mb-6 rounded-2xl bg-white p-6 shadow-sm border border-sky-100 flex items-center justify-between flex-wrap gap-4">
       <div>
         <p class="text-xs font-bold text-sky-600 tracking-wider">USER CODE</p>
@@ -95,30 +90,150 @@
 
     <div id="errorMessage" class="hidden mb-6 rounded-xl bg-rose-50 border border-rose-200 p-4 text-sm font-semibold text-rose-700 text-center"></div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-  <div class="bg-gradient-to-br from-emerald-700 to-teal-900 rounded-2xl p-6 text-white shadow-md flex justify-between items-center">
-    <div>
-      <p class="text-sm font-medium text-emerald-200">現在の保有ポイント</p>
-      <p class="text-4xl font-black mt-2"><span id="userPoints">--</span> <span class="text-xl font-normal">pt</span></p>
+    <!-- Points & Ranking Display -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gradient-to-br from-emerald-700 to-teal-900 rounded-2xl p-6 text-white shadow-md flex justify-between items-center">
+        <div>
+          <p class="text-sm font-medium text-emerald-200">現在の保有ポイント</p>
+          <p class="text-4xl font-black mt-2"><span id="userPoints">--</span> <span class="text-xl font-normal">pt</span></p>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-blue-800 to-indigo-950 rounded-2xl p-6 text-white shadow-md flex justify-between items-center">
+        <div>
+          <p class="text-sm font-medium text-blue-200">現在のランキング順位</p>
+          <p class="text-4xl font-black mt-2"><span id="userRank">--</span> <span class="text-xl font-normal">位</span></p>
+        </div>
+      </div>
     </div>
-    <div class="text-5xl">🌟</div>
+
+    <!-- Pet System Section -->
+    <div class="mt-10 rounded-2xl border border-sky-100 bg-white p-6 sm:p-8 shadow-sm">
+      
+      <!-- State A: Creation Form (Only shown if user has no pet) -->
+      <div id="petCreationContainer" class="hidden text-center">
+        <h2 class="text-xl font-bold text-slate-800">パートナーペットを作成</h2>
+        <p class="text-sm text-slate-500 mt-1">ペットのデザインを選択して卵を取得します（消費ポイント: 0 pt）</p>
+        
+        <form id="createPetForm" class="mt-6 max-w-md mx-auto space-y-4 text-left">
+  <div>
+    <label class="block text-xs font-bold text-slate-700 mb-1">ペットの名前</label>
+    <input type="text" id="petNameInput" required placeholder="例: ポチ" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-sky-500 focus:outline-none" />
   </div>
 
-  <div class="bg-gradient-to-br from-blue-800 to-indigo-950 rounded-2xl p-6 text-white shadow-md flex justify-between items-center">
-    <div>
-      <p class="text-sm font-medium text-blue-200">現在のランキング順位</p>
-      <p class="text-4xl font-black mt-2"><span id="userRank">--</span> <span class="text-xl font-normal">位</span></p>
+  <!-- Creation Type Toggle -->
+  <div>
+    <label class="block text-xs font-bold text-slate-700 mb-1">作成方法</label>
+    <div class="flex gap-4 mb-2">
+      <label class="flex items-center text-sm gap-1">
+        <input type="radio" name="creationType" value="template" checked id="typeTemplate"> テンプレートから選択
+      </label>
+      <label class="flex items-center text-sm gap-1">
+        <input type="radio" name="creationType" value="canvas" id="typeCanvas"> 自分で描く
+      </label>
     </div>
-    <div class="text-5xl">🏆</div>
+  </div>
+
+  <!-- Option A: Template Selector -->
+<div id="templateSelectionArea" class="space-y-3">
+  <div>
+    <label class="block text-xs font-bold text-slate-700 mb-1">種類</label>
+    <select id="petSpeciesSelect" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-sky-500 focus:outline-none">
+      <option value="cat">ねこ</option>
+      <option value="dog">いぬ</option>
+    </select>
+  </div>
+
+  <!-- Live Template Preview -->
+  <div class="flex flex-col items-center justify-center p-3 border border-slate-200 rounded-lg bg-slate-50">
+    <span class="text-xs text-slate-500 mb-2 font-medium">プレビュー</span>
+    <img id="templatePreview" src="pictures/dragon.png" alt="Template Preview" class="w-24 h-24 object-contain" />
   </div>
 </div>
 
-    <div class="mt-10 rounded-2xl border border-sky-100 bg-white p-8 text-center shadow-sm">
-      <div class="text-3xl mb-3">🚀</div>
-      <h2 class="text-lg font-bold text-slate-800">今後のアップデートにご期待ください！</h2>
-      <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-        近日、調査履歴の閲覧やバッジ機能など、さまざまな新機能を追加予定です。
-      </p>
+<!-- Option B: Pixel Canvas Area -->
+<div id="canvasSelectionArea" class="hidden space-y-2">
+  <label class="block text-xs font-bold text-slate-700">デザインキャンバス (64x64 ピクセル)</label>
+  
+  <div class="flex items-center gap-2 mb-2 flex-wrap">
+    <label class="text-xs text-slate-600">色選択:</label>
+    <input type="color" id="brushColor" value="#000000" class="h-8 w-8 rounded border border-slate-300 cursor-pointer">
+  <!-- Preset Color Palette -->
+<div class="flex items-center gap-1.5 ml-2">
+  <button type="button" class="color-preset w-6 h-6 rounded-full border border-slate-300" style="background-color: #ff0000;" data-color="#ff0000" title="Red"></button>
+  <button type="button" class="color-preset w-6 h-6 rounded-full border border-slate-300" style="background-color: #0051ff;" data-color="#0051ff" title="Blue"></button>
+  <button type="button" class="color-preset w-6 h-6 rounded-full border border-slate-300" style="background-color: #ffff00;" data-color="#ffff00" title="Yellow"></button>
+  <button type="button" class="color-preset w-6 h-6 rounded-full border border-slate-300" style="background-color: #00ff00;" data-color="#00ff00" title="Green"></button>
+  <button type="button" class="color-preset w-6 h-6 rounded-full border border-slate-300" style="background-color: #000000;" data-color="#000000" title="Black"></button>
+  <button type="button" class="color-preset w-6 h-6 rounded-full border border-slate-300" style="background-color: #ffffff;" data-color="#ffffff" title="White"></button>
+</div>
+    <!-- Tool Toggle Buttons -->
+    <button type="button" id="penModeBtn" class="px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded">ペン</button>
+    <button type="button" id="eraserModeBtn" class="px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded">消しゴム</button>
+
+    <!-- Brush Size Selector -->
+    <label class="text-xs text-slate-600 ml-2">サイズ:</label>
+    <select id="brushSizeSelect" class="text-xs rounded border border-slate-300 px-2 py-1">
+      <option value="1">小 (1x1)</option>
+      <option value="2">中 (2x2)</option>
+      <option value="3">大 (3x3)</option>
+    </select>
+    
+    <button type="button" id="clearCanvasBtn" class="px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded ml-auto">クリア</button>
+  </div>
+  
+  <!-- Interactive Canvas -->
+  <div class="border border-slate-300 rounded p-2 bg-slate-100 flex justify-center">
+    <canvas id="pixelCanvas" width="384" height="384" class="bg-white border border-slate-300" style="cursor: cell;"></canvas>
+  </div>
+</div>
+
+  <button type="submit" id="createPetBtn" class="w-full rounded-lg bg-sky-600 py-2.5 text-sm font-bold text-white hover:bg-sky-700 transition">
+    卵を受け取る
+  </button>
+</form>
+      </div>
+
+      <!-- State B: Active Pet Card (Shown if pet exists) -->
+      <div id="petDisplayContainer" class="hidden">
+        <div class="flex flex-col md:flex-row items-center gap-6 justify-between">
+          
+          <!-- Image Placeholder Area -->
+          <div class="flex flex-col items-center justify-center p-6 bg-sky-50 rounded-2xl w-full md:w-1/3 border border-sky-100 min-h-[160px]">
+            <img id="petImage" src="pictures/egg.png" alt="Pet Image" class="h-24 w-auto object-contain mb-2" />
+            <span id="petBadge" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700">タマゴ</span>
+          </div>
+
+          <!-- Status and Controls -->
+          <div class="flex-1 w-full space-y-4">
+            <div>
+              <h2 id="petName" class="text-2xl font-black text-slate-900">---</h2>
+              <p id="petDetails" class="text-xs text-slate-500">Lv. -- | 総経験値: -- pt</p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div>
+              <div class="flex justify-between text-xs font-bold text-slate-600 mb-1">
+                <span id="progressLabel">ふ化まで</span>
+                <span id="progressText">0 / 10 pt</span>
+              </div>
+              <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+                <div id="progressBar" class="bg-sky-500 h-full transition-all duration-500" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <!-- Feeding Button -->
+            <div class="pt-2">
+              <button id="feedPetBtn" class="w-full md:w-auto px-6 py-2.5 bg-emerald-600 text-white font-bold text-sm rounded-lg hover:bg-emerald-700 shadow-sm transition">
+                ポイントを与える (10pt)
+              </button>
+              <p id="feedMsg" class="text-xs text-slate-500 mt-2 h-4"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -128,11 +243,7 @@
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
     <div class="flex flex-col justify-between gap-4 sm:flex-row">
       <div class="flex flex-col items-start">
-        <img 
-          src="pictures/logo.png" 
-          alt="Logo" 
-          class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
-        >
+        <img src="pictures/logo.png" alt="Logo" class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain">
         <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
       </div>
 
@@ -152,6 +263,59 @@
   </div>
 </footer>
 
+<!--JS below-->>
+
+<script>
+  const petImageMap = {
+  egg: 'pictures/egg.png',
+  cat: 'pictures/cat.png',
+  dog: 'pictures/dog.png',
+};
+  </script>
+
+<script>
+  // Add DOM references
+const penModeBtn = document.getElementById('penModeBtn');
+const eraserModeBtn = document.getElementById('eraserModeBtn');
+
+// Track active tool mode
+let currentTool = 'pen'; // 'pen' or 'eraser'
+
+// Mode Switch Listeners
+penModeBtn.addEventListener('click', () => {
+  currentTool = 'pen';
+  penModeBtn.className = 'px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded';
+  eraserModeBtn.className = 'px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded';
+});
+
+eraserModeBtn.addEventListener('click', () => {
+  currentTool = 'eraser';
+  eraserModeBtn.className = 'px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded';
+  penModeBtn.className = 'px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded';
+});
+
+// If the user picks a new color, automatically switch back to Pen mode
+brushColor.addEventListener('input', () => {
+  currentTool = 'pen';
+  penModeBtn.className = 'px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded';
+  eraserModeBtn.className = 'px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded';
+});
+
+// Update fillPixel function to check currentTool
+function fillPixel(e) {
+  if (!ctx) return;
+  const rect = canvas.getBoundingClientRect();
+  const x = Math.floor((e.clientX - rect.left) / PIXEL_SIZE);
+  const y = Math.floor((e.clientY - rect.top) / PIXEL_SIZE);
+
+  if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
+    // Fill with selected color in Pen mode, or white (#ffffff) in Eraser mode
+    ctx.fillStyle = currentTool === 'eraser' ? '#ffffff' : brushColor.value;
+    ctx.fillRect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
+  }
+}
+  </script>
+
 <script type="module">
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
@@ -162,11 +326,267 @@
   const urlParams = new URLSearchParams(window.location.search);
   const userCode = urlParams.get('code');
 
+  // DOM Elements
   const displayUserCode = document.getElementById('displayUserCode');
   const userPointsEl = document.getElementById('userPoints');
   const userRankEl = document.getElementById('userRank');
   const errorMessageEl = document.getElementById('errorMessage');
 
+  const petCreationContainer = document.getElementById('petCreationContainer');
+  const petDisplayContainer = document.getElementById('petDisplayContainer');
+  const createPetForm = document.getElementById('createPetForm');
+  const petImage = document.getElementById('petImage');
+  const petBadge = document.getElementById('petBadge');
+  const petName = document.getElementById('petName');
+  const petDetails = document.getElementById('petDetails');
+  const progressLabel = document.getElementById('progressLabel');
+  const progressText = document.getElementById('progressText');
+  const progressBar = document.getElementById('progressBar');
+  const feedPetBtn = document.getElementById('feedPetBtn');
+  const feedMsg = document.getElementById('feedMsg');
+
+  const petSpeciesSelect = document.getElementById('petSpeciesSelect');
+  const templatePreview = document.getElementById('templatePreview');
+  const typeTemplate = document.getElementById('typeTemplate');
+  const typeCanvas = document.getElementById('typeCanvas');
+  const templateSelectionArea = document.getElementById('templateSelectionArea');
+  const canvasSelectionArea = document.getElementById('canvasSelectionArea');
+
+  // Canvas & Tools Elements
+  const canvas = document.getElementById('pixelCanvas');
+  const ctx = canvas ? canvas.getContext('2d') : null;
+  const brushColor = document.getElementById('brushColor');
+  const penModeBtn = document.getElementById('penModeBtn');
+  const eraserModeBtn = document.getElementById('eraserModeBtn');
+  const brushSizeSelect = document.getElementById('brushSizeSelect');
+  const clearCanvasBtn = document.getElementById('clearCanvasBtn');
+
+  // 1. Pet Image Map
+  const petImageMap = {
+    egg: 'pictures/egg.png',
+    cat: 'pictures/cat.png',
+    dog: 'pictures/dog.png'
+  };
+
+  // 2. Custom Cursor
+  if (canvas) {
+    canvas.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><rect x="7" y="0" width="2" height="16" fill="black"/><rect x="0" y="7" width="16" height="2" fill="black"/></svg>') 8 8, crosshair`;
+  }
+
+  // 3. Template Select & Live Preview
+  if (petSpeciesSelect && templatePreview) {
+    petSpeciesSelect.addEventListener('change', (e) => {
+      const selectedSpecies = e.target.value;
+      templatePreview.src = petImageMap[selectedSpecies] || petImageMap.egg;
+    });
+  }
+
+  // 4. Creation Mode Toggle
+  if (typeTemplate && typeCanvas) {
+    typeTemplate.addEventListener('change', () => {
+      templateSelectionArea.classList.remove('hidden');
+      canvasSelectionArea.classList.add('hidden');
+    });
+
+    typeCanvas.addEventListener('change', () => {
+      templateSelectionArea.classList.add('hidden');
+      canvasSelectionArea.classList.remove('hidden');
+      renderCanvas();
+    });
+  }
+
+  // 5. Canvas Engine Settings & State Matrix
+  const GRID_SIZE = 64;
+  const PIXEL_SIZE = canvas ? canvas.width / GRID_SIZE : 0;
+  let pixelMatrix = Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill('#ffffff'));
+  let isDrawing = false;
+  let currentTool = 'pen';
+  let lastGridX = null;
+  let lastGridY = null;
+
+  // Tool Mode Listeners
+  if (penModeBtn && eraserModeBtn) {
+    penModeBtn.addEventListener('click', () => {
+      currentTool = 'pen';
+      penModeBtn.className = 'px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded';
+      eraserModeBtn.className = 'px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded';
+    });
+
+    eraserModeBtn.addEventListener('click', () => {
+      currentTool = 'eraser';
+      eraserModeBtn.className = 'px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded';
+      penModeBtn.className = 'px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded';
+    });
+  }
+
+  if (brushColor) {
+    brushColor.addEventListener('input', () => {
+      currentTool = 'pen';
+      if (penModeBtn && eraserModeBtn) {
+        penModeBtn.className = 'px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded';
+        eraserModeBtn.className = 'px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded';
+      }
+    });
+  }
+
+  // Full Clean Canvas Render Function
+function renderCanvas() {
+    if (!ctx) return;
+
+    // 1. Fill background
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // 2. Draw Grid Overlay FIRST (underneath pixels)
+    ctx.strokeStyle = '#f1f5f9';
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i <= GRID_SIZE; i++) {
+      ctx.beginPath();
+      ctx.moveTo(i * PIXEL_SIZE, 0);
+      ctx.lineTo(i * PIXEL_SIZE, canvas.height);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0, i * PIXEL_SIZE);
+      ctx.lineTo(canvas.width, i * PIXEL_SIZE);
+      ctx.stroke();
+    }
+
+    // 3. Draw stored matrix pixels SECOND (covers the grid completely)
+    for (let x = 0; x < GRID_SIZE; x++) {
+      for (let y = 0; y < GRID_SIZE; y++) {
+        if (pixelMatrix[x][y] !== '#ffffff') {
+          ctx.fillStyle = pixelMatrix[x][y];
+          // Adding +0.5 to width/height prevents sub-pixel edge gaps
+          ctx.fillRect(
+            x * PIXEL_SIZE, 
+            y * PIXEL_SIZE, 
+            PIXEL_SIZE + 0.5, 
+            PIXEL_SIZE + 0.5
+          );
+        }
+      }
+    }
+  }
+
+    // Draw Grid Lines Overlay
+    ctx.strokeStyle = '#f1f5f9';
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i <= GRID_SIZE; i++) {
+      ctx.beginPath();
+      ctx.moveTo(i * PIXEL_SIZE, 0);
+      ctx.lineTo(i * PIXEL_SIZE, canvas.height);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0, i * PIXEL_SIZE);
+      ctx.lineTo(canvas.width, i * PIXEL_SIZE);
+      ctx.stroke();
+    }
+
+  // Interpolation helper using Bresenham's algorithm to bridge fast drag gaps
+  function fillLine(x0, y0, x1, y1, fillColor, brushSize) {
+    let dx = Math.abs(x1 - x0);
+    let dy = Math.abs(y1 - y0);
+    let sx = x0 < x1 ? 1 : -1;
+    let sy = y0 < y1 ? 1 : -1;
+    let err = dx - dy;
+
+    let updated = false;
+
+    while (true) {
+      for (let bX = 0; bX < brushSize; bX++) {
+        for (let bY = 0; bY < brushSize; bY++) {
+          const targetX = x0 + bX;
+          const targetY = y0 + bY;
+
+          if (targetX >= 0 && targetX < GRID_SIZE && targetY >= 0 && targetY < GRID_SIZE) {
+            if (pixelMatrix[targetX][targetY] !== fillColor) {
+              pixelMatrix[targetX][targetY] = fillColor;
+              updated = true;
+            }
+          }
+        }
+      }
+
+      if (x0 === x1 && y0 === y1) break;
+      let e2 = 2 * err;
+      if (e2 > -dy) {
+        err -= dy;
+        x0 += sx;
+      }
+      if (e2 < dx) {
+        err += dx;
+        y0 += sy;
+      }
+    }
+
+    return updated;
+  }
+
+  // Draw Handler
+  function handleDraw(e) {
+    if (!ctx) return;
+    const rect = canvas.getBoundingClientRect();
+
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const mouseX = (e.clientX - rect.left) * scaleX;
+    const mouseY = (e.clientY - rect.top) * scaleY;
+
+    const currentGridX = Math.floor(mouseX / PIXEL_SIZE);
+    const currentGridY = Math.floor(mouseY / PIXEL_SIZE);
+
+    const brushSize = parseInt(brushSizeSelect ? brushSizeSelect.value : '1', 10);
+    const fillColor = currentTool === 'eraser' ? '#ffffff' : brushColor.value;
+
+    let updated = false;
+
+    if (lastGridX === null || lastGridY === null) {
+      updated = fillLine(currentGridX, currentGridY, currentGridX, currentGridY, fillColor, brushSize);
+    } else {
+      updated = fillLine(lastGridX, lastGridY, currentGridX, currentGridY, fillColor, brushSize);
+    }
+
+    lastGridX = currentGridX;
+    lastGridY = currentGridY;
+
+    if (updated) {
+      renderCanvas();
+    }
+  }
+
+  // Mouse Listeners
+  if (canvas) {
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      lastGridX = null;
+      lastGridY = null;
+      handleDraw(e);
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+      if (isDrawing) handleDraw(e);
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDrawing = false;
+      lastGridX = null;
+      lastGridY = null;
+    });
+  }
+
+  if (clearCanvasBtn) {
+    clearCanvasBtn.addEventListener('click', () => {
+      pixelMatrix = Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill('#ffffff'));
+      renderCanvas();
+    });
+  }
+
+  // 6. User and Pet Data Fetching
   function showError(msg) {
     if (errorMessageEl) {
       errorMessageEl.textContent = msg;
@@ -180,56 +600,320 @@
       return;
     }
 
-    if (displayUserCode) {
-      displayUserCode.textContent = userCode;
-    }
+    if (displayUserCode) displayUserCode.textContent = userCode;
 
-    // ユーザーのポイント取得
     const { data, error } = await supabase
       .from('profiles')
       .select('current_points')
       .eq('user_code', userCode)
       .maybeSingle();
 
-    if (error) {
-      console.error('データ取得エラー:', error);
-      showError('データの読み込みに失敗しました。');
-      return;
-    }
-
-    if (!data) {
-      showError('指定されたユーザーが見つかりません。');
+    if (error || !data) {
+      showError('ユーザーデータの読み込みに失敗しました。');
       return;
     }
 
     const myPoints = data.current_points ?? 0;
-    if (userPointsEl) {
-      userPointsEl.textContent = myPoints;
-    }
+    if (userPointsEl) userPointsEl.textContent = myPoints;
 
-    const { count, error: rankError } = await supabase
+    const { count } = await supabase
       .from('profiles')
       .select('*', { count: 'exact', head: true })
       .gt('current_points', myPoints);
 
-    if (rankError) {
-      console.error('順位計算エラー:', rankError);
-      if (userRankEl) userRankEl.textContent = '-';
+    if (userRankEl) userRankEl.textContent = (count ?? 0) + 1;
+
+    await fetchPetData();
+  }
+
+  async function fetchPetData() {
+    const { data: pet, error } = await supabase
+      .from('pets')
+      .select('*')
+      .eq('user_code', userCode)
+      .maybeSingle();
+
+    if (error) {
+      console.error('Pet fetch error:', error);
       return;
     }
 
-    const rank = count !== null ? count + 1 : 1;
-    if (userRankEl) {
-      userRankEl.textContent = rank;
+    if (!pet) {
+      petCreationContainer.classList.remove('hidden');
+      petDisplayContainer.classList.add('hidden');
+    } else {
+      petCreationContainer.classList.add('hidden');
+      petDisplayContainer.classList.remove('hidden');
+      renderPetUI(pet);
     }
   }
 
+  function renderPetUI(pet) {
+    petName.textContent = pet.pet_name;
+    petDetails.textContent = `Lv. ${pet.level} | 総経験値: ${pet.experience} pt`;
+
+    if (!pet.is_hatched) {
+      petImage.src = petImageMap.egg;
+      petBadge.textContent = 'タマゴ';
+      petBadge.className = 'text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800';
+      progressLabel.textContent = 'ふ化まで';
+      progressText.textContent = `${pet.experience} / 10 pt`;
+      progressBar.style.width = `${Math.min((pet.experience / 10) * 100, 100)}%`;
+      feedPetBtn.textContent = 'タマゴを温める (10pt)';
+    } else {
+      if (pet.image_data) {
+        petImage.src = pet.image_data;
+      } else {
+        petImage.src = petImageMap[pet.species] || petImageMap.egg;
+      }
+
+      petBadge.textContent = `Lv.${pet.level} ${pet.species.toUpperCase()}`;
+      petBadge.className = 'text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800';
+
+      const currentLevelExp = pet.level * 10;
+      const progress = ((pet.experience - currentLevelExp) / 10) * 100;
+
+      progressLabel.textContent = `次のレベル (Lv.${pet.level + 1}) まで`;
+      progressText.textContent = `${pet.experience % 10} / 10 pt`;
+      progressBar.style.width = `${Math.max(0, Math.min(progress, 100))}%`;
+      feedPetBtn.textContent = 'ポイントを与える (10pt)';
+    }
+  }
+
+  // 7. Pet Creation Submit
+  createPetForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('createPetBtn');
+    btn.disabled = true;
+
+    const petNameVal = document.getElementById('petNameInput').value;
+    const isCustom = typeCanvas.checked;
+
+    let speciesVal = 'custom';
+    let imageDataVal = null;
+
+    if (isCustom) {
+      imageDataVal = canvas.toDataURL('image/png');
+    } else {
+      speciesVal = petSpeciesSelect.value;
+    }
+
+    const { error } = await supabase.from('pets').insert([
+      {
+        user_code: userCode,
+        pet_name: petNameVal,
+        species: speciesVal,
+        color: 'default',
+        image_data: imageDataVal,
+        level: 0,
+        experience: 0,
+        is_hatched: false
+      }
+    ]);
+
+    btn.disabled = false;
+
+    if (error) {
+      alert('ペットの作成に失敗しました: ' + error.message);
+    } else {
+      await fetchPetData();
+    }
+  });
+
+  // 8. Feed Pet Handler
+  feedPetBtn.addEventListener('click', async () => {
+    feedPetBtn.disabled = true;
+    feedMsg.textContent = '処理中...';
+
+    const { data, error } = await supabase.rpc('feed_pet', {
+      p_user_code: userCode,
+      p_points_to_feed: 10
+    });
+
+    feedPetBtn.disabled = false;
+
+    if (error) {
+      feedMsg.textContent = 'エラーが発生しました。';
+      return;
+    }
+
+    if (data.status === 'success') {
+      feedMsg.textContent = data.message;
+      await fetchUserData();
+    } else {
+      feedMsg.textContent = data.message;
+    }
+  });
+
   fetchUserData();
 
-  document.getElementById('menuButton').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('hidden');
-  });
+  const menuButton = document.getElementById('menuButton');
+  if (menuButton) {
+    menuButton.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+  }
 </script>
+
+<script>
+  // Color Palette Selection Logic
+document.querySelectorAll('.color-preset').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const selectedColor = e.target.getAttribute('data-color');
+
+    // Sync native color picker display value
+    if (brushColor) {
+      brushColor.value = selectedColor;
+    }
+
+    // Switch tool mode back to Pen
+    currentTool = 'pen';
+    if (penModeBtn && eraserModeBtn) {
+      penModeBtn.className = 'px-2 py-1 text-xs bg-sky-600 text-white font-bold rounded';
+      eraserModeBtn.className = 'px-2 py-1 text-xs bg-slate-200 hover:bg-slate-300 rounded';
+    }
+  });
+});
+  </script>
+
+//canvas
+<script>
+const typeTemplate = document.getElementById('typeTemplate');
+const typeCanvas = document.getElementById('typeCanvas');
+const templateSelectionArea = document.getElementById('templateSelectionArea');
+const canvasSelectionArea = document.getElementById('canvasSelectionArea');
+const canvas = document.getElementById('pixelCanvas');
+const ctx = canvas.getContext('2d');
+const brushColor = document.getElementById('brushColor');
+const clearCanvasBtn = document.getElementById('clearCanvasBtn');
+
+// Pixel Grid Settings (16x16 grid scaled to 256x256 canvas)
+const GRID_SIZE = 36;
+const PIXEL_SIZE = canvas.width / GRID_SIZE;
+let isDrawing = false;
+
+// 1. Toggle between Template and Drawing Canvas
+typeTemplate.addEventListener('change', () => {
+  templateSelectionArea.classList.remove('hidden');
+  canvasSelectionArea.classList.add('hidden');
+});
+
+typeCanvas.addEventListener('change', () => {
+  templateSelectionArea.classList.add('hidden');
+  canvasSelectionArea.classList.remove('hidden');
+  drawGrid();
+});
+
+// 2. Canvas Drawing Logic
+function drawGrid() {
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function fillPixel(e) {
+  const rect = canvas.getBoundingClientRect();
+  const x = Math.floor((e.clientX - rect.left) / PIXEL_SIZE);
+  const y = Math.floor((e.clientY - rect.top) / PIXEL_SIZE);
+
+  if (x >= 0 && x < GRID_SIZE && y >= 0 && y < GRID_SIZE) {
+    ctx.fillStyle = brushColor.value;
+    ctx.fillRect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
+  }
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  isDrawing = true;
+  fillPixel(e);
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  if (isDrawing) fillPixel(e);
+});
+
+window.addEventListener('mouseup', () => {
+  isDrawing = false;
+});
+
+clearCanvasBtn.addEventListener('click', drawGrid);
+
+// 3. Form Submission Handling
+createPetForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('createPetBtn');
+  btn.disabled = true;
+
+  const petNameVal = document.getElementById('petNameInput').value;
+  const isCustom = typeCanvas.checked;
+
+  let speciesVal = 'custom';
+  let imageDataVal = null;
+
+  if (isCustom) {
+    // Export drawn canvas to base64 image data string
+    imageDataVal = canvas.toDataURL('image/png');
+  } else {
+    speciesVal = document.getElementById('petSpeciesSelect').value;
+  }
+
+  const { error } = await supabase.from('pets').insert([
+    {
+      user_code: userCode,
+      pet_name: petNameVal,
+      species: speciesVal,
+      color: 'default',
+      image_data: imageDataVal,
+      level: 0,
+      experience: 0,
+      is_hatched: false
+    }
+  ]);
+
+  btn.disabled = false;
+
+  if (error) {
+    alert('ペットの作成に失敗しました: ' + error.message);
+  } else {
+    await fetchPetData();
+  }
+});
+
+// 4. Update UI Rendering to handle custom drawings
+function renderPetUI(pet) {
+  petName.textContent = pet.pet_name;
+  petDetails.textContent = `Lv. ${pet.level} | 総経験値: ${pet.experience} pt`;
+
+  if (!pet.is_hatched) {
+    // Egg Stage
+    petImage.src = petImageMap.egg;
+    petBadge.textContent = 'タマゴ';
+    petBadge.className = 'text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800';
+    progressLabel.textContent = 'ふ化まで';
+    progressText.textContent = `${pet.experience} / 10 pt`;
+    progressBar.style.width = `${Math.min((pet.experience / 10) * 100, 100)}%`;
+    feedPetBtn.textContent = 'タマゴを温める (10pt)';
+  } else {
+    // Hatched Stage
+    if (pet.image_data) {
+      // Load custom user drawing if available
+      petImage.src = pet.image_data;
+    } else {
+      // Fallback to species template image
+      petImage.src = petImageMap[pet.species] || petImageMap.egg;
+    }
+
+    petBadge.textContent = `Lv.${pet.level} ${pet.species.toUpperCase()}`;
+    petBadge.className = 'text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800';
+
+    const currentLevelExp = pet.level * 10;
+    const progress = ((pet.experience - currentLevelExp) / 10) * 100;
+
+    progressLabel.textContent = `次のレベル (Lv.${pet.level + 1}) まで`;
+    progressText.textContent = `${pet.experience % 10} / 10 pt`;
+    progressBar.style.width = `${Math.max(0, Math.min(progress, 100))}%`;
+    feedPetBtn.textContent = 'ポイントを与える (10pt)';
+  }
+}
+  </script>
 
 <script src="script.js"></script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
