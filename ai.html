@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <!-- 1. Add Google Fonts preconnect and Zen Maru Gothic stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+
   <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
@@ -16,6 +21,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NTU（濁度）AI予測（Beta） | ミズルシ - 写真から水質を判定</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          // 2. Add fontFamily configuration for Tailwind
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', 'sans-serif'],
+          },
+          colors: {
+            water: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1'
+            },
+            teal: {
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
   <link rel="stylesheet" href="translation_style.css">
@@ -29,7 +60,8 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="bg-sky-50 text-slate-800">
+<!-- 3. Add font-sans to apply the font globally -->
+<body class="bg-sky-50 text-slate-800 font-sans">
 
 <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -250,6 +282,9 @@
     </div>
   </div>
 </footer>
+
+</body>
+</html>
 
 <script>
   document.getElementById('menuButton').addEventListener('click', () => {

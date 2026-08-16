@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   
   <title>ミズルシ | 市民参加型水質調査・GISマップ・AI濁度予測</title>
   <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った市民調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
@@ -44,6 +48,9 @@
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', 'sans-serif'], // Sets Zen Maru Gothic as the default sans font
+          },
           colors: {
             water: {
               50: '#f0f9ff',
@@ -65,7 +72,7 @@
   <link rel="stylesheet" href="translation_style.css">
 </head>
 
-<body class="bg-sky-50 text-slate-800">
+<body class="bg-sky-50 text-slate-800 font-sans">
   <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
@@ -149,13 +156,13 @@
               <a href="instruction.html"
                 class="rounded-xl bg-sky-600 px-8 py-4 text-center text-lg font-bold text-white shadow-lg shadow-sky-200 transition hover:bg-sky-700">
                 使い方
-                </a>
+              </a>
               <a href="survey.html"
                 class="rounded-xl border-2 border-sky-600 px-8 py-4 text-center text-lg font-bold text-sky-600 transition hover:bg-sky-50">
                 参加する
-                </a>
-              </div>
+              </a>
             </div>
+          </div>
 
           <div class="relative">
             <div class="rounded-3xl bg-gradient-to-br from-sky-400 to-teal-500 p-1 shadow-2xl">
@@ -193,264 +200,265 @@
           </div>
         </div>
       </div>
-  </section>
+    </section>
 
-  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <span class="text-sm font-bold uppercase tracking-widest text-sky-600">News</span>
-        <h2 class="mt-2 text-3xl font-black text-slate-900">新着情報</h2>
-      </div>
-      <span class="hidden text-sm text-slate-500 sm:block">環境調査の最新情報</span>
-    </div>
-
-    <div class="mt-8 grid gap-6 lg:grid-cols-3">
-      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-        <div class="flex items-center justify-between">
-          <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700">重要なお知らせ</span>
-          <time class="text-xs text-slate-400">2026.08.13</time>
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <span class="text-sm font-bold uppercase tracking-widest text-sky-600">News</span>
+          <h2 class="mt-2 text-3xl font-black text-slate-900">新着情報</h2>
         </div>
-        <h3 class="mt-5 text-xl font-bold text-slate-900">
-          必ず、以下の文書をご確認ください！
-        </h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          サイトの利用とリサーチを安全安心なものとするため、<strong>必ずご確認ください。<br></strong>
-          安全マニュアルとプライバシーポリシー、免責事項の資料をサイトのフッター(ページの一番下)のリンクからダウンロードできます。<br>
-          利用前に必ずご確認ください！
-        </p>
-        <a href="#footer" onclick="document.getElementById('footer').scrollIntoView({ behavior: 'smooth' }); return false;" class="mt-5 inline-block text-sm font-bold text-sky-600">
-          詳しく見る →
-        </a>
-      </article>
-
-      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-        <div class="flex items-center justify-between">
-          <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
-          <time class="text-xs text-slate-400">2026.08.16</time>
-        </div>
-        <h3 class="mt-5 text-xl font-bold text-slate-900">
-          ブログを始めました
-        </h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          Noteにて、ブログを始め、初めて記事を出してみました！
-          今後は、役立つ情報をどんどん発信していきたいと思います。<br>
-          なお、公式アカウントをフォローしていただき、DMでユーザーID（参加者ID）をお送りいただければ、50ポイントを差し上げるキャンペーンを実施します！
-          ぜひご参加ください。
-        </p>
-        <a href="https://note.com/mizurushi" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-bold text-sky-600">
-          公式アカウントへ移動 →
-        </a>
-      </article>
-
-      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-        <div class="flex items-center justify-between">
-          <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
-          <time class="text-xs text-slate-400">2026.08.16</time>
-        </div>
-        <h3 class="mt-5 text-xl font-bold text-slate-900">
-          ペットを作ることができます！
-        </h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          ログインをすると、ペットを自作成することができます！<br>
-          ペットのデザインは一度決めると作り直すことはできないので、時間をかけて、気に入るデザインにしてくださいね。
-          テンプレートを使用することもできますが、テンプレートの編集はできないので、ご注意ください。<br>
-          問題が発生した場合は、ページの一番下にあるメールまでお問い合わせください。
-        </p>
-        <a href="Login.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
-          詳しく見る →
-        </a>
-      </article>
-
-      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-        <div class="flex items-center justify-between">
-          <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-sky-700">調査情報</span>
-          <time class="text-xs text-slate-400">2026.08.10</time>
-        </div>
-        <h3 class="mt-5 text-xl font-bold text-slate-900">
-          夏の水質調査にご参加ください！
-        </h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          身近な水辺の観察結果をぜひお寄せください。
-        </p>
-        <a href="survey.html" onclick="return startSurvey()" class="mt-5 inline-block text-sm font-bold text-sky-600">
-          詳しく見る →
-        </a>
-      </article>
-
-      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-        <div class="flex items-center justify-between">
-          <span class="rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">データ</span>
-          <time class="text-xs text-slate-400">2026.08.10</time>
-        </div>
-        <h3 class="mt-5 text-xl font-bold text-slate-900">
-          水質GISマップを更新しました
-        </h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          公共用水域水質測定データをもとにしたGISマップを更新しました。
-        </p>
-        <a href="map.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
-          マップを見る →
-        </a>
-      </article>
-
-      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-        <div class="flex items-center justify-between">
-          <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold text-indigo-700">AI</span>
-          <time class="text-xs text-slate-400">2026.08.10</time>
-        </div>
-        <h3 class="mt-5 text-xl font-bold text-slate-900">
-          NTU予測AIがBeta公開されました
-        </h3>
-        <p class="mt-3 leading-7 text-slate-600">
-          水サンプルの写真から濁度（NTU）を予測するAIモデルの試験版を公開しました。
-        </p>
-        <a href="ai.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
-          AIを試す →
-        </a>
-      </article>
-    </div>
-  </section>
-
-  <section class="bg-white py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <span class="text-sm font-bold uppercase tracking-widest text-teal-600">Explore</span>
-        <h2 class="mt-2 text-3xl font-black text-slate-900">プロジェクトを知る</h2>
+        <span class="hidden text-sm text-slate-500 sm:block">環境調査の最新情報</span>
       </div>
 
-      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <a href="map.html" class="group rounded-2xl bg-sky-50 p-6 transition hover:bg-sky-100">
-          <h3 class="mt-5 text-lg font-bold">水質マップ</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            公共用水域の水質データを地図から確認できます。
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700">重要なお知らせ</span>
+            <time class="text-xs text-slate-400">2026.08.13</time>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-slate-900">
+            必ず、以下の文書をご確認ください！
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">
+            サイトの利用とリサーチを安全安心なものとするため、<strong>必ずご確認ください。<br></strong>
+            安全マニュアルとプライバシーポリシー、免責事項の資料をサイトのフッター(ページの一番下)のリンクからダウンロードできます。<br>
+            利用前に必ずご確認ください！
           </p>
-          <div class="mt-4 text-sm font-bold text-sky-600">マップを見る →</div>
-        </a>
+          <a href="#footer" onclick="document.getElementById('footer').scrollIntoView({ behavior: 'smooth' }); return false;" class="mt-5 inline-block text-sm font-bold text-sky-600">
+            詳しく見る →
+          </a>
+        </article>
 
-        <a href="survey.html" onclick="return startSurvey()" class="group rounded-2xl bg-teal-50 p-6 transition hover:bg-teal-100">
-          <h3 class="mt-5 text-lg font-bold">市民調査</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            五感を使った水質調査に参加してみましょう。
+        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
+            <time class="text-xs text-slate-400">2026.08.16</time>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-slate-900">
+            ブログを始めました
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">
+            Noteにて、ブログを始め、初めて記事を出してみました！
+            今後は、役立つ情報をどんどん発信していきたいと思います。<br>
+            なお、公式アカウントをフォローしていただき、DMでユーザーID（参加者ID）をお送りいただければ、50ポイントを差し上げるキャンペーンを実施します！
+            ぜひご参加ください。
           </p>
-          <div class="mt-4 text-sm font-bold text-teal-600">参加する →</div>
-        </a>
+          <a href="https://note.com/mizurushi" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-bold text-sky-600">
+            公式アカウントへ移動 →
+          </a>
+        </article>
 
-        <a href="ai.html" class="group rounded-2xl bg-indigo-50 p-6 transition hover:bg-indigo-100">
-          <h3 class="mt-5 text-lg font-bold">AI予測</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            水サンプルの写真から濁度を予測するBeta版AIです。
+        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
+            <time class="text-xs text-slate-400">2026.08.16</time>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-slate-900">
+            ペットを作ることができます！
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">
+            ログインをすると、ペットを自作成することができます！<br>
+            ペットのデザインは一度決めると作り直すことはできないので、時間をかけて、気に入るデザインにしてくださいね。
+            テンプレートを使用することもできますが、テンプレートの編集はできないので、ご注意ください。<br>
+            問題が発生した場合は、ページの一番下にあるメールまでお問い合わせください。
           </p>
-          <div class="mt-4 text-sm font-bold text-indigo-600">AIを試す →</div>
-        </a>
+          <a href="Login.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
+            詳しく見る →
+          </a>
+        </article>
 
-        <a href="learn.html" class="group rounded-2xl bg-amber-50 p-6 transition hover:bg-amber-100">
-          <h3 class="mt-5 text-lg font-bold">用語を学ぶ</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-600">
-            水質調査で使われる専門用語をわかりやすく解説します。
+        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-sky-700">調査情報</span>
+            <time class="text-xs text-slate-400">2026.08.10</time>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-slate-900">
+            夏の水質調査にご参加ください！
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">
+            身近な水辺の観察結果をぜひお寄せください。
           </p>
-          <div class="mt-4 text-sm font-bold text-amber-700">学んでみる →</div>
-        </a>
+          <a href="survey.html" onclick="return startSurvey()" class="mt-5 inline-block text-sm font-bold text-sky-600">
+            詳しく見る →
+          </a>
+        </article>
+
+        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">データ</span>
+            <time class="text-xs text-slate-400">2026.08.10</time>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-slate-900">
+            水質GISマップを更新しました
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">
+            公共用水域水質測定データをもとにしたGISマップを更新しました。
+          </p>
+          <a href="map.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
+            マップを見る →
+          </a>
+        </article>
+
+        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold text-indigo-700">AI</span>
+            <time class="text-xs text-slate-400">2026.08.10</time>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-slate-900">
+            NTU予測AIがBeta公開されました
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">
+            水サンプルの写真から濁度（NTU）を予測するAIモデルの試験版を公開しました。
+          </p>
+          <a href="ai.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
+            AIを試す →
+          </a>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="participant-id" class="mx-auto my-10 max-w-2xl px-4 sm:px-6">
-    <div class="rounded-2xl border border-sky-100 bg-white p-6 text-center shadow-sm sm:p-8">
+    <section class="bg-white py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-teal-600">Explore</span>
+          <h2 class="mt-2 text-3xl font-black text-slate-900">プロジェクトを知る</h2>
+        </div>
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="map.html" class="group rounded-2xl bg-sky-50 p-6 transition hover:bg-sky-100">
+            <h3 class="mt-5 text-lg font-bold">水質マップ</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              公共用水域の水質データを地図から確認できます。
+            </p>
+            <div class="mt-4 text-sm font-bold text-sky-600">マップを見る →</div>
+          </a>
+
+          <a href="survey.html" onclick="return startSurvey()" class="group rounded-2xl bg-teal-50 p-6 transition hover:bg-teal-100">
+            <h3 class="mt-5 text-lg font-bold">市民調査</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              五感を使った水質調査に参加してみましょう。
+            </p>
+            <div class="mt-4 text-sm font-bold text-teal-600">参加する →</div>
+          </a>
+
+          <a href="ai.html" class="group rounded-2xl bg-indigo-50 p-6 transition hover:bg-indigo-100">
+            <h3 class="mt-5 text-lg font-bold">AI予測</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              水サンプルの写真から濁度を予測するBeta版AIです。
+            </p>
+            <div class="mt-4 text-sm font-bold text-indigo-600">AIを試す →</div>
+          </a>
+
+          <a href="learn.html" class="group rounded-2xl bg-amber-50 p-6 transition hover:bg-amber-100">
+            <h3 class="mt-5 text-lg font-bold">用語を学ぶ</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              水質調査で使われる専門用語をわかりやすく解説します。
+            </p>
+            <div class="mt-4 text-sm font-bold text-amber-700">学んでみる →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="participant-id" class="mx-auto my-10 max-w-2xl px-4 sm:px-6">
+      <div class="rounded-2xl border border-sky-100 bg-white p-6 text-center shadow-sm sm:p-8">
 
 
-      <h2 class="mt-4 text-xl font-bold text-slate-900">
-        参加者IDを発行する
-      </h2>
+        <h2 class="mt-4 text-xl font-bold text-slate-900">
+          参加者IDを発行する
+        </h2>
 
-      <p class="mt-2 text-sm leading-relaxed text-slate-600">
-        4桁の英数字IDを発行します。<br>
-        このIDにポイントが記録されます。
-      </p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          4桁の英数字IDを発行します。<br>
+          このIDにポイントが記録されます。
+        </p>
 
-      <div class="mt-5 rounded-xl bg-sky-50 px-5 py-4">
-        <p class="text-xs font-medium text-slate-500">あなたの参加者ID</p>
-        <div class="mt-1 flex items-center justify-center gap-2">
-          <p id="user-id-output" class="font-mono text-3xl font-bold tracking-[0.25em] text-sky-700">
-            ----
-          </p>
-          <button id="copy-btn" type="button" onclick="copyUserId()" class="hidden rounded bg-sky-100 px-2 py-1 text-xs font-semibold text-sky-700 hover:bg-sky-200">
-            コピー
+        <div class="mt-5 rounded-xl bg-sky-50 px-5 py-4">
+          <p class="text-xs font-medium text-slate-500">あなたの参加者ID</p>
+          <div class="mt-1 flex items-center justify-center gap-2">
+            <p id="user-id-output" class="font-mono text-3xl font-bold tracking-[0.25em] text-sky-700">
+              ----
+            </p>
+            <button id="copy-btn" type="button" onclick="copyUserId()" class="hidden rounded bg-sky-100 px-2 py-1 text-xs font-semibold text-sky-700 hover:bg-sky-200">
+              コピー
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <button
+            type="button"
+            onclick="issueUserId()"
+            class="rounded-lg bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-700">
+            新しいIDを発行する
           </button>
-        </div>
-      </div>
-
-      <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:justify-center">
-        <button
-          type="button"
-          onclick="issueUserId()"
-          class="rounded-lg bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-700">
-          新しいIDを発行する
-        </button>
-
-        <button
-          type="button"
-          onclick="startSurvey()"
-          class="rounded-lg bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700">
-          このIDで調査を始める
-        </button>
-      </div>
-
-      <div class="mt-6 border-t border-slate-100 pt-5">
-        <p class="text-sm font-semibold text-slate-700">
-          以前発行したIDを使う
-        </p>
-
-        <div class="mt-3 flex gap-2">
-          <input
-            id="restore-user-id"
-            type="text"
-            maxlength="4"
-            placeholder="ここにコードを入れてください"
-            class="min-w-0 flex-1 rounded-lg border border-sky-200 px-4 py-3 text-center font-mono uppercase tracking-widest outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-          >
 
           <button
             type="button"
-            onclick="restoreUserId()"
-            class="rounded-lg border border-sky-200 px-4 py-3 text-sm font-semibold text-sky-700 hover:bg-sky-50">
-            IDを使う
+            onclick="startSurvey()"
+            class="rounded-lg bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700">
+            このIDで調査を始める
           </button>
         </div>
-      </div>
 
-      <p id="id-message" class="mt-4 text-xs font-medium text-slate-500"></p>
+        <div class="mt-6 border-t border-slate-100 pt-5">
+          <p class="text-sm font-semibold text-slate-700">
+            以前発行したIDを使う
+          </p>
+
+          <div class="mt-3 flex gap-2">
+            <input
+              id="restore-user-id"
+              type="text"
+              maxlength="4"
+              placeholder="ここにコードを入れてください"
+              class="min-w-0 flex-1 rounded-lg border border-sky-200 px-4 py-3 text-center font-mono uppercase tracking-widest outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+            >
+
+            <button
+              type="button"
+              onclick="restoreUserId()"
+              class="rounded-lg border border-sky-200 px-4 py-3 text-sm font-semibold text-sky-700 hover:bg-sky-50">
+              IDを使う
+            </button>
+          </div>
+        </div>
+
+        <p id="id-message" class="mt-4 text-xs font-medium text-slate-500"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row">
+        <div class="flex flex-col items-start">
+          <img 
+            src="pictures/logo.png" 
+            alt="Logo" 
+            class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+          >
+          <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+        </div>
+
+        <div class="space-y-1 text-sm text-slate-500">
+          <p>お問い合わせはこちらまで: contact.citizen.riverproject [at] gmail.com</p>
+          <div>
+            <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+          </div>
+          <div>
+            <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+          </div>
+          <div>
+            <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-</main>
-
-<footer id="footer" class="border-t border-slate-200 bg-white">
-  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-    <div class="flex flex-col justify-between gap-4 sm:flex-row">
-      <div class="flex flex-col items-start">
-        <img 
-          src="pictures/logo.png" 
-          alt="Logo" 
-          class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
-        >
-        <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
-      </div>
-
-      <div class="space-y-1 text-sm text-slate-500">
-        <p>お問い合わせはこちらまで: contact.citizen.riverproject [at] gmail.com</p>
-        <div>
-          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
-        </div>
-        <div>
-          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
-        </div>
-        <div>
-          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
+  </footer>
+</body>
+</html>
 <script>
   document.getElementById("menuButton").addEventListener("click", () => {
     document.getElementById("mobileMenu").classList.toggle("hidden");
