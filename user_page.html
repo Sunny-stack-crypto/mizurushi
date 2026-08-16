@@ -79,7 +79,7 @@
         <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
-        <a href="Login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+        <a href="login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
 
         <!-- PC表示用ラッパー -->
         <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
@@ -100,7 +100,7 @@
       <a href="survey.html" class="block rounded-lg px-3 py-2">市民調査</a>
       <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
       <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
-      <a href="Login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+      <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
 
       <div class="mt-2 border-t border-sky-100 px-3 pt-3">
         <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
@@ -123,7 +123,7 @@
           <span id="displayUserCode">---</span> のマイページ
         </h1>
       </div>
-      <a href="Login.html" class="text-xs font-semibold text-slate-500 hover:text-sky-600 hover:underline">
+      <a href="login.html" class="text-xs font-semibold text-slate-500 hover:text-sky-600 hover:underline">
         コードを切り替える（ログアウト）
       </a>
     </div>
@@ -600,7 +600,7 @@ function showError(msg) {
 
 async function fetchUserData() {
   if (!userCode) {
-    window.location.href = 'Login.html';
+    window.location.href = 'login.html';
     return;
   }
 

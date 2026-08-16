@@ -80,7 +80,7 @@
         <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
-        <a href="Login.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ログイン</a>
+        <a href="login.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">ログイン</a>
 
         <!-- PC表示用ラッパー -->
         <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
@@ -101,7 +101,7 @@
       <a href="survey.html" class="block rounded-lg px-3 py-2">市民調査</a>
       <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
       <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
-      <a href="Login.html" class="block rounded-lg px-3 py-2 font-bold text-sky-700">ログイン</a>
+      <a href="login.html" class="block rounded-lg px-3 py-2 font-bold text-sky-700">ログイン</a>
 
       <div class="mt-2 border-t border-sky-100 px-3 pt-3">
         <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
@@ -126,10 +126,10 @@
     </p>
 
     <form id="loginForm" class="flex flex-col space-y-4">
-      <label for="userIdInput" class="text-sm font-medium text-gray-700">ユーザーコードを入力してください:</label>
+      <label for="userCodeInput" class="text-sm font-medium text-gray-700">ユーザーコードを入力してください:</label>
       <input 
         type="text" 
-        id="userIdInput" 
+        id="userCodeInput" 
         required 
         placeholder="ここにコードを入力"
         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
@@ -190,14 +190,12 @@
     e.preventDefault();
     errorMessage.textContent = '';
     
-    const userCode = document.getElementById('userIdInput').value.trim();
-
+    const userCode = document.getElementById('userCodeInput').value.trim();
+//HTMLではUserCodeInputであったのが、UserIDInputとなっていた
     if (!userCode) {
       errorMessage.textContent = 'ユーザーコードを入力してください。';
       return;
     }
-
-
     submitBtn.disabled = true;
     submitBtn.textContent = '照会中...';
 
