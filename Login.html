@@ -181,6 +181,7 @@
   const supabaseUrl = 'https://dgmdupdzylxewgsxygtr.supabase.co';
   const supabaseAnonKey = 'sb_publishable_cvdFFXogk21bVDZqJf3Dpg_u3VFZypd';
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
+  //anon keyに関しては、supabase側にてRLS(Raw Level Security)を設定し、フロントエンドに貼ってもデータがほどできるような設計になっています。
 
   const form = document.getElementById('loginForm');
   const submitBtn = document.getElementById('submitBtn');
@@ -191,7 +192,7 @@
     errorMessage.textContent = '';
     
     const userCode = document.getElementById('userCodeInput').value.trim();
-//HTMLではUserCodeInputであったのが、UserIDInputとなっていた
+//HTMLではUserCodeInputであったのが、UserIdInputとなっていた
     if (!userCode) {
       errorMessage.textContent = 'ユーザーコードを入力してください。';
       return;
