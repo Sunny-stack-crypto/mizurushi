@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -197,7 +198,7 @@
             <!-- Live Template Preview -->
             <div class="flex flex-col items-center justify-center p-3 border border-slate-200 rounded-lg bg-slate-50">
               <span class="text-xs text-slate-500 mb-2 font-medium">プレビュー</span>
-              <img id="templatePreview" src="pictures/dragon.png" alt="Template Preview" class="w-24 h-24 object-contain" />
+              <img id="templatePreview" src="pictures/cat.png" alt="Template Preview" class="w-24 h-24 object-contain" />
             </div>
           </div>
 
@@ -319,7 +320,7 @@
         </div>
         <div>
           <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
-        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -329,15 +330,15 @@
 
 
 <script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const supabaseUrl = 'https://dgmdupdzylxewgsxygtr.supabase.co';
-const supabaseAnonKey = 'sb_publishable_cvdFFXogk21bVDZqJf3Dpg_u3VFZypd';
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
-const urlParams = new URLSearchParams(window.location.search);
-const userCode = urlParams.get('code');
-
+  const supabaseUrl = 'https://dgmdupdzylxewgsxygtr.supabase.co';
+  const supabaseAnonKey = 'sb_publishable_cvdFFXogk21bVDZqJf3Dpg_u3VFZypd';
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+  const urlParams = new URLSearchParams(window.location.search);
+  const userCode = urlParams.get('code');
+  window.supabase = supabase;
+  window.userCode = userCode;
 // アニメーション用
 let previousLevel = null;
 let previousHatchedState = null;
@@ -647,15 +648,22 @@ async function fetchUserData() {
 }
 
 async function fetchPetData() {
-  await supabase.rpc('update_pet_hunger', { p_user_code: userCode });
-  const { data: pet, error } = await supabase
+  const { data: hungerRes, error: hungerErr } = await supabase.rpc('update_pet_hunger', {
+    p_user_code: userCode
+  });
+
+  if (hungerErr) {
+    console.error('update_pet_hunger error:', hungerErr);
+  }
+
+  const { data: pet, error: petErr } = await supabase
     .from('pets')
     .select('*')
     .eq('user_code', userCode)
-    .maybeSingle();
+    .single();
 
-  if (error) {
-    console.error('Pet fetch error:', error);
+  if (petErr) {
+    console.error('Pet fetch error:', petErr);
     return;
   }
 
@@ -669,14 +677,15 @@ async function fetchPetData() {
   }
 }
 
+
 function renderPetUI(pet) {
 
-const hunger_text = document.getElementById("hunger_text");
-const hungerBar = document.getElementById('hunger_bar');
-if (hunger_text && hungerBar) {
-  hunger_text.textContent = `${pet.hunger}%`
-  hungerBar.style.width = `${pet.hunger} / 100`;
-}
+  const hunger_text = document.getElementById("hunger_text");
+  const hungerBar = document.getElementById('hunger_bar');
+  if (hunger_text && hungerBar) {
+    hunger_text.innerHTML = `<span>${pet.hunger ?? 100}</span>/100`;
+    hungerBar.style.width = `${pet.hunger ?? 100}%`;
+  }
 
   if (!pet) return;
 
@@ -822,18 +831,22 @@ if (createPetForm) {
       speciesVal = petSpeciesSelect.value;
     }
 
-    const { error } = await supabase.from('pets').insert([
-      {
-        user_code: userCode,
-        pet_name: petNameVal,
-        species: speciesVal,
-        color: 'default',
-        image_data: imageDataVal,
-        level: 0,
-        experience: 0,
-        is_hatched: false
-      }
-    ]);
+const { data, error } = await supabase.rpc('create_pet', {
+  p_user_code: userCode,
+  p_pet_name: petNameVal,
+  p_species: speciesVal,
+  p_image_data: imageDataVal
+});
+
+if (btn) btn.disabled = false;
+
+if (error) {
+  alert('ペットの作成に失敗しました: ' + error.message);
+} else if (data.status === 'error') {
+  alert(data.message);
+} else {
+  await fetchPetData();
+}
 
     if (btn) btn.disabled = false;
 
