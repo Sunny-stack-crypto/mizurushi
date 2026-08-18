@@ -116,6 +116,34 @@
   </div>
 </header>
 
+<body>  
+<script>  
+window.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('koboframe');
+    
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
+        const currentY = window.scrollY;
+
+        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
+        if (document.activeElement === iframe) {
+          iframe.blur();
+        }
+
+        // 保持した縦位置に復元（横位置は0固定）
+        window.scrollTo(0, currentY);
+
+        //iframeの読み込みが遅れた場合の対策
+        setTimeout(() => {
+          window.scrollTo(0, currentY);
+        }, 100);
+      });
+    }
+  });
+</script>
+
+  </body>
 <main>
 <body class="bg-sky-50 text-slate-800 flex flex-col min-h-screen">
 
@@ -276,16 +304,18 @@
       <p class="mt-1 text-sm text-slate-500">以下のWebフォームから直接回答・送信できます。</p>
     </div>
 
-    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg" style="overflow: hidden">
       <iframe
-        src="https://ee.kobotoolbox.org/x/YhdiF2vk"
-        title="調査回答フォーム"
-        class="h-[800px] w-full border-0"
-        loading="lazy"
-        allow="geolocation">
-      </iframe>
-    </div>
+      id="koboframe"
+      src="https://ee.kobotoolbox.org/x/YhdiF2vk"
+      title="調査回答フォーム"
+      class="h-[800px] w-full border-0"
+      loading="lazy"
+      onload="window.scrollTo(0, 0);" 
+      allow="geolocation">
+    </iframe>
   </div>
+ </div>
 
 </section>
 </main>

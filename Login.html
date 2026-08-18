@@ -224,7 +224,7 @@
       if (data) {
         window.location.href = `user_page.html?code=${encodeURIComponent(userCode)}`;
       } else {
-        errorMessage.textContent = 'ユーザーコードが見つかりません。正しく入力されているかご確認ください。';
+        errorMessage.textContent = 'ユーザーコードが見つかりません。正しく入力されているかご確認ください。フォームに一度答えたかどうかご確認ください。';
       }
     } catch (err) {
       console.error('Unexpected error:', err);

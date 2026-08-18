@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
+
+  <!--JSファイルを活用し、Kobotoolboxまでのスクロールを予防する-->
+  <script src="kobo-prevent-scroll.js" defer></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="scrollanimation.css">
   <meta charset="UTF-8">
@@ -10,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   
-  <title>ミズルシ | 市民参加型水質調査・GISマップ・AI濁度予測・夏休み
+  <title>ミズルシ | 市民参加型水質調査・GISマップ・AI濁度予測・夏休みの自由研究にも
   </title>
   <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った市民調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
 
@@ -75,6 +78,7 @@
   <link rel="stylesheet" href="translation_style.css">
 </head>
 
+
 <body class="bg-sky-50 text-slate-800 font-sans">
   <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -123,7 +127,7 @@
         <div class="mt-2 border-t border-sky-100 px-3 pt-3">
           <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
             <span>Language</span>
-            <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+            <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain"/>
           </div>
           <div id="translate-wrapper-mobile"></div>
         </div>
@@ -144,7 +148,8 @@
 
             <h1 class="mt-6 text-4xl font-black leading-snug tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
               人と水、<br>
-              <span class="text-sky-500">みんなで照らす</span><span class="relative inline-block z-10 after:absolute after:bottom-1 after:left-0 after:-z-10 after:h-3 after:w-full after:bg-sky-100/80">道しるべ</span>
+              <span class="text-sky-500">みんなで照らす</span>
+              <span class="relative inline-block z-10 after:absolute after:bottom-1 after:left-0 after:-z-10 after:h-3 after:w-full after:bg-sky-100/80">道しるべ</span>
             </h1>
 
             <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600">
@@ -173,8 +178,8 @@
                       <img 
                         src="pictures/logo.png" 
                         alt="Logo" 
-                        class="mx-auto h-16 w-auto object-contain"
-                      />
+                        class="mx-auto h-16 w-auto object-contain"/>
+
                     </div>
                     <div class="mt-5 text-2xl font-black text-slate-800">水を知る。</div>
                     <div class="mt-2 text-slate-500">地域を知る。未来につなげる。</div>
@@ -264,8 +269,8 @@
               </p>
           </div>
         </section>
-
-        <!--sectionが閉じられていなかったため、問題が発生していた。-->
+        <!--sectionが閉じられていなかったため、問題が発生していた。
+        詳しくは　https://drive.google.com/file/d/1GDWMT-2uGSwlk9GniqxDsfsA42tyCnA4/view?usp=sharing　-->
 
         <div>
           <p style="text-align: center;">
@@ -345,8 +350,7 @@
               type="text"
               maxlength="4"
               placeholder="ここにコードを入れてください"
-              class="min-w-0 flex-1 rounded-lg border border-sky-200 px-4 py-3 text-center font-mono uppercase tracking-widest outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
-            >
+              class="min-w-0 flex-1 rounded-lg border border-sky-200 px-4 py-3 text-center font-mono uppercase tracking-widest outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100">
 
             <button
               type="button"
@@ -378,14 +382,15 @@
     </p>
   </div>
 
-  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg" style="overflow: hidden">
     <iframe
-      src="https://ee.kobotoolbox.org/x/YhdiF2vk"
-      title="調査回答フォーム"
-      class="h-[800px] w-full border-0"
-      loading="lazy"
-      allow="geolocation">
-    </iframe>
+    id="koboframe"
+    src="https://ee.kobotoolbox.org/x/YhdiF2vk"
+    title="調査回答フォーム"
+    class="h-[800px] w-full border-0"
+    loading="lazy"
+    allow="geolocation">
+  </iframe> 
   </div>
 </div>
 
@@ -685,5 +690,32 @@
 
 <script src="script.js"></script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>  
+window.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('koboframe');
+    
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
+        const currentY = window.scrollY;
+
+        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
+        if (document.activeElement === iframe) {
+          iframe.blur();
+        }
+
+        // 保持した縦位置に復元（横位置は0固定）
+        window.scrollTo(0, currentY);
+
+        //iframeの読み込みが遅れた場合の対策
+        setTimeout(() => {
+          window.scrollTo(0, currentY);
+        }, 100);
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
