@@ -203,9 +203,30 @@
         調査に参加するには、<a href="ai.html" class="text-sky-600 font-semibold hover:underline">こちらのリンク</a>を参照してください。
       </p>
     </div>
-
   </div>
 </main>
+
+
+<pre>
+  </pre>
+
+<hr style="border: none; border-top: 3px solid #3498db;">
+<p style="padding: 3px; font-size: large; text-align: center;"><strong>皆さんのご感想をお聞かせください</strong></p>
+
+
+  <div class="mt-12 mx-auto max-w-4xl px-4">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg" style="overflow: hidden">
+      <iframe
+        id="koboframe"
+        src="https://ee.kobotoolbox.org/x/XdswgbAv"
+        title="皆様のご意見"
+        class="h-[800px] w-full border-0"
+        loading="lazy"
+        allow="geolocation">      
+      </iframe>
+    </div>
+  </div>
+
 
 <footer id="footer" class="border-t border-slate-200 bg-white">
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -235,6 +256,7 @@
   </div>
 </footer>
 
+
 <script>
   document.getElementById("menuButton").addEventListener("click", () => {
     document.getElementById("mobileMenu").classList.toggle("hidden");
@@ -243,6 +265,35 @@
 
 <script src="script.js"></script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>  
+window.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('koboframe');
+    //getElementByIDがKoboframeであるため、kobo_opinionがあった（const iframe = document.getElementById('kobo_opinion');）ので、そちらに引き寄せられるエラーが発生。
+    //すべてのフォームのIDをkoboframeとすることで解決する。
+    //また、ＪＳを変えると無駄に重くなるため、ＪＳ自体は変えない。
+    
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
+        const currentY = window.scrollY;
+
+        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
+        if (document.activeElement === iframe) {
+          iframe.blur();
+        }
+
+        // 保持した縦位置に復元（横位置は0固定）
+        window.scrollTo(0, currentY);
+
+        //iframeの読み込みが遅れた場合の対策
+        setTimeout(() => {
+          window.scrollTo(0, currentY);
+        }, 100);
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
