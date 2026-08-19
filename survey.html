@@ -15,6 +15,17 @@
   gtag('config', 'G-QE1RW1G56M');
 </script>
 
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+    });
+  });
+</script>
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>市民調査に参加する | ミズルシ - 身近な川や湖の水質観察</title>

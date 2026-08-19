@@ -18,6 +18,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIモデルの仕組み | ミズルシ</title>
 
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+    });
+  });
+</script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
