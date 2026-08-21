@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+  <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QE1RW1G56M');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イベント情報 | ミズルシ</title>
+
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+    });
+  });
+</script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', 'sans-serif'],
+          },
+          colors: {
+            water: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1'
+            },
+            teal: {
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <link rel="stylesheet" href="translation_style.css">
+  <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った市民調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
+
+<!-- SNSシェア時のカード表示用（OGPタグ） -->
+<meta property="og:title" content="ミズルシ | 市民参加型水質調査プロジェクト">
+<meta property="og:description" content="地域の水環境をみんなで見える化。水質マップの閲覧やAI濁度予測が試せます。">
+<meta property="og:image" content="https://sunny-stack-crypto.github.io/mizurushi/pictures/logo.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="bg-sky-50 text-slate-800 flex flex-col min-h-screen">
+
+ <div class="fixed bottom-5 right-5 z-50">
+    <a href="instruction.html" class="inline-block rounded-full bg-sky-600 px-8 py-3.5 text-base font-bold text-white shadow-lg transition-colors hover:bg-sky-700">
+    迷ったらここを押してください
+    </a>
+  </div>
+  
+<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-3">
+        <img 
+          src="pictures/logo.png" 
+          alt="Logo" 
+          class="h-9 w-auto object-contain" 
+        />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
+        <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
+        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
+        <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+        <a href="login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+        <a href="event.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">イベント情報</a>
+
+        <!-- PC表示用ラッパー -->
+        <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <div id="google_translate_element"></div>
+        </div>
+      </nav>
+
+      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+        ☰
+      </button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+      <a href="survey.html" class="block rounded-lg px-3 py-2">市民調査</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
+      <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+      <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+      <a href="event.html" class="block rounded-lg px-3 py-2">イベント情報</a>
+      
+      <!-- スマホ表示用ラッパー -->
+      <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+        <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+        </div>
+        <div id="translate-wrapper-mobile"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div style="font-size: x-large; text-align: center;padding: 10%;">
+    <h2>
+        Kyoto Youth Summit 2026<br>
+        <strong>30 Day Carbon Challange Presentation</strong>
+    </h2>
+</div>
+
+<div>
+  <div class="mt-12 mx-auto max-w-4xl px-4">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg" style="overflow: hidden">
+      <iframe
+        id="kobo_opinion"
+        src="https://ee.kobotoolbox.org/x/W9Rllqgl"
+        title="皆様のご意見"
+        class="h-[800px] w-full border-0"
+        loading="lazy"
+        allow="geolocation">      
+      </iframe>
+    </div>
+  </div>
+</div>
+
+    </div>
+  <footer id="footer" class="border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row">
+        <div class="flex flex-col items-start">
+          <img 
+            src="pictures/logo.png" 
+            alt="Logo" 
+            class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+          >
+          <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+        </div>
+
+        <div class="space-y-1 text-sm text-slate-500">
+          <p>お問い合わせはこちらまで: contact.citizen.riverproject [at] gmail.com</p>
+          <div>
+            <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+          </div>
+          <div>
+            <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+          </div>
+          <div>
+            <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+<script>  
+window.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('kobo_opinion');
+    
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
+        const currentY = window.scrollY;
+
+        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
+        if (document.activeElement === iframe) {
+          iframe.blur();
+        }
+
+        // 保持した縦位置に復元（横位置は0固定）
+        window.scrollTo(0, currentY);
+
+        //iframeの読み込みが遅れた場合の対策
+        setTimeout(() => {
+          window.scrollTo(0, currentY);
+        }, 100);
+      });
+    }
+  });
+</script>
+
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
