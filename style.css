@@ -178,13 +178,64 @@
 .progress-track {
   width: 100%;
   height: 11px;
-  background-color:#F1F5F9; /* Empty bar color */
+  background-color:#F1F5F9; 
   border-radius: 8px;
 }
 
 .progress-fill {
-  width: 100%; /* Represents progress value */
+  width: 100%;
   height: 11px;
-  background-color: #0ee919; /* Filled bar color */
+  background-color: #0ee919;
   border-radius: 8px;
+}
+
+.custum-file-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 125px;
+  margin: 0 auto;
+  border: 2px dashed #b0b0b0; 
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; 
+  height: 50px;
+}
+
+.custum-file-upload .icon svg {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  fill: currentColor;
+}
+
+
+/*
+Source - https://stackoverflow.com/a/25320102
+Posted by cameronjonesweb, modified by community. See post 'Timeline' for change history
+Retrieved 2026-08-25, License - CC BY-SA 3.0
+*/
+
+#spin {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    -webkit-animation: myanimation 5s;
+    animation: myanimation 5s;
+}
+
+@-webkit-keyframes myanimation {
+    100% { margin-left: 400px; -webkit-transform: rotate(360deg); }
+}
+
+@keyframes myanimation {
+    100% { margin-left: 400px; transform: rotate(360deg); }
 }

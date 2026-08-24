@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="challange.css">
+  <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="translation_style.css">
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QE1RW1G56M');
+  </script>
+  
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+      });
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ウェブサイトについて | ミズルシ</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', 'sans-serif'],
+          },
+          colors: {
+            water: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1'
+            },
+            teal: {
+              50: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <link rel="stylesheet" href="translation_style.css">
+  <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。">
+
+  <!-- OGP Tags -->
+  <meta property="og:title" content="ミズルシ | 市民参加型水質調査プロジェクト">
+  <meta property="og:description" content="地域の水環境をみんなで見える化。水質マップの閲覧やAI濁度予測が試せます。">
+  <meta property="og:image" content="https://sunny-stack-crypto.github.io/mizurushi/pictures/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Supabase Client JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="flex min-h-screen flex-col bg-sky-50 text-slate-800 font-sans">
+
+<header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="pictures/logo.png" alt="Logo" class="h-9 w-auto object-contain" />
+        <div class="flex flex-col justify-center">
+          <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
+          <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
+        <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
+        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">みんなの調査</a>
+        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
+        <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
+        
+        <a href="30 Day Carbon Challange.html" class="rounded-lg bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-700">チャレンジ</a>
+        <a href="login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
+        
+        <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <div id="google_translate_element"></div>
+        </div>
+      </nav>
+      
+      <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
+        ☰
+      </button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
+      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
+      <a href="survey.html" class="block rounded-lg px-3 py-2">みんなの調査</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
+      <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
+      <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2 font-semibold text-sky-700">チャレンジ</a>
+      <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
+
+      <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+        <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain"/>
+        </div>
+        <div id="translate-wrapper-mobile"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="challenge-container">
+  <section class="challenge-hero">
+    <span class="badge">Eco Action</span>
+    <h1>エコチャレンジ</h1>
+    <p>身近なエコ活動を投稿してポイントを獲得！地域全体の環境保全につなげましょう。
+      2日間から30日間の期間を選びましょう。<br></p>
+      <p style="font-size: small;">
+      日数が多くなるほど、獲得できるポイントは増加します。
+      目標日数の半分を超えるとポイントを一部獲得できますが、
+      半分以下である場合はポイントは獲得できませんのでご注意ください。
+    </p>
+  </section>
+
+  <!-- User Profile & Status Summary Bar -->
+  <section class="summary-card">
+    <div class="user-id-group">
+      <label for="userCodeInput">参加者ID（4桁）:<span aria-hidden="true" class="required">*</span></label>
+      <input type="text" id="userCodeInput" maxlength="4" placeholder="ユーザーID" autocomplete="off">
+    </div>
+
+    <div class="stats-group mt-4">
+      <div class="stat-box">
+        <span class="stat-label">現在の進捗</span>
+        <span id="streakDisplay" class="stat-value">0 / 30 日</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">今日中断時の獲得予定</span>
+        <span id="pendingRewardDisplay" class="stat-value text-sky-600">(0 pt)</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">保有ポイント</span>
+        <span id="userPoints" class="stat-value">0 pt</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">今日の状態</span>
+        <span id="statusDisplay" class="status-pending">未達成</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- プログレスバー -->
+  <div class="w-full bg-slate-200 rounded-full h-4 mt-4 overflow-hidden mb-6">
+    <div id="progressBar" class="bg-sky-500 h-full transition-all duration-300" style="width: 0%"></div>
+  </div>
+
+  <!-- 状態表示カード（審査中／達成済みメッセージ用） -->
+  <section id="pendingMessageCard" class="form-card text-center hidden">
+    <div class="py-6 px-4">
+      <div id="pendingCardIconWrapper" class="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mb-4">
+          <svg id="pendingCardIcon" class="w-8 h-8 text-emerald-800" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+          </svg>
+      </div>
+      <h2 id="pendingCardTitle" class="text-xl font-bold text-slate-800 mb-2" style="font-size: large;">管理者による審査中です</h2>
+      <p id="pendingCardText" class="text-slate-600 text-sm leading-relaxed">
+        本日のチャレンジを受け付けました。<br>
+        ただいま管理者による内容の確認を行なっております。<br>
+        審査が完了するとポイントとストリークが反映されますので、今しばらくお待ちください。
+      </p>
+    </div>
+  </section>
+
+  <!-- Challenge Submission Form -->
+  <section id="challengeFormCard" class="form-card">
+    <h2>今日のエコ活動を記録する</h2>
+      <form id="challengeForm">
+        <div class="form-group" id="targetDaysGroup">
+          <label for="targetDaysSelect">目標期間を選択 <span class="required">*</span></label>
+          <select id="targetDaysSelect" class="border rounded px-2 py-1 text-sm bg-white"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="activitySelect">活動の種類 <span class="required">*</span></label>
+          <select id="activitySelect" required>
+            <option value="" disabled selected>選択してください</option>
+            <option value="trash_pickup">川辺・街のごみ拾い</option>
+            <option value="public_transit">公共交通機関・自転車の利用</option>
+            <option value="water_saving">節水・エコ洗剤の使用</option>
+            <option value="my_bottle">マイボトル・マイバッグの持参</option>
+            <option value="other">その他の環境活動</option>
+          </select>
+        </div>
+
+      <div style="padding: 5%;">
+        <h2 style="text-align: center; font-size: medium;"><span class="required text-red-500 justify-center">*</span>
+          証拠となる写真をアップロードしてください(必須)
+        </h2>
+        <label for="file" class="custum-file-upload cursor-pointer block text-center border-2 border-dashed p-4 rounded-lg hover:bg-sky-100 transition">
+          <div class="icon flex justify-center mb-2" style="justify-self: center; padding: 10%;">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-sky-500" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" />
+            </svg>
+          </div>
+
+          <div style="justify-self: center;">
+            <span id="fileNameDisplay" class="text-xs text-slate-600 font-bold block">ファイルを選択してください</span>
+            <input id="file" type="file" accept="image/*" class="hidden">
+          </div>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="descriptionInput">活動のメモ（任意）</label>
+        <textarea id="descriptionInput" rows="3" placeholder="例: 近所の川沿いでゴミを3つ拾いました！"></textarea>
+      </div>
+
+      <button type="submit" id="submitBtn" class="btn-primary">今日のチャレンジを送信</button>
+    </form>
+  </section>
+
+  <!-- Calendar Grid -->
+  <section class="grid-section">
+    <h2>ストリークカレンダー</h2>
+    <p class="grid-subtitle">毎日続けてボーナスポイントを獲得しよう！（1日目: +20pt, 2日目: +30pt...）</p>
+    <div id="calendarGrid" class="calendar-grid"></div>
+  </section>
+</main>
+
+<footer id="footer" class="border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col justify-between gap-4 sm:flex-row">
+      <div class="flex flex-col items-start">
+        <img src="pictures/logo.png" alt="Logo" class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain">
+        <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+      </div>
+
+      <div class="space-y-1 text-sm text-slate-500">
+        <p>お問い合わせはこちらまで: contact.citizen.riverproject [at] gmail.com</p>
+        <div>
+          <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+        </div>
+        <div>
+          <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Supabase設定
+const SUPABASE_URL = 'https://dgmdupdzylxewgsxygtr.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_cvdFFXogk21bVDZqJf3Dpg_u3VFZypd';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+function getTodayDateStringJST() {
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+// 状態保持用のグローバル変数
+let activeTargetDays = 30;
+let profileSubscription = null;
+
+// 今日のローカル時間の「00:00:00」をISO文字列（UTC）で取得（Supabase比較用）
+function getTodayStartISO() {
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  return now.toISOString();
+}
+
+// ドロップダウンの選択肢（2〜30日）を生成
+function initTargetDaysSelect() {
+  const targetSelect = document.getElementById('targetDaysSelect');
+  if (!targetSelect) return;
+  
+  if (targetSelect.options.length >= 29) return;
+
+  targetSelect.innerHTML = '';
+  for (let i = 2; i <= 30; i++) {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${i} 日間 (目標: ${i * 10} pt)`;
+    if (i === 30) opt.selected = true;
+    targetSelect.appendChild(opt);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const userCodeInput = document.getElementById('userCodeInput');
+
+  initTargetDaysSelect();
+
+  // localStorage から参加者IDを自動補完
+  const savedUserCode = localStorage.getItem('mizurushi_user_code');
+  if (savedUserCode) {
+    if (userCodeInput) userCodeInput.value = savedUserCode;
+    await fetchAndRenderUserData(savedUserCode);
+    subscribeToProfileChanges(savedUserCode);
+  } else {
+    resetSummaryUI();
+  }
+
+  // リアルタイム入力制御
+  if (userCodeInput) {
+    userCodeInput.addEventListener('input', async (e) => {
+      const code = e.target.value.trim().toUpperCase();
+      if (code.length === 4) {
+        localStorage.setItem('mizurushi_user_code', code);
+        await fetchAndRenderUserData(code);
+        subscribeToProfileChanges(code);
+      } else {
+        resetSummaryUI();
+        renderCalendar(0, 30, false);
+      }
+    });
+  }
+
+  // ファイル選択表示
+  const fileInput = document.getElementById('file');
+  const fileNameDisplay = document.getElementById('fileNameDisplay');
+  if (fileInput && fileNameDisplay) {
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        fileNameDisplay.textContent = `選択中: ${file.name}`;
+        fileNameDisplay.classList.add('text-emerald-800');
+      } else {
+        fileNameDisplay.textContent = 'ファイルを選択してください';
+        fileNameDisplay.classList.remove('text-emerald-800');
+      }
+    });
+  }
+
+  // フォーム送信登録
+  const form = document.getElementById('challengeForm');
+  if (form) {
+    form.addEventListener('submit', handleFormSubmit);
+  }
+});
+
+// リアルタイム監視設定
+function subscribeToProfileChanges(userCode) {
+  if (profileSubscription) {
+    supabaseClient.removeChannel(profileSubscription);
+  }
+
+  profileSubscription = supabaseClient
+    .channel(`profile-${userCode}`)
+    .on(
+      'postgres_changes',
+      {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'profiles',
+        filter: `user_code=eq.${userCode}`
+      },
+      () => {
+        fetchAndRenderUserData(userCode);
+      }
+    )
+    .subscribe();
+}
+
+// ユーザーデータ取得・表示描画（厳密1日1回判定版）
+async function fetchAndRenderUserData(userCode) {
+  try {
+    const cleanCode = userCode.trim().toUpperCase();
+    const todayJST = getTodayDateStringJST(); // "YYYY-MM-DD"
+
+    // 1. profiles テーブルからユーザー情報の取得
+    const { data: profileData, error: profileError } = await supabaseClient
+      .from('profiles')
+      .select('current_points, current_streak, last_challenge_date, target_days, expected_points')
+      .eq('user_code', cleanCode)
+      .maybeSingle();
+
+    if (profileError || !profileData) {
+      resetSummaryUI(profileError ? 'エラー発生' : '未登録のIDです');
+      return;
+    }
+
+    // 2. 最新の提出データを1件取得
+    const { data: latestSubmission } = await supabaseClient
+      .from('challenge_submissions')
+      .select('status, created_at')
+      .eq('user_code', cleanCode)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    // 最新の提出データが「本日（JST）」作成されたものかチェック
+    let isSubmissionToday = false;
+    let latestStatusToday = null;
+
+    if (latestSubmission && latestSubmission.created_at) {
+      const subDate = new Date(latestSubmission.created_at);
+      const subYear = subDate.getFullYear();
+      const subMonth = String(subDate.getMonth() + 1).padStart(2, '0');
+      const subDay = String(subDate.getDate()).padStart(2, '0');
+      const subJST = `${subYear}-${subMonth}-${subDay}`;
+      if (subJST === todayJST) {
+        isSubmissionToday = true;
+        latestStatusToday = latestSubmission.status;
+      }
+    }
+
+    // 3. 本日のステータス判定（修正後）
+    let currentStatus = null;
+    const lastDate = profileData.last_challenge_date; // YYYY-MM-DD
+
+    if (lastDate === todayJST) {
+      // 最終達成日が「今日」なら承認済み
+      currentStatus = 'approved';
+    } else if (isSubmissionToday) {
+      // 本日提出されたデータがある場合はそのステータス（pending または rejected）を採用
+      currentStatus = latestStatusToday;
+    } else {
+      // 今日まだ提出していない（または過去データ）なら未提出（null）
+      currentStatus = null;
+    }
+
+    const isLoggedToday = (currentStatus === 'pending' || currentStatus === 'approved');
+    const points = Number(profileData.current_points) || 0;
+    const streak = Number(profileData.current_streak) || 0;
+    const expectedPoints = Number(profileData.expected_points) || 0;
+    activeTargetDays = Number(profileData.target_days) || 30;
+
+    // 4. UI表示の更新
+    updateSummaryUI(cleanCode, points, streak, isLoggedToday, activeTargetDays, expectedPoints, currentStatus);
+    renderCalendar(streak, activeTargetDays, isLoggedToday);
+
+  } catch (err) {
+    console.error('例外エラー:', err);
+    resetSummaryUI('エラー発生');
+  }
+}
+
+// 審査中／達成済み表示／フォーム表示の切り替え関数
+function toggleFormAndPendingMessage(status) {
+  const formCard = document.getElementById('challengeFormCard');
+  const pendingCard = document.getElementById('pendingMessageCard');
+  const pendingTitle = document.getElementById('pendingCardTitle');
+  const pendingText = document.getElementById('pendingCardText');
+  const pendingIconWrapper = document.getElementById('pendingCardIconWrapper');
+  const pendingIcon = document.getElementById('pendingCardIcon');
+
+  if (!formCard || !pendingCard) return;
+
+  if (status === 'pending') {
+    // 審査中：フォーム隠す＆審査メッセージ
+    formCard.classList.add('hidden');
+    pendingCard.classList.remove('hidden');
+    
+    if (pendingTitle) pendingTitle.textContent = '管理者による審査中です';
+    if (pendingText) pendingText.innerHTML = '本日のチャレンジを受け付けました。<br>ただいま管理者による内容の確認を行なっております。<br>審査が完了するとポイントとストリークが反映されますので、今しばらくお待ちください。';
+    if (pendingIconWrapper) pendingIconWrapper.className = 'inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-full mb-4';
+    if (pendingIcon) {
+      pendingIcon.setAttribute('viewBox', '0 0 24 24');
+      pendingIcon.setAttribute('fill', 'none');
+      pendingIcon.className = 'w-8 h-8 text-amber-600';
+      pendingIcon.innerHTML = `<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>`;
+    }
+  } else if (status === 'approved') {
+    // 達成済み：静止した濃い緑のチェックマーク
+    formCard.classList.add('hidden');
+    pendingCard.classList.remove('hidden');
+
+    if (pendingTitle) pendingTitle.textContent = '本日のチャレンジは達成済みです！';
+    if (pendingText) pendingText.innerHTML = '本日のエコ活動は承認されました。<br>明日も引き続きチャレンジに参加してストリークを伸ばしましょう！';
+    if (pendingIconWrapper) pendingIconWrapper.className = 'inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mb-4';
+    if (pendingIcon) {
+      pendingIcon.setAttribute('viewBox', '0 0 24 24');
+      pendingIcon.setAttribute('fill', 'none');
+      pendingIcon.className = 'w-8 h-8 text-emerald-800';
+      pendingIcon.innerHTML = `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>`;
+    }
+  } else {
+    // 未提出（null）または却下（rejected）：フォーム表示
+    formCard.classList.remove('hidden');
+    pendingCard.classList.add('hidden');
+  }
+}
+
+// UI要素の更新
+function updateSummaryUI(userCode, points, streak, isLoggedToday, targetDays, expectedPoints, currentStatus) {
+  const pointsEl = document.getElementById('userPoints');
+  const streakEl = document.getElementById('streakDisplay');
+  const statusEl = document.getElementById('statusDisplay');
+  const pendingEl = document.getElementById('pendingRewardDisplay');
+  const progressBar = document.getElementById('progressBar');
+  const targetDaysGroup = document.getElementById('targetDaysGroup');
+
+  initTargetDaysSelect();
+
+  const currentStreak = streak ?? 0;
+  const target = targetDays || 30;
+
+  if (pointsEl) pointsEl.textContent = `${points ?? 0} pt`;
+  if (streakEl) streakEl.textContent = `${currentStreak} / ${target} 日`;
+
+  // ステータス表示の分岐
+  if (statusEl) {
+    if (currentStatus === 'rejected') {
+      statusEl.textContent = '却下（再提出可能）';
+      statusEl.className = 'status-pending text-red-500 font-bold';
+    } else if (currentStatus === 'approved') {
+      statusEl.textContent = '達成済み！';
+      statusEl.className = 'status-done text-emerald-800 font-bold';
+    } else if (currentStatus === 'pending' || isLoggedToday) {
+      statusEl.textContent = '送信済み（承認待ち）';
+      statusEl.className = 'status-done text-emerald-800 font-bold';
+    } else {
+      statusEl.textContent = '未達成';
+      statusEl.className = 'status-pending text-amber-500 font-bold';
+    }
+  }
+
+  if (pendingEl) pendingEl.textContent = `(${expectedPoints ?? 0} pt)`;
+
+  const pct = Math.min(Math.round((currentStreak / target) * 100), 100);
+  if (progressBar) progressBar.style.width = `${pct}%`;
+
+  // 目標日数ドロップダウンの表示/非表示
+  if (targetDaysGroup) {
+    if (isLoggedToday || currentStreak > 0) {
+      targetDaysGroup.style.display = 'none';
+    } else {
+      targetDaysGroup.style.display = 'block';
+    }
+  }
+
+  // 審査中・達成済み・未達成に応じた画面切り替え
+  toggleFormAndPendingMessage(currentStatus);
+}
+
+// UIのリセット
+function resetSummaryUI(message = '未達成') {
+  const pointsEl = document.getElementById('userPoints');
+  const streakEl = document.getElementById('streakDisplay');
+  const statusEl = document.getElementById('statusDisplay');
+  const pendingEl = document.getElementById('pendingRewardDisplay');
+  const progressBar = document.getElementById('progressBar');
+  const targetDaysGroup = document.getElementById('targetDaysGroup');
+
+  initTargetDaysSelect();
+
+  if (pointsEl) pointsEl.textContent = '0 pt';
+  if (streakEl) streakEl.textContent = '0 / 30 日';
+  if (pendingEl) pendingEl.textContent = '(0 pt)';
+  if (progressBar) progressBar.style.width = '0%';
+  if (statusEl) {
+    statusEl.textContent = message;
+    statusEl.className = 'status-pending text-amber-500 font-bold';
+  }
+
+  if (targetDaysGroup) targetDaysGroup.style.display = 'block';
+  
+  toggleFormAndPendingMessage(null);
+}
+
+// カレンダー格子の描画
+function renderCalendar(currentStreak, targetDays, isLoggedToday) {
+  const container = document.getElementById('calendarGrid');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const maxDisplay = targetDays || 30;
+
+  for (let day = 1; day <= maxDisplay; day++) {
+    const card = document.createElement('div');
+    card.classList.add('streak-card');
+    const dayPoints = 10 + (day * 10);
+
+    if (day < currentStreak || (day === currentStreak && isLoggedToday)) {
+      card.classList.add('completed');
+      card.innerHTML = `<span class="day-num">Day ${day}</span><span class="check-icon">✓</span><span class="pts">+${dayPoints}pt</span>`;
+    } else if (day === (currentStreak + 1) && !isLoggedToday) {
+      card.classList.add('active-today');
+      card.innerHTML = `<span class="day-num">Day ${day}</span><span class="target-label">今日</span><span class="pts">+${dayPoints}pt</span>`;
+    } else {
+      card.classList.add('locked');
+      card.innerHTML = `<span class="day-num">Day ${day}</span><span class="pts">+${dayPoints}pt</span>`;
+    }
+    container.appendChild(card);
+  }
+}
+
+// フォーム送信制御（却下された場合は再提出を許可する修正版）
+async function handleFormSubmit(e) {
+  e.preventDefault();
+
+  const userCodeInput = document.getElementById('userCodeInput');
+  const activitySelect = document.getElementById('activitySelect');
+  const descriptionInput = document.getElementById('descriptionInput');
+  const targetSelect = document.getElementById('targetDaysSelect');
+  const fileInput = document.getElementById('file');
+  const submitBtn = document.getElementById('submitBtn');
+
+  const userCode = userCodeInput ? userCodeInput.value.trim().toUpperCase() : '';
+
+  if (!userCode || userCode.length !== 4) {
+    alert('有効なユーザーID（4桁）を入力してください。');
+    return;
+  }
+
+  const activityType = activitySelect ? activitySelect.value : '';
+  const description = descriptionInput ? descriptionInput.value.trim() : '';
+
+  const targetDaysGroup = document.getElementById('targetDaysGroup');
+  const isSelectVisible = targetDaysGroup && targetDaysGroup.style.display !== 'none';
+  
+  let targetDays = activeTargetDays;
+  if (isSelectVisible && targetSelect && targetSelect.value) {
+    targetDays = parseInt(targetSelect.value, 10);
+  }
+
+  const file = fileInput ? fileInput.files[0] : null;
+
+  if (!file) {
+    alert('証拠写真をアップロードしてください。');
+    return;
+  }
+
+  if (submitBtn) submitBtn.disabled = true;
+
+  try {
+    const todayJST = getTodayDateStringJST(); // "YYYY-MM-DD"
+
+    // 1. プロフィールの達成状況チェック（今日すでに承認済みなら送信不可）
+    const { data: profileData } = await supabaseClient
+      .from('profiles')
+      .select('last_challenge_date')
+      .eq('user_code', userCode)
+      .maybeSingle();
+
+    if (profileData && profileData.last_challenge_date === todayJST) {
+      alert('本日のチャレンジは既に達成・承認済みです。');
+      await fetchAndRenderUserData(userCode);
+      return;
+    }
+
+    // 2. 本日の提出データチェック（pending または approved の場合のみブロック、rejectedは通過許可）
+    const { data: latestSubmission } = await supabaseClient
+      .from('challenge_submissions')
+      .select('status, created_at')
+      .eq('user_code', userCode)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (latestSubmission && latestSubmission.created_at) {
+      const subDate = new Date(latestSubmission.created_at);
+      const subYear = subDate.getFullYear();
+      const subMonth = String(subDate.getMonth() + 1).padStart(2, '0');
+      const subDay = String(subDate.getDate()).padStart(2, '0');
+      const subJST = `${subYear}-${subMonth}-${subDay}`;
+      
+      // 今日の提出データがすでに存在する場合の判定
+      if (subJST === todayJST) {
+        if (latestSubmission.status === 'pending') {
+          alert('現在、送信された内容の審査中です。審査が完了するまでお待ちください。');
+          await fetchAndRenderUserData(userCode);
+          return;
+        } else if (latestSubmission.status === 'approved') {
+          alert('本日のチャレンジは既に提出・承認済みです。');
+          await fetchAndRenderUserData(userCode);
+          return;
+        }
+      }
+    }
+
+    // IDをlocalStorageに記憶
+    localStorage.setItem('mizurushi_user_code', userCode);
+
+    // 3. 写真アップロード
+    const rawExt = file.name.split('.').pop().toLowerCase();
+    const fileExt = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(rawExt) ? rawExt : 'png';
+    const fileName = `${userCode}_${Date.now()}.${fileExt}`;
+    const filePath = `submissions/${fileName}`;
+
+    const { error: uploadError } = await supabaseClient.storage
+      .from('challenge-photos')
+      .upload(filePath, file);
+
+    if (uploadError) throw uploadError;
+
+    const { data: { publicUrl } } = supabaseClient.storage
+      .from('challenge-photos')
+      .getPublicUrl(filePath);
+
+    // 4. データベース挿入（再提出データを新規pendingとしてinsert）
+    const { error: dbError } = await supabaseClient
+      .from('challenge_submissions')
+      .insert([{
+        user_code: userCode,
+        activity_type: activityType,
+        description: description,
+        image_url: publicUrl,
+        target_days: targetDays,
+        status: 'pending'
+      }]);
+
+    if (dbError) throw dbError;
+
+    // 即時に画面を審査中状態に切り替え
+    toggleFormAndPendingMessage('pending');
+
+    // フォームクリア
+    activitySelect.selectedIndex = 0;
+    descriptionInput.value = '';
+    fileInput.value = '';
+    
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    if (fileNameDisplay) {
+      fileNameDisplay.textContent = 'ファイルを選択してください';
+      fileNameDisplay.classList.remove('text-emerald-800');
+    }
+
+    // DB最新情報の同期
+    await fetchAndRenderUserData(userCode);
+
+  } catch (err) {
+    console.error('送信エラー:', err);
+    alert(`送信に失敗しました。\n詳細: ${err.message || JSON.stringify(err)}`);
+  } finally {
+    if (submitBtn) submitBtn.disabled = false;
+  }
+}
+</script>
+
+<script>
+  function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: 'en,zh-CN,zh-TW,ko,es,fr,de,ja', 
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
