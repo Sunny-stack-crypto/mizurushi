@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
+  <!--翻訳設定-->
+  <script>
+    function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: 'en,zh-CN,zh-TW,ko,vi,es,fr,de',
+    autoDisplay: false
+  }, 'google_translate_element');
+
+  const intervalId = setInterval(() => {
+    const selectElements = document.querySelectorAll('.goog-te-combo');
+    if (selectElements.length > 0) {
+      selectElements.forEach(select => {
+        const languageLabels = {
+          '': 'Select Language',
+          'en': 'English',
+          'es': 'Español',
+          'vi': 'Tiếng Việt',
+          'ko': '한국어',
+          'zh-CN': '中文 (简体)',
+          'zh-TW': '中文 (繁體)',
+          'fr': 'Français',
+          'de': 'Deutsch'
+        };
+
+        Array.from(select.options).forEach(option => {
+          if (languageLabels[option.value] !== undefined) {
+            option.textContent = languageLabels[option.value];
+          }
+        });
+      });
+      clearInterval(intervalId);
+    }
+  }, 300);
+
+  relocateTranslateElement();
+  window.addEventListener('resize', relocateTranslateElement);
+}
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-QE1RW1G56M');
-</script>
+    gtag('config', 'G-QE1RW1G56M');
+  </script>
 
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
@@ -95,7 +136,7 @@
       <nav class="hidden items-center gap-1 md:flex">
         <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
         <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
-        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">みんなの調査</a>
+        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">市民調査</a>
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="30 Day Carbon Challange.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">チャレンジ</a>
@@ -281,15 +322,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 </script>
 
-<script>
-  function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: 'en,zh-CN,zh-TW,ko,es,fr,de,ja', // Add your desired languages
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-</script>
 
 </body>
 </html>

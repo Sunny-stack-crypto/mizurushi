@@ -2,6 +2,66 @@
 <html lang="ja" class="scroll-smooth">
 <head>
 
+  <!--翻訳設定-->
+  <script>
+// <head> 内の script に統合・調整する例
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: 'en,zh-CN,zh-TW,ko,vi,es,fr,de',
+    autoDisplay: false
+  }, 'google_translate_element');
+
+  const intervalId = setInterval(() => {
+    const selectElements = document.querySelectorAll('.goog-te-combo');
+    if (selectElements.length > 0) {
+      selectElements.forEach(select => {
+        const languageLabels = {
+          '': 'Select Language',
+          'en': 'English',
+          'es': 'Español',
+          'vi': 'Tiếng Việt',
+          'ko': '한국어',
+          'zh-CN': '中文 (简体)',
+          'zh-TW': '中文 (繁體)',
+          'fr': 'Français',
+          'de': 'Deutsch'
+        };
+
+        Array.from(select.options).forEach(option => {
+          if (languageLabels[option.value] !== undefined) {
+            option.textContent = languageLabels[option.value];
+          }
+        });
+      });
+      clearInterval(intervalId);
+    }
+  }, 300);
+
+  relocateTranslateElement();
+  window.addEventListener('resize', relocateTranslateElement);
+}
+
+function relocateTranslateElement() {
+  const translateEl = document.getElementById('google_translate_element');
+  const desktopWrapper = document.getElementById('translate-wrapper-desktop');
+  const mobileWrapper = document.getElementById('translate-wrapper-mobile');
+
+  if (!translateEl || !desktopWrapper || !mobileWrapper) return;
+
+  // mdブレイクポイント(768px)を境に移動先を切り替え
+  if (window.innerWidth < 768) {
+    if (!mobileWrapper.contains(translateEl)) {
+      mobileWrapper.appendChild(translateEl);
+    }
+  } else {
+    if (!desktopWrapper.contains(translateEl)) {
+      desktopWrapper.appendChild(translateEl);
+    }
+  }
+}
+</script>
+
   <!--JSファイルを活用し、Kobotoolboxまでのスクロールを予防する-->
   <script src="kobo-prevent-scroll.js" defer></script>
   <link rel="stylesheet" href="style.css">
@@ -47,6 +107,8 @@
     });
   });
 </script>
+
+
 
   <!-- Tailwind CSS & Styles -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -188,16 +250,9 @@
                         src="pictures/logo.png" 
                         alt="Logo" 
                         class="mx-auto h-16 w-auto object-contain"/>
-
                     </div>
                     <div class="mt-5 text-2xl font-black text-slate-800">水を知る。</div>
                     <div class="mt-2 text-slate-500">地域を知る。未来につなげる。</div>
-
-                    <div class="fixed bottom-5 right-5 z-50">
-                      <a href="instruction.html" class="inline-block rounded-full bg-sky-600 px-8 py-3.5 text-base font-bold text-white shadow-lg transition-colors hover:bg-sky-700">
-                        迷ったらここを押してください
-                        </a>
-                    </div>
                 <div class="grid grid-cols-3 gap-3 border-t border-slate-100 pt-5 text-center">
                   <div>
                     <div class="text-xl font-black text-sky-600"><a href="map.html">GIS</a></div>
@@ -211,13 +266,29 @@
                     <div class="text-xl font-black text-indigo-600"><a href="ai.html">AI</a></div>
                     <div class="text-xs text-slate-500">NTU予測</div>
                   </div>
+                  <iframe 
+                    src="maps/2024/index.html" 
+                    loading="lazy"
+                    class="col-span-3 mt-4 h-64 w-full rounded-xl border border-slate-200 shadow-inner" 
+                    title="2024年度水質状況"
+                  >
+                  </iframe>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+    
+  <div class="fixed bottom-5 right-5 z-50">
+    <a href="instruction.html" class="inline-block rounded-full bg-sky-600 px-8 py-3.5 text-base font-bold text-white shadow-lg transition-colors hover:bg-sky-700">
+      迷ったらここを押してください
+    </a>
+  </div>
 
     <section id = "guide-id" class="mx-auto my-10 max-w-2x1 px-4 sm:px-6">
       <div class="border text-center">
@@ -280,10 +351,7 @@
           </div>
           <div class="w-full md:w-1/3 border-4 border-black p-2.5">
           <h2 class="text-xl md:text-xl font-bold"><span style="background-color: rgb(28, 167, 28);">使い方</span></h2>
-          <p class="text-lg md:text-base" style="text-align: center;">
-            <pre>
-
-            </pre>
+          <p class="text-lg md:text-base" style="text-align: center; padding: 18px;">
             このウェブサイトは、代表例として、以下のように使うことができます。
             <ul class="list-disc list-inside">
               <li class="text-left">水質調査
@@ -297,6 +365,7 @@
               <p class="text-left">最新のAI技術を駆使し、写真から水の濁度(NTU)を検出できます。
                 NTUについては<a href="learn.html" class="inline-block text-sm font-bold text-sky-600">こちら</a><br></p></li>
             </ul>
+          </p>
           </div>
 
           <div class="w-full md:w-1/3 border-4 border-black p-2.5">
@@ -805,6 +874,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 </script>
 
+
 <script>  
 window.addEventListener('DOMContentLoaded', () => {
     const iframe = document.getElementById('kobo_opinion');
@@ -829,16 +899,6 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-</script>
-
-<script>
-  function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: 'en,zh-CN,zh-TW,ko,es,fr,de,ja', // Add your desired languages
-    autoDisplay: false
-  }, 'google_translate_element');
-}
 </script>
 
 </body>

@@ -1,6 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <!--翻訳設定-->
+  <script>
+  function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: 'en,zh-CN,zh-TW,ko,vi,es,fr,de',
+    autoDisplay: false
+  }, 'google_translate_element');
+
+  const intervalId = setInterval(() => {
+    const selectElements = document.querySelectorAll('.goog-te-combo');
+    if (selectElements.length > 0) {
+      selectElements.forEach(select => {
+        const languageLabels = {
+          '': 'Select Language',
+          'en': 'English',
+          'es': 'Español',
+          'vi': 'Tiếng Việt',
+          'ko': '한국어',
+          'zh-CN': '中文 (简体)',
+          'zh-TW': '中文 (繁體)',
+          'fr': 'Français',
+          'de': 'Deutsch'
+        };
+
+        Array.from(select.options).forEach(option => {
+          if (languageLabels[option.value] !== undefined) {
+            option.textContent = languageLabels[option.value];
+          }
+        });
+      });
+      clearInterval(intervalId);
+    }
+  }, 300);
+
+  relocateTranslateElement();
+  window.addEventListener('resize', relocateTranslateElement);
+}
+</script>
+
   <!-- 1. Add Google Fonts preconnect and Zen Maru Gothic stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -393,15 +433,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 </script>
 
-<script>
-  function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: 'en,zh-CN,zh-TW,ko,es,fr,de,ja', // Add your desired languages
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-</script>
+
 
 </body>
 </html>
