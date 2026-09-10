@@ -98,13 +98,12 @@
         <a href="30 Day Carbon Challange.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">チャレンジ</a>
         <a href="login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
 
-        <!-- PC表示用ラッパー -->
-        <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-          <span>Language</span>
-          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
-          <div id="google_translate_element"></div>
-        </div>
-      </nav>
+          <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+            <span>Language</span>
+            <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+            <div id="google_translate_element"></div>
+          </div>
+        </nav>
 
       <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
         ☰
@@ -120,15 +119,15 @@
       <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2">チャレンジ</a>
       <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
 
-      <!-- スマホ表示用ラッパー -->
-      <div class="mt-2 border-t border-sky-100 px-3 pt-3">
-        <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-          <span>Language</span>
-          <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain" />
+        <div class="mt-2 border-t border-sky-100 px-3 pt-3">
+          <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+            <span>Language</span>
+            <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain"/>
+            <div id="google_translate_element"></div>
+          </div>
+          <div id="translate-wrapper-mobile"></div>
         </div>
-        <div id="translate-wrapper-mobile"></div>
-      </div>
-    </nav>
+      </nav>
   </div>
 </header>
 <main>
@@ -264,9 +263,9 @@
 
           <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" style="overflow: hidden">
                 <iframe
-                id="koboframe"
+                id="koboframe_ai"
                 src="https://ee.kobotoolbox.org/x/jFdvSGis"
-                title="調査回答フォーム"
+                title="Beta Improvement"
                 class="h-[800px] w-full border-0"
                 loading="lazy"
                 onload="window.scrollTo(0, 0);" 
@@ -327,18 +326,121 @@
   </div>
 </footer>
 
-<script>
+
+  <script>
   function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: 'en,zh-CN,zh-TW,ko,es,fr,de,ja', // Add your desired languages
-    autoDisplay: false
-  }, 'google_translate_element');
-}
+    const nativeLanguageMap = {
+      'af': 'Afrikaans', 'sq': 'Shqip', 'am': 'አማርኛ', 'ar': 'العربية', 'hy': 'Հայերեն',
+      'az': 'Azərbaycan dili', 'eu': 'Euskara', 'be': 'Belaruskaya', 'bn': 'বাংলা',
+      'bs': 'Bosanski', 'bg': 'Български', 'ca': 'Català', 'ceb': 'Cebuan',
+      'ny': 'Chichewa', 'zh-CN': '中文 (简体)', 'zh-TW': '中文 (繁體)', 'co': 'Corsu',
+      'hr': 'Hrvatski', 'cs': 'Čeština', 'da': 'Dansk', 'nl': 'Nederlands',
+      'en': 'English', 'eo': 'Esperanto', 'et': 'Eesti', 'tl': 'Tagalog',
+      'fi': 'Suomi', 'fr': 'Français', 'fy': 'Frysk', 'gl': 'Galego',
+      'ka': 'ქართული', 'de': 'Deutsch', 'el': 'Ελληνικά', 'gu': 'ગુજરાતી',
+      'ht': 'Kreyòl ayisyen', 'ha': 'Hausa', 'haw': 'ʻŌlelo Hawaiʻi', 'iw': 'עברית',
+      'hi': 'हिन्दी', 'hmn': 'Hmoob', 'hu': 'Magyar', 'is': 'Íslenska',
+      'ig': 'Asụsụ Igbo', 'id': 'Bahasa Indonesia', 'ga': 'Gaeilge', 'it': 'Italiano',
+      'ja': '日本語', 'jw': 'Basa Jawa', 'kn': 'ಕನ್ನಡ', 'kk': 'Қазақ тілі',
+      'km': 'ភាសាខ្មែរ', 'rw': 'Kinyarwanda', 'ko': '한국語', 'ku': 'Kurdî',
+      'ky': 'Кыргызча', 'lo': 'ພາສາລາວ', 'la': 'Latina', 'lv': 'Latviešu',
+      'lt': 'Lietuvių', 'lb': 'Lëtzebuergesch', 'mk': 'Македонски', 'mg': 'Malagasy',
+      'ms': 'Bahasa Melayu', 'ml': 'മലയാളം', 'mt': 'Malti', 'mi': 'Māori',
+      'mr': 'मराठी', 'mn': 'Монгол', 'my': 'မြန်မာဘာသာ', 'ne': 'नेपाली',
+      'no': 'Norsk', 'or': 'ଓଡ଼ିଆ', 'ps': 'پښتو', 'fa': 'فارسی',
+      'pl': 'Polski', 'pt': 'Português', 'pa': 'ਪੰਜਾਬੀ', 'ro': 'Română',
+      'ru': 'Русский', 'sm': 'Gagana Samoa', 'gd': 'Gàidhlig', 'sr': 'Српски',
+      'st': 'Sesotho', 'sn': 'ChiShona', 'sd': 'سنڌي', 'si': 'සිංહල',
+      'sk': 'Slovenčina', 'sl': 'Slovenščina', 'so': 'Soomaali', 'es': 'Español',
+      'su': 'Basa Sunda', 'sw': 'Kiswahili', 'sv': 'Svenska', 'tg': 'Тоҷикӣ',
+      'ta': 'தமிழ்', 'tt': 'Татар', 'te': 'తెలుగు', 'th': 'ไทย',
+      'tr': 'Türkçe', 'tk': 'Türkmen', 'uk': 'Українська', 'ur': 'اردو',
+      'ug': 'ئۇيغۇرچە', 'uz': 'O‘zbekcha', 'vi': 'Tiếng Việt', 'cy': 'Cymraeg',
+      'xh': 'IsiXhosa', 'yi': 'ייִדיש', 'yo': 'Yorùbá', 'zu': 'IsiZulu'
+    };
+
+    const allowedLanguages = Object.keys(nativeLanguageMap).join(',');
+
+    new google.translate.TranslateElement({
+      pageLanguage: 'ja',
+      includedLanguages: allowedLanguages,
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    const checkDropdown = setInterval(() => {
+      const select = document.querySelector('.goog-te-combo');
+      if (select && select.options.length > 1) {
+        clearInterval(checkDropdown);
+
+        select.classList.add('notranslate');
+
+        for (let i = select.options.length - 1; i >= 0; i--) {
+          const option = select.options[i];
+          const code = option.value;
+
+          if (!code) continue;
+
+          if (nativeLanguageMap[code]) {
+            option.classList.add('notranslate');
+            option.textContent = nativeLanguageMap[code];
+          } else {
+          select.remove(i);
+          }
+        }
+      }
+    }, 100);
+  }
+  </script>
+
+<script>  
+window.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('koboframe_ai');
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
+        const currentY = window.scrollY;
+
+        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
+        if (document.activeElement === iframe) {
+          iframe.blur();
+        }
+
+        // 保持した縦位置に復元（横位置は0固定）
+        window.scrollTo(0, currentY);
+
+        //iframeの読み込みが遅れた場合の対策
+        setTimeout(() => {
+          window.scrollTo(0, currentY);
+        }, 100);
+      });
+    }
+  });
 </script>
 
-</body>
-</html>
+<script>  
+window.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('koboframe');
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
+        const currentY = window.scrollY;
+
+        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
+        if (document.activeElement === iframe) {
+          iframe.blur();
+        }
+
+        // 保持した縦位置に復元（横位置は0固定）
+        window.scrollTo(0, currentY);
+
+        //iframeの読み込みが遅れた場合の対策
+        setTimeout(() => {
+          window.scrollTo(0, currentY);
+        }, 100);
+      });
+    }
+  });
+</script>
 
 <script>
   document.getElementById('menuButton').addEventListener('click', () => {
@@ -411,34 +513,7 @@
   }
 </script>
 
-<script src="script.js"></script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-
-<script>  
-window.addEventListener('DOMContentLoaded', () => {
-    const iframe = document.getElementById('koboframe');
-    if (iframe) {
-      iframe.addEventListener('load', () => {
-        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
-        const currentY = window.scrollY;
-
-        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
-        if (document.activeElement === iframe) {
-          iframe.blur();
-        }
-
-        // 保持した縦位置に復元（横位置は0固定）
-        window.scrollTo(0, currentY);
-
-        //iframeの読み込みが遅れた場合の対策
-        setTimeout(() => {
-          window.scrollTo(0, currentY);
-        }, 100);
-      });
-    }
-  });
-</script>
 
 </body>
 </html>

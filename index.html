@@ -2,68 +2,6 @@
 <html lang="ja" class="scroll-smooth">
 <head>
 
-  <!--翻訳設定-->
-  <script>
-// <head> 内の script に統合・調整する例
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: 'en,zh-CN,zh-TW,ko,vi,es,fr,de',
-    autoDisplay: false
-  }, 'google_translate_element');
-
-  const intervalId = setInterval(() => {
-    const selectElements = document.querySelectorAll('.goog-te-combo');
-    if (selectElements.length > 0) {
-      selectElements.forEach(select => {
-        const languageLabels = {
-          '': 'Select Language',
-          'en': 'English',
-          'es': 'Español',
-          'vi': 'Tiếng Việt',
-          'ko': '한국어',
-          'zh-CN': '中文 (简体)',
-          'zh-TW': '中文 (繁體)',
-          'fr': 'Français',
-          'de': 'Deutsch'
-        };
-
-        Array.from(select.options).forEach(option => {
-          if (languageLabels[option.value] !== undefined) {
-            option.textContent = languageLabels[option.value];
-          }
-        });
-      });
-      clearInterval(intervalId);
-    }
-  }, 300);
-
-  relocateTranslateElement();
-  window.addEventListener('resize', relocateTranslateElement);
-}
-
-function relocateTranslateElement() {
-  const translateEl = document.getElementById('google_translate_element');
-  const desktopWrapper = document.getElementById('translate-wrapper-desktop');
-  const mobileWrapper = document.getElementById('translate-wrapper-mobile');
-
-  if (!translateEl || !desktopWrapper || !mobileWrapper) return;
-
-  // mdブレイクポイント(768px)を境に移動先を切り替え
-  if (window.innerWidth < 768) {
-    if (!mobileWrapper.contains(translateEl)) {
-      mobileWrapper.appendChild(translateEl);
-    }
-  } else {
-    if (!desktopWrapper.contains(translateEl)) {
-      desktopWrapper.appendChild(translateEl);
-    }
-  }
-}
-</script>
-
-  <!--JSファイルを活用し、Kobotoolboxまでのスクロールを予防する-->
-  <script src="kobo-prevent-scroll.js" defer></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="scrollanimation.css">
   <meta charset="UTF-8">
@@ -73,8 +11,7 @@ function relocateTranslateElement() {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   
-  <title>ミズルシ | 市民参加型水質調査・GISマップ・AI濁度予測・夏休みの自由研究にも
-  </title>
+  <title>ミズルシ | 市民参加型水質調査・GISマップ・AI濁度予測・夏休みの自由研究にも</title>
   <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
 
   <!-- Search Console 確認タグ -->
@@ -98,17 +35,15 @@ function relocateTranslateElement() {
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- OneSignal (プッシュ通知) -->
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+      });
     });
-  });
-</script>
-
-
+  </script>
 
   <!-- Tailwind CSS & Styles -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -139,7 +74,6 @@ function relocateTranslateElement() {
   </script>
   <link rel="stylesheet" href="translation_style.css">
 </head>
-
 
 <body class="bg-sky-50 text-slate-800 font-sans">
   <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
@@ -189,11 +123,11 @@ function relocateTranslateElement() {
         <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2">チャレンジ</a>
         <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
 
-        
         <div class="mt-2 border-t border-sky-100 px-3 pt-3">
           <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
             <span>Language</span>
             <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain"/>
+            <div id="google_translate_element"></div>
           </div>
           <div id="translate-wrapper-mobile"></div>
         </div>
@@ -201,10 +135,9 @@ function relocateTranslateElement() {
     </div>
   </header>
 
-    <div>
-      <img src="pictures/intro.gif" width="100%" alt="gif">
-    </div>
-
+  <div>
+    <img src="pictures/intro.gif" width="100%" alt="gif">
+  </div>
 
   <main>
     <section class="relative overflow-hidden">
@@ -253,44 +186,36 @@ function relocateTranslateElement() {
                     </div>
                     <div class="mt-5 text-2xl font-black text-slate-800">水を知る。</div>
                     <div class="mt-2 text-slate-500">地域を知る。未来につなげる。</div>
-                <div class="grid grid-cols-3 gap-3 border-t border-slate-100 pt-5 text-center">
-                  <div>
-                    <div class="text-xl font-black text-sky-600"><a href="map.html">GIS</a></div>
-                    <div class="text-xs text-slate-500">水質マップ</div>
+                    <div class="grid grid-cols-3 gap-3 border-t border-slate-100 pt-5 text-center">
+                      <div>
+                        <div class="text-xl font-black text-sky-600"><a href="map.html">GIS</a></div>
+                        <div class="text-xs text-slate-500">水質マップ</div>
+                      </div>
+                      <div>
+                        <div class="text-xl font-black text-teal-600"><a href="survey.html">市民</a></div>
+                        <div class="text-xs text-slate-500">参加型調査</div>
+                      </div>
+                      <div>
+                        <div class="text-xl font-black text-indigo-600"><a href="ai.html">AI</a></div>
+                        <div class="text-xs text-slate-500">NTU予測</div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div class="text-xl font-black text-teal-600"><a href="survey.html">市民</a></div>
-                    <div class="text-xs text-slate-500">参加型調査</div>
-                  </div>
-                  <div>
-                    <div class="text-xl font-black text-indigo-600"><a href="ai.html">AI</a></div>
-                    <div class="text-xs text-slate-500">NTU予測</div>
-                  </div>
-                  <iframe 
-                    src="https://stalwart-fudge-8a3f1c.netlify.app/" 
-                    loading="lazy"
-                    class="col-span-3 mt-4 h-64 w-full rounded-xl border border-slate-200 shadow-inner" 
-                    title="2024年度水質状況"
-                  >
-                  </iframe>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <div class="fixed bottom-5 right-5 z-50">
+      <a href="instruction.html" class="inline-block rounded-full bg-sky-600 px-8 py-3.5 text-base font-bold text-white shadow-lg transition-colors hover:bg-sky-700">
+        迷ったらここを押してください
+      </a>
     </div>
-  </div>
-</section>
 
-    
-  <div class="fixed bottom-5 right-5 z-50">
-    <a href="instruction.html" class="inline-block rounded-full bg-sky-600 px-8 py-3.5 text-base font-bold text-white shadow-lg transition-colors hover:bg-sky-700">
-      迷ったらここを押してください
-    </a>
-  </div>
-
-    <section id = "guide-id" class="mx-auto my-10 max-w-2x1 px-4 sm:px-6">
+    <section id="guide-id" class="mx-auto my-10 max-w-2xl px-4 sm:px-6">
       <div class="border text-center">
         <h1 class="mt-4 text-3xl font-bold text-slate-900">
           ウェブサイトについて
@@ -300,7 +225,7 @@ function relocateTranslateElement() {
           <h2 style="text-align: center; margin-bottom: 1.5rem;">
             <strong>はじめに</strong>
           </h2>
-          <p  style="text-align: center; margin-bottom: 1.5rem;">
+          <p style="text-align: center; margin-bottom: 1.5rem;">
             ミズルシは、私たちが日ごろ目にする川や湖といった身近な水環境について、
             みんなで楽しく調査しながら理解を深めていく市民参加型のプロジェクトです。
             私たちの暮らしや文化を支えてくれている水について、「実はどれくらい濁っているんだろう？」
@@ -308,114 +233,108 @@ function relocateTranslateElement() {
             市民の皆さんの手を借りて目に<br>見える形にすることを目的としています。<br>
           </p>
 
-            <p style="margin-bottom: 1.5rem;">
-              このウェブサイトでは、初めての方でも安心してご参加いただけるように、
-              安全に配慮した水質調査のやり方やノウハウを分かりやすく解説しています。<br>
-              詳しくは<a href="#footer" class="inline-block text-lg font-bold text-sky-600 text-bold">こちらまで</a><br> 
-            </p>
+          <p style="margin-bottom: 1.5rem;">
+            このウェブサイトでは、初めての方でも安心してご参加いただけるように、
+            安全に配慮した水質調査のやり方やノウハウを分かりやすく解説しています。<br>
+            詳しくは<a href="#footer" class="inline-block text-lg font-bold text-sky-600">こちらまで</a><br> 
+          </p>
 
-            <p style="margin-bottom: 1.5rem;">
-              まずは自分専用の参加者IDを発行することからスタートし、
-              実際に身近な水辺を観察して得た調査データを送信していただく仕組みです。
-              また、お手持ちのスマートフォン等で撮影した水の写真から、
-              AIが自動で濁度（水のきれいさ）を予測してくれる最新技術を無料で体験することもできます。
-              皆さまからお寄せいただいた貴重な調査データは定期的に更新され、
-              環境省のデータと一緒に誰でも自由に閲覧できる水質マップとして公開されます。
-              さらに、調査に参加してデータを送信するとポイントが貯まり、
-              ウェブサイト上で自分だけのオリジナルペットを育てて楽しむこともできます。
-              ぜひ安全第一で楽しみながら、地域の水環境を未来へつなぐ活動に参加してみてください。
-              夏休みの自由研究に使うのもよいでしょう。<br>
-              自由研究などで使う際は、 contact.citizen.riverproject [at] gmail.com
-              （[at]を@に変えてください。）までご連絡いただければ、サポートいたします。
-            </p>
+          <p style="margin-bottom: 1.5rem;">
+            まずは自分専用の参加者IDを発行することからスタートし、
+            実際に身近な水辺を観察して得た調査データを送信していただく仕組みです。
+            また、お手持ちのスマートフォン等で撮影した水の写真から、
+            AIが自動で濁度（水のきれいさ）を予測してくれる最新技術を無料で体験することもできます。
+            皆さまからお寄せいただいた貴重な調査データは定期的に更新され、
+            環境省のデータと一緒に誰でも自由に閲覧できる水質マップとして公開されます。
+            さらに、調査に参加してデータを送信するとポイントが貯まり、
+            ウェブサイト上で自分だけのオリジナルペットを育てて楽しむこともできます。
+            ぜひ安全第一で楽しみながら、地域の水環境を未来へつなぐ活動に参加してみてください。
+            夏休みの自由研究に使うのもよいでしょう。<br>
+            自由研究などで使う際は、 contact.citizen.riverproject [at] gmail.com
+            （[at]を@に変えてください。）までご連絡いただければ、サポートいたします。
+          </p>
         </div>
+      </div>
+    </section>
 
         <div class="flex flex-col md:flex-row gap-6">
           <div class="w-full md:w-1/3 border-4 border-black p-2.5">
-          <h2 class="text-xl md:text-xl font-bold"><span style="background-color: rgb(28, 167, 28);">目的</span></h2>
-          <p class="text-lg md:text-base text-left">
-            <pre>
-
-          </pre>
-            川や湖は私たちの文化や生活環境の基本を作ってくれています。
-            私たちは、生活を支えてくれている「水」という存在を、十分知っているでしょうか。
-            例えば川の詳しい濁度や流域全体の詳しい水質については、
-            知っているようで実は知っていない、というケースが多いのではないでしょうか。<br>
-            ミズルシは、皆さんにとっての水環境をより身近にするために作られました。
-            <pre>
-
-            </pre>
+            <h2 class="text-xl md:text-xl font-bold"><span style="background-color: rgb(28, 167, 28);">目的</span></h2>
+            <p class="text-lg md:text-base text-left">
+              川や湖は私たちの文化や生活環境の基本を作ってくれています。
+              私たちは、生活を支えてくれている「水」という存在を、十分知っているでしょうか。
+              例えば川の詳しい濁度や流域全体の詳しい水質については、
+              知っているようで実は知っていない、というケースが多いのではないでしょうか。<br>
+              ミズルシは、皆さんにとっての水環境をより身近にするために作られました。
             </p>
-            <p class="text-lg md:text-base" style="text-align: center;">詳しくは、<a href="instruction.html" class="inline-block text-lg font-bold text-sky-600 text-bold">こちら</a>
-          </p>
-          </div>
-          <div class="w-full md:w-1/3 border-4 border-black p-2.5">
-          <h2 class="text-xl md:text-xl font-bold"><span style="background-color: rgb(28, 167, 28);">使い方</span></h2>
-          <p class="text-lg md:text-base" style="text-align: center; padding: 18px;">
-            このウェブサイトは、代表例として、以下のように使うことができます。
-            <ul class="list-disc list-inside">
-              <li class="text-left">水質調査
-              <p class="text-left">主に川を調査する際のノウハウや判断基準を提供しています。
-              </p></li>
-              <li class="text-left">調査結果の共有
-              <p class="text-left">皆さんからいただいたデータや環境省のデータをマップにして表示しています。<br>
-                皆さんのデータは、毎月31日(予定)に更新しています。
-              </p></li>
-              <li class="text-left">最新技術に触れる
-              <p class="text-left">最新のAI技術を駆使し、写真から水の濁度(NTU)を検出できます。
-                NTUについては<a href="learn.html" class="inline-block text-sm font-bold text-sky-600">こちら</a><br></p></li>
-            </ul>
-          </p>
+            <p class="text-lg md:text-base" style="text-align: center;">詳しくは、<a href="instruction.html" class="inline-block text-lg font-bold text-sky-600">こちら</a></p>
           </div>
 
           <div class="w-full md:w-1/3 border-4 border-black p-2.5">
-          <h2 class="text-xl md:text-xl font-bold"><span style="background-color: rgb(28, 167, 28);">ウェブサイトの設計</span></h2>
-            <pre>
-
-            </pre>
-              <img src="pictures/ワークフロー .png" alt="Description">
-              <p>IDを調査データを送信する際に送っていただくことで、ポイントを獲得できます。
-                皆さんのポイントはSupabaseというデータベースにて管理されています。
-                Supabaseは国際的に認識されておるデータベースで、安全性が非常に高いことでも知られています。
-                詳しい情報は、公式のNoteをご覧ください。<br>
-                Noteへのアクセスは<a href="https://note.com/mizurushi" class="mt-5 inline-block text-xl font-bold text-sky-600">こちらまで</a>
-              </p>
+            <h2 class="text-xl md:text-xl font-bold"><span style="background-color: rgb(28, 167, 28);">使い方</span></h2>
+            <div class="text-lg md:text-base" style="text-align: center; padding: 18px;">
+              このウェブサイトは、代表例として、以下のように使うことができます。
+              <ul class="list-disc list-inside">
+                <li class="text-left">水質調査
+                  <p class="text-left">主に川を調査する際のノウハウや判断基準を提供しています。</p>
+                </li>
+                <li class="text-left">調査結果の共有
+                  <p class="text-left">皆さんからいただいたデータや環境省のデータをマップにして表示しています。<br>
+                    皆さんのデータは、毎月31日(予定)に更新しています。
+                  </p>
+                </li>
+                <li class="text-left">最新技術に触れる
+                  <p class="text-left">最新のAI技術を駆使し、写真から水の濁度(NTU)を検出できます。
+                    NTUについては<a href="learn.html" class="inline-block text-sm font-bold text-sky-600">こちら</a><br>
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
-        </section>
-        <!--sectionが閉じられていなかったため、問題が発生していた。
-        詳しくは　https://drive.google.com/file/d/1GDWMT-2uGSwlk9GniqxDsfsA42tyCnA4/view?usp=sharing　-->
+
+          <div class="w-full md:w-1/3 border-4 border-black p-2.5">
+            <h2 class="text-xl md:text-xl font-bold"><span style="background-color: rgb(28, 167, 28);">ウェブサイトの設計</span></h2>
+            <img src="pictures/ワークフロー .png" alt="Description" class="my-3">
+            <p>IDを調査データを送信する際に送っていただくことで、ポイントを獲得できます。
+              皆さんのポイントはSupabaseというデータベースにて管理されています。
+              Supabaseは国際的に認識されておるデータベースで、安全性が非常に高いことでも知られています。
+              詳しい情報は、公式のNoteをご覧ください。<br>
+              Noteへのアクセスは<a href="https://note.com/mizurushi" class="mt-5 inline-block text-xl font-bold text-sky-600">こちらまで</a>
+            </p>
+          </div>
+        </div>
 
         <div>
           <p style="text-align: center;">
-          <a href="#participant-id" class="mt-5 inline-block text-xl font-bold text-sky-600">まずは、ステップ１にご案内します。</a>
+            <a href="#participant-id" class="mt-5 inline-block text-xl font-bold text-sky-600">まずは、ステップ１にご案内します。</a>
           </p>
         </div>
-        <!--写真のスクロール　https://rita-plus.com/blog/css-animation-scroll-infinity/ 参照-->
+
         <div>
-        <div class="scroll-infinity">
-        <div class="scroll-infinity__wrap">
-        <ul class="scroll-infinity__list scroll-infinity__list--left">
-        <li class="scroll-infinity__item"><img src="pictures/logo.png" /></li>                        
-        <li class="scroll-infinity__item"><img src="pictures/map.png" /></li>
-        <li class="scroll-infinity__item"><img src="pictures/pet.png" /></li>
-        <li class="scroll-infinity__item"><img src="pictures/map_2.png" /></li>
-        <li class="scroll-infinity__item"><img src="pictures/egg_preview.png" /></li>
-        </ul>
-        <ul class="scroll-infinity__list scroll-infinity__list--left">
-        <li class="scroll-infinity__item"><img src="pictures/logo.png" /></li>                        
-        <li class="scroll-infinity__item"><img src="pictures/map.png" /></li>
-        <li class="scroll-infinity__item"><img src="pictures/pet.png" /></li>
-        <li class="scroll-infinity__item"><img src="pictures/map_2.png" /></li>
-        <li class="scroll-infinity__item"><img src="pictures/egg_preview.png" /></li>
-        </ul>
+          <div class="scroll-infinity">
+            <div class="scroll-infinity__wrap">
+              <ul class="scroll-infinity__list scroll-infinity__list--left">
+                <li class="scroll-infinity__item"><img src="pictures/logo.png" alt="Logo" /></li>                        
+                <li class="scroll-infinity__item"><img src="pictures/map.png" alt="Map" /></li>
+                <li class="scroll-infinity__item"><img src="pictures/pet.png" alt="Pet" /></li>
+                <li class="scroll-infinity__item"><img src="pictures/map_2.png" alt="Map 2" /></li>
+                <li class="scroll-infinity__item"><img src="pictures/egg_preview.png" alt="Egg Preview" /></li>
+              </ul>
+              <ul class="scroll-infinity__list scroll-infinity__list--left">
+                <li class="scroll-infinity__item"><img src="pictures/logo.png" alt="Logo" /></li>                        
+                <li class="scroll-infinity__item"><img src="pictures/map.png" alt="Map" /></li>
+                <li class="scroll-infinity__item"><img src="pictures/pet.png" alt="Pet" /></li>
+                <li class="scroll-infinity__item"><img src="pictures/map_2.png" alt="Map 2" /></li>
+                <li class="scroll-infinity__item"><img src="pictures/egg_preview.png" alt="Egg Preview" /></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-      </section>
+      </div>
+    </section>
 
-
-        <section id="participant-id" class="mx-auto my-10 max-w-2xl px-4 sm:px-6">
-        <div class="rounded-2xl border border-sky-100 bg-white p-6 text-center shadow-sm sm:p-8">
+    <section id="participant-id" class="mx-auto my-10 max-w-2xl px-4 sm:px-6">
+      <div class="rounded-2xl border border-sky-100 bg-white p-6 text-center shadow-sm sm:p-8">
         <h2 class="mt-4 text-3xl font-bold text-slate-900">
           <span style="background-color: yellow;">ステップ1：参加者IDを発行する</span>
         </h2>
@@ -478,225 +397,221 @@ function relocateTranslateElement() {
     </section>
   </main>
 
-<br>
-  <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+  <br>
+  <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 mx-auto max-w-4xl">
     <p class="text-sm leading-7 text-amber-900">
       <strong>※ 測定項目について：</strong>
       pH、DO、COD75、BOD75、SSなどの測定は任意項目です。
-      無理のない範囲で、安全に配慮して調査してください。
+      安全な範囲で、安全に配慮して調査してください。
     </p>
   </div>
 
-<div class="mt-12 mx-auto max-w-4xl px-4">
-  <div class="mb-5 text-center">
-    <h1 class="mt-2 text-4xl font-black text-slate-900"><br><span style="background-color: turquoise;">ステップ 2</span><br>調査結果を送信する</h1>
-    <p class="mt-2 text-ex">
-      <br>調査をしない場合は、<a href="instruction.html" class="inline-block text-sm font-bold text-sky-600">サイトについて知る</a>
-    </p>
+  <div class="mt-12 mx-auto max-w-4xl px-4">
+    <div class="mb-5 text-center">
+      <h1 class="mt-2 text-4xl font-black text-slate-900"><br><span style="background-color: turquoise;">ステップ 2</span><br>調査結果を送信する</h1>
+      <p class="mt-2 text-ex">
+        <br>調査をしない場合は、<a href="instruction.html" class="inline-block text-sm font-bold text-sky-600">サイトについて知る</a>
+      </p>
+    </div>
+
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+      <iframe
+        id="koboframe"
+        src="https://ee.kobotoolbox.org/x/YhdiF2vk"
+        title="調査回答フォーム"
+        class="h-[800px] w-full border-0"
+        loading="lazy"
+        allow="geolocation">
+      </iframe> 
+    </div>
   </div>
 
-  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg" style="overflow: hidden">
-    <iframe
-    id="koboframe"
-    src="https://ee.kobotoolbox.org/x/YhdiF2vk"
-    title="調査回答フォーム"
-    class="h-[800px] w-full border-0"
-    loading="lazy"
-    allow="geolocation">
-  </iframe> 
-  </div>
-</div>
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <span class="text-sm font-bold uppercase tracking-widest text-sky-600">News</span>
+        <h2 class="mt-2 text-3xl font-black text-slate-900">新着情報</h2>
+      </div>
+    </div>
 
-    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between gap-4">
-        <div>
-          <span class="text-sm font-bold uppercase tracking-widest text-sky-600">News
-          </span>
-          <h2 class="mt-2 text-3xl font-black text-slate-900">新着情報</h2>
+    <div class="mt-8 grid gap-6 lg:grid-cols-3">
+      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700">重要なお知らせ</span>
+          <time class="text-xs text-slate-400">2026.08.13</time>
         </div>
+        <h3 class="mt-5 text-xl font-bold text-slate-900">
+          必ず、以下の文書をご確認ください！
+        </h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          サイトの利用とリサーチを安全安心なものとするため、<strong>必ずご確認ください。</strong><br>
+          安全マニュアルとプライバシーポリシー、免責事項の資料をサイトのフッター(ページの一番下)のリンクからダウンロードできます。<br>
+          利用前に必ずご確認ください！
+        </p>
+        <a href="#footer" class="mt-5 inline-block text-sm font-bold text-sky-600">詳しく見る →</a>
+      </article>
+
+      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
+          <time class="text-xs text-slate-400">2026.08.25</time>
+        </div>
+        <h3 class="mt-5 text-xl font-bold text-slate-900">
+          イベント情報
+        </h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          今後イベントなどを行う際は、ことらから情報を発信していきます。
+          京都ユースサミットで使用したフォームやその他資料を公開しています。
+        </p>
+        <a href="event.html" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-bold text-sky-600">
+          イベント情報へ →
+        </a>
+      </article>
+
+      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
+          <time class="text-xs text-slate-400">2026.08.16</time>
+        </div>
+        <h3 class="mt-5 text-xl font-bold text-slate-900">
+          ブログを始めました
+        </h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          Noteにて、ブログを始め、初めて記事を出してみました！
+          今後は、役立つ情報をどんどん発信していきたいと思います。<br>
+          なお、公式アカウントをフォローしていただき、DMでユーザーID（参加者ID）をお送りいただければ、50ポイントを差し上げるキャンペーンを実施します！
+          ぜひご参加ください。
+        </p>
+        <a href="https://note.com/mizurushi" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-bold text-sky-600">
+          公式アカウントへ移動 →
+        </a>
+      </article>
+
+      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
+          <time class="text-xs text-slate-400">2026.08.16</time>
+        </div>
+        <h3 class="mt-5 text-xl font-bold text-slate-900">
+          ペットを作ることができます！
+        </h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          ログインをすると、ペットを自作することができます！<br>
+          ペットのデザインは一度決めると作り直すことはできないので、時間をかけて、気に入るデザインにしてくださいね。
+          テンプレートを使用することもできますが、テンプレートの編集はできないので、ご注意ください。<br>
+          問題が発生した場合は、ページの一番下にあるメールまでお問い合わせください。
+        </p>
+        <a href="login.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
+          詳しく見る →
+        </a>
+      </article>
+
+      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-sky-700">調査情報</span>
+          <time class="text-xs text-slate-400">2026.08.10</time>
+        </div>
+        <h3 class="mt-5 text-xl font-bold text-slate-900">
+          夏の水質調査にご参加ください！
+        </h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          身近な水辺の観察結果をぜひお寄せください。<br>
+          夏休みの自由研究にいかがですか？
+        </p>
+        <a href="survey.html" onclick="return startSurvey()" class="mt-5 inline-block text-sm font-bold text-sky-600">
+          詳しく見る →
+        </a>
+      </article>
+
+      <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">データ</span>
+          <time class="text-xs text-slate-400">2026.08.10</time>
+        </div>
+        <h3 class="mt-5 text-xl font-bold text-slate-900">
+          水質GISマップを更新しました
+        </h3>
+        <p class="mt-3 leading-7 text-slate-600">
+          公共用水域水質測定データをもとにしたGISマップを更新しました。
+        </p>
+        <a href="map.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
+          マップを見る →
+        </a>
+      </article>
+
+      <details class="more news" style="border-style: solid; border-width: 5px; border-color: #3498db; padding: 5%; margin: 0 auto; width: 100%;">
+        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="flex items-center justify-between">
+            <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold text-indigo-700">AI</span>
+            <time class="text-xs text-slate-400">2026.08.10</time>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-slate-900">
+            NTU予測AIがBeta公開されました
+          </h3>
+          <p class="mt-3 leading-7 text-slate-600">
+            水サンプルの写真から濁度（NTU）を予測するAIモデルの試験版を公開しました。
+            いまだに試験段階で、精度もイマイチです。しかし、皆さんからデータをいただくことで、
+            精度や機能性、利便性を向上させることができます。ご協力のほど、よろしくお願いいたします。
+          </p>
+          <a href="ai.html" target="_blank" class="mt-5 inline-block text-sm font-bold text-sky-600" style="padding-bottom: 2%;">
+            AIを試す →<br>
+          </a>
+          <a href="https://ee.kobotoolbox.org/x/jFdvSGis" target="_blank" class="mt-5 inline-block text-sm font-bold text-sky-600">
+            サンプルを送る →
+          </a>
+        </article>
+      </details>
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <span class="text-sm font-bold uppercase tracking-widest text-teal-600">Explore</span>
+        <h2 class="mt-2 text-3xl font-black text-slate-900">プロジェクトを知る</h2>
       </div>
 
-      <div class="mt-8 grid gap-6 lg:grid-cols-3">
-        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-          <div class="flex items-center justify-between">
-            <span class="rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700">重要なお知らせ</span>
-            <time class="text-xs text-slate-400">2026.08.13</time>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-slate-900">
-            必ず、以下の文書をご確認ください！
-          </h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            サイトの利用とリサーチを安全安心なものとするため、<strong>必ずご確認ください。</strong><br>
-            安全マニュアルとプライバシーポリシー、免責事項の資料をサイトのフッター(ページの一番下)のリンクからダウンロードできます。<br>
-            利用前に必ずご確認ください！
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="map.html" class="group rounded-2xl bg-sky-50 p-6 transition hover:bg-sky-100">
+          <h3 class="mt-5 text-lg font-bold">水質マップ</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">
+            公共用水域の水質データを地図から確認できます。
           </p>
-          <a href="#footer" class="mt-5 inline-block text-sm font-bold text-sky-600">詳しく見る →</a>
-        </article>
+          <div class="mt-4 text-sm font-bold text-sky-600">マップを見る →</div>
+        </a>
 
-        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-          <div class="flex items-center justify-between">
-            <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
-            <time class="text-xs text-slate-400">2026.08.25</time>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-slate-900">
-            イベント情報
-          </h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            今後イベントなどを行う際は、ことらから情報を発信していきます。
-            京都ユースサミットで使用したフォームやその他資料を公開しています。
+        <a href="survey.html" onclick="return startSurvey()" class="group rounded-2xl bg-teal-50 p-6 transition hover:bg-teal-100">
+          <h3 class="mt-5 text-lg font-bold">みんなの調査</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">
+            五感を使った水質調査に参加してみましょう。
           </p>
-          <a href="event.html" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-bold text-sky-600">
-            イベント情報へ →
-          </a>
-        </article>
+          <div class="mt-4 text-sm font-bold text-teal-600">参加する →</div>
+        </a>
 
-        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-          <div class="flex items-center justify-between">
-            <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
-            <time class="text-xs text-slate-400">2026.08.16</time>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-slate-900">
-            ブログを始めました
-          </h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            Noteにて、ブログを始め、初めて記事を出してみました！
-            今後は、役立つ情報をどんどん発信していきたいと思います。<br>
-            なお、公式アカウントをフォローしていただき、DMでユーザーID（参加者ID）をお送りいただければ、50ポイントを差し上げるキャンペーンを実施します！
-            ぜひご参加ください。
+        <a href="ai.html" class="group rounded-2xl bg-indigo-50 p-6 transition hover:bg-indigo-100">
+          <h3 class="mt-5 text-lg font-bold">AI予測</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">
+            水サンプルの写真から濁度を予測するBeta版AIです。
           </p>
-          <a href="https://note.com/mizurushi" target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-bold text-sky-600">
-            公式アカウントへ移動 →
-          </a>
-        </article>
+          <div class="mt-4 text-sm font-bold text-indigo-600">AIを試す →</div>
+        </a>
 
-        <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-          <div class="flex items-center justify-between">
-            <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-700">アップデート</span>
-            <time class="text-xs text-slate-400">2026.08.16</time>
-          </div>
-          <h3 class="mt-5 text-xl font-bold text-slate-900">
-            ペットを作ることができます！
-          </h3>
-          <p class="mt-3 leading-7 text-slate-600">
-            ログインをすると、ペットを自作することができます！<br>
-            ペットのデザインは一度決めると作り直すことはできないので、時間をかけて、気に入るデザインにしてくださいね。
-            テンプレートを使用することもできますが、テンプレートの編集はできないので、ご注意ください。<br>
-            問題が発生した場合は、ページの一番下にあるメールまでお問い合わせください。
+        <a href="learn.html" class="group rounded-2xl bg-amber-50 p-6 transition hover:bg-amber-100">
+          <h3 class="mt-5 text-lg font-bold">用語を学ぶ</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">
+            水質調査で使われる専門用語をわかりやすく解説します。
           </p>
-          <a href="login.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
-            詳しく見る →
-          </a>
-          <!--article が区切られていないことに気が付く-->>
-        </article>
-
-          <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <div class="flex items-center justify-between">
-              <span class="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-sky-700">調査情報</span>
-              <time class="text-xs text-slate-400">2026.08.10</time>
-            </div>
-            <h3 class="mt-5 text-xl font-bold text-slate-900">
-              夏の水質調査にご参加ください！
-            </h3>
-            <p class="mt-3 leading-7 text-slate-600">
-              身近な水辺の観察結果をぜひお寄せください。<br>
-              夏休みの自由研究にいかがですか？
-            </p>
-            <a href="survey.html" onclick="return startSurvey()" class="mt-5 inline-block text-sm font-bold text-sky-600">
-              詳しく見る →
-            </a>
-          </article>
-
-          <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <div class="flex items-center justify-between">
-              <span class="rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">データ</span>
-              <time class="text-xs text-slate-400">2026.08.10</time>
-            </div>
-            <h3 class="mt-5 text-xl font-bold text-slate-900">
-              水質GISマップを更新しました
-            </h3>
-            <p class="mt-3 leading-7 text-slate-600">
-              公共用水域水質測定データをもとにしたGISマップを更新しました。
-            </p>
-            <a href="map.html" class="mt-5 inline-block text-sm font-bold text-sky-600">
-              マップを見る →
-            </a>
-          </article>
-
-        <details class="more news" style="border-style: solid; border-width: 5px; border-color: #3498db; padding: 5%; margin: 0 auto; width: 100%;">
-          <article class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <div class="flex items-center justify-between">
-              <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold text-indigo-700">AI</span>
-              <time class="text-xs text-slate-400">2026.08.10</time>
-            </div>
-            <h3 class="mt-5 text-xl font-bold text-slate-900">
-              NTU予測AIがBeta公開されました
-            </h3>
-            <p class="mt-3 leading-7 text-slate-600">
-              水サンプルの写真から濁度（NTU）を予測するAIモデルの試験版を公開しました。
-              いまだに試験段階で、精度もイマイチです。しかし、皆さんからデータをいただくことで、
-              精度や機能性、利便性を向上させることができます。ご協力のほど、よろしくお願いいたします。
-            </p>
-            <a href="ai.html" target="_blank" class="mt-5 inline-block text-sm font-bold text-sky-600" style="padding-bottom: 2%;">
-              AIを試す →<br>
-            </a>
-            <a href="https://ee.kobotoolbox.org/x/jFdvSGis" target="_blank" class="mt-5 inline-block text-sm font-bold text-sky-600">
-              サンプルを送る →
-            </a>
-          </article>
-        </details>
+          <div class="mt-4 text-sm font-bold text-amber-700">学んでみる →</div>
+        </a>
       </div>
-    </section>
-
-    <section class="bg-white py-16">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <span class="text-sm font-bold uppercase tracking-widest text-teal-600">Explore</span>
-          <h2 class="mt-2 text-3xl font-black text-slate-900">プロジェクトを知る</h2>
-        </div>
-
-        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <a href="map.html" class="group rounded-2xl bg-sky-50 p-6 transition hover:bg-sky-100">
-            <h3 class="mt-5 text-lg font-bold">水質マップ</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              公共用水域の水質データを地図から確認できます。
-            </p>
-            <div class="mt-4 text-sm font-bold text-sky-600">マップを見る →</div>
-          </a>
-
-          <a href="survey.html" onclick="return startSurvey()" class="group rounded-2xl bg-teal-50 p-6 transition hover:bg-teal-100">
-            <h3 class="mt-5 text-lg font-bold">みんなの調査</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              五感を使った水質調査に参加してみましょう。
-            </p>
-            <div class="mt-4 text-sm font-bold text-teal-600">参加する →</div>
-          </a>
-
-          <a href="ai.html" class="group rounded-2xl bg-indigo-50 p-6 transition hover:bg-indigo-100">
-            <h3 class="mt-5 text-lg font-bold">AI予測</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              水サンプルの写真から濁度を予測するBeta版AIです。
-            </p>
-            <div class="mt-4 text-sm font-bold text-indigo-600">AIを試す →</div>
-          </a>
-
-          <a href="learn.html" class="group rounded-2xl bg-amber-50 p-6 transition hover:bg-amber-100">
-            <h3 class="mt-5 text-lg font-bold">用語を学ぶ</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              水質調査で使われる専門用語をわかりやすく解説します。
-            </p>
-            <div class="mt-4 text-sm font-bold text-amber-700">学んでみる →</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
+    </div>
+  </section>
 
   <hr style="border: none; border-top: 3px solid #3498db;padding: 5%;">
   <p style="padding: 3px; font-size: large; text-align: center;"><strong>皆さんのご感想をお聞かせください</strong></p>
 
-
   <div class="mt-12 mx-auto max-w-4xl px-4">
-    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg" style="overflow: hidden">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
       <iframe
         id="kobo_opinion"
         src="https://ee.kobotoolbox.org/x/XdswgbAv"
@@ -707,7 +622,6 @@ function relocateTranslateElement() {
       </iframe>
     </div>
   </div>
-  <!--フォームを二つ入れる際は、koboframeとkobo_opinionの二つのIDに分けることで、強制スクロール予防の確立を向上させる-->>
 
   <footer id="footer" class="border-t border-slate-200 bg-white">
     <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -722,7 +636,7 @@ function relocateTranslateElement() {
         </div>
 
         <div class="space-y-1 text-sm text-slate-500">
-          <p>お問い合わせはこちらまで: contact.citizen.riverproject [at] gmail.com</p>
+          <p>お問い合わせはこちらまで: contact.citizen.riverproject[at]gmail.com</p>
           <div>
             <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
           </div>
@@ -737,169 +651,226 @@ function relocateTranslateElement() {
     </div>
   </footer>
   
-<script>
-  document.getElementById("menuButton").addEventListener("click", () => {
-    document.getElementById("mobileMenu").classList.toggle("hidden");
-  });
+  <script>
+    document.getElementById("menuButton").addEventListener("click", () => {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    });
 
-  const USER_ID_STORAGE_KEY = "water-project-user-id";
-  const ISSUE_USER_ID_URL = "https://dgmdupdzylxewgsxygtr.supabase.co/functions/v1/issue-user-code";
+    const USER_ID_STORAGE_KEY = "water-project-user-id";
+    const ISSUE_USER_ID_URL = "https://dgmdupdzylxewgsxygtr.supabase.co/functions/v1/issue-user-code";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedUserId = localStorage.getItem(USER_ID_STORAGE_KEY);
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedUserId = localStorage.getItem(USER_ID_STORAGE_KEY);
 
-    if (savedUserId) {
-      showUserId(savedUserId);
-      setMessage("この端末に保存されている参加者IDです。");
-    }
-  });
+      if (savedUserId) {
+        showUserId(savedUserId);
+        setMessage("この端末に保存されている参加者IDです。");
+      }
+    });
 
-  function showUserId(userId) {
-    document.getElementById("user-id-output").innerText = userId;
-    document.getElementById("copy-btn").classList.remove("hidden");
-  }
-
-  function setMessage(message, isError = false) {
-    const el = document.getElementById("id-message");
-    el.innerText = message;
-    el.className = isError 
-      ? "mt-4 text-xs font-medium text-red-500" 
-      : "mt-4 text-xs font-medium text-slate-500";
-  }
-
-  function copyUserId() {
-    const userId = document.getElementById("user-id-output").innerText;
-    if (userId && userId !== "----") {
-      navigator.clipboard.writeText(userId);
-      setMessage("IDをクリップボードにコピーしました！");
-    }
-  }
-
-  async function issueUserId() {
-    const savedUserId = localStorage.getItem(USER_ID_STORAGE_KEY);
-
-    if (savedUserId) {
-      showUserId(savedUserId);
-      setMessage("すでにID（" + savedUserId + "）を持っています。「このIDで調査を始める」を押すか、別のIDを入力してください。");
-      return;
+    function showUserId(userId) {
+      document.getElementById("user-id-output").innerText = userId;
+      document.getElementById("copy-btn").classList.remove("hidden");
     }
 
-    setMessage("IDを発行しています…");
+    function setMessage(message, isError = false) {
+      const el = document.getElementById("id-message");
+      el.innerText = message;
+      el.className = isError 
+        ? "mt-4 text-xs font-medium text-red-500" 
+        : "mt-4 text-xs font-medium text-slate-500";
+    }
 
-    try {
-      const response = await fetch(ISSUE_USER_ID_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
+    function copyUserId() {
+      const userId = document.getElementById("user-id-output").innerText;
+      if (userId && userId !== "----") {
+        navigator.clipboard.writeText(userId);
+        setMessage("IDをクリップボードにコピーしました！");
+      }
+    }
 
-      const result = await response.json();
+    async function issueUserId() {
+      const savedUserId = localStorage.getItem(USER_ID_STORAGE_KEY);
 
-      if (!response.ok || result.status !== "success") {
-        throw new Error(result.message || "IDを発行できませんでした。");
+      if (savedUserId) {
+        showUserId(savedUserId);
+        setMessage("すでにID（" + savedUserId + "）を持っています。「このIDで調査を始める」を押すか、別のIDを入力してください。");
+        return;
       }
 
-      const userId = result.user_code;
+      setMessage("IDを発行しています…");
+
+      try {
+        const response = await fetch(ISSUE_USER_ID_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || result.status !== "success") {
+          throw new Error(result.message || "IDを発行できませんでした。");
+        }
+
+        const userId = result.user_code;
+
+        localStorage.setItem(USER_ID_STORAGE_KEY, userId);
+        showUserId(userId);
+
+        setMessage("IDを発行しました。スクリーンショットやメモで保管してください。");
+      } catch (error) {
+        console.error(error);
+        setMessage("IDを発行できませんでした。時間をおいて再試行してください。", true);
+      }
+    }
+
+    function restoreUserId() {
+      const input = document.getElementById("restore-user-id");
+      const userId = input.value.trim().toUpperCase();
+
+      if (!/^[A-Z0-9]{4}$/.test(userId)) {
+        setMessage("4桁の半角英数字で入力してください。", true);
+        return;
+      }
 
       localStorage.setItem(USER_ID_STORAGE_KEY, userId);
       showUserId(userId);
+      input.value = "";
 
-      setMessage("IDを発行しました。スクリーンショットやメモで保管してください。");
-    } catch (error) {
-      console.error(error);
-      setMessage("IDを発行できませんでした。時間をおいて再試行してください。", true);
-    }
-  }
-
-  function restoreUserId() {
-    const input = document.getElementById("restore-user-id");
-    const userId = input.value.trim().toUpperCase();
-
-    if (!/^[A-Z0-9]{4}$/.test(userId)) {
-      setMessage("4桁の半角英数字で入力してください。", true);
-      return;
+      setMessage("参加者ID（" + userId + "）をこの端末に保存しました。");
     }
 
-    localStorage.setItem(USER_ID_STORAGE_KEY, userId);
-    showUserId(userId);
-    input.value = "";
+    function startSurvey() {
+      const userId = localStorage.getItem(USER_ID_STORAGE_KEY);
 
-    setMessage("参加者ID（" + userId + "）をこの端末に保存しました。");
-  }
+      if (!userId) {
+        document.getElementById("participant-id").scrollIntoView({
+          behavior: "smooth"
+        });
 
-  function startSurvey() {
-    const userId = localStorage.getItem(USER_ID_STORAGE_KEY);
+        setMessage("先に新しいIDを発行するか、以前のIDを入力してください。", true);
+        return false;
+      }
 
-    if (!userId) {
-      document.getElementById("participant-id").scrollIntoView({
-        behavior: "smooth"
-      });
-
-      setMessage("先に新しいIDを発行するか、以前のIDを入力してください。", true);
+      window.location.href = "survey.html?user_code=" + encodeURIComponent(userId);
       return false;
     }
+  </script>
 
-    window.location.href = "survey.html?user_code=" + encodeURIComponent(userId);
-    return false;
+  <script src="script.js"></script>
+
+  <script>  
+    window.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('koboframe');
+      
+      if (iframe) {
+        iframe.addEventListener('load', () => {
+          const currentY = window.scrollY;
+
+          if (document.activeElement === iframe) {
+            iframe.blur();
+          }
+
+          window.scrollTo(0, currentY);
+
+          setTimeout(() => {
+            window.scrollTo(0, currentY);
+          }, 100);
+        });
+      }
+    });
+  </script>
+
+  <script>  
+    window.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('kobo_opinion');
+      
+      if (iframe) {
+        iframe.addEventListener('load', () => {
+          const currentY = window.scrollY;
+
+          if (document.activeElement === iframe) {
+            iframe.blur();
+          }
+
+          window.scrollTo(0, currentY);
+
+          setTimeout(() => {
+            window.scrollTo(0, currentY);
+          }, 100);
+        });
+      }
+    });
+  </script>
+
+  <script>
+  function googleTranslateElementInit() {
+    const nativeLanguageMap = {
+      'af': 'Afrikaans', 'sq': 'Shqip', 'am': 'አማርኛ', 'ar': 'العربية', 'hy': 'Հայերեն',
+      'az': 'Azərbaycan dili', 'eu': 'Euskara', 'be': 'Belaruskaya', 'bn': 'বাংলা',
+      'bs': 'Bosanski', 'bg': 'Български', 'ca': 'Català', 'ceb': 'Cebuan',
+      'ny': 'Chichewa', 'zh-CN': '中文 (简体)', 'zh-TW': '中文 (繁體)', 'co': 'Corsu',
+      'hr': 'Hrvatski', 'cs': 'Čeština', 'da': 'Dansk', 'nl': 'Nederlands',
+      'en': 'English', 'eo': 'Esperanto', 'et': 'Eesti', 'tl': 'Tagalog',
+      'fi': 'Suomi', 'fr': 'Français', 'fy': 'Frysk', 'gl': 'Galego',
+      'ka': 'ქართული', 'de': 'Deutsch', 'el': 'Ελληνικά', 'gu': 'ગુજરાતી',
+      'ht': 'Kreyòl ayisyen', 'ha': 'Hausa', 'haw': 'ʻŌlelo Hawaiʻi', 'iw': 'עברית',
+      'hi': 'हिन्दी', 'hmn': 'Hmoob', 'hu': 'Magyar', 'is': 'Íslenska',
+      'ig': 'Asụsụ Igbo', 'id': 'Bahasa Indonesia', 'ga': 'Gaeilge', 'it': 'Italiano',
+      'ja': '日本語', 'jw': 'Basa Jawa', 'kn': 'ಕನ್ನಡ', 'kk': 'Қазақ тілі',
+      'km': 'ភាសាខ្មែរ', 'rw': 'Kinyarwanda', 'ko': '한국語', 'ku': 'Kurdî',
+      'ky': 'Кыргызча', 'lo': 'ພາສາລາວ', 'la': 'Latina', 'lv': 'Latviešu',
+      'lt': 'Lietuvių', 'lb': 'Lëtzebuergesch', 'mk': 'Македонски', 'mg': 'Malagasy',
+      'ms': 'Bahasa Melayu', 'ml': 'മലയാളം', 'mt': 'Malti', 'mi': 'Māori',
+      'mr': 'मराठी', 'mn': 'Монгол', 'my': 'မြန်မာဘာသာ', 'ne': 'नेपाली',
+      'no': 'Norsk', 'or': 'ଓଡ଼ିଆ', 'ps': 'پښتو', 'fa': 'فارسی',
+      'pl': 'Polski', 'pt': 'Português', 'pa': 'ਪੰਜਾਬੀ', 'ro': 'Română',
+      'ru': 'Русский', 'sm': 'Gagana Samoa', 'gd': 'Gàidhlig', 'sr': 'Српски',
+      'st': 'Sesotho', 'sn': 'ChiShona', 'sd': 'سنڌي', 'si': 'සිංહල',
+      'sk': 'Slovenčina', 'sl': 'Slovenščina', 'so': 'Soomaali', 'es': 'Español',
+      'su': 'Basa Sunda', 'sw': 'Kiswahili', 'sv': 'Svenska', 'tg': 'Тоҷикӣ',
+      'ta': 'தமிழ்', 'tt': 'Татар', 'te': 'తెలుగు', 'th': 'ไทย',
+      'tr': 'Türkçe', 'tk': 'Türkmen', 'uk': 'Українська', 'ur': 'اردو',
+      'ug': 'ئۇيغۇرچە', 'uz': 'O‘zbekcha', 'vi': 'Tiếng Việt', 'cy': 'Cymraeg',
+      'xh': 'IsiXhosa', 'yi': 'ייִדיש', 'yo': 'Yorùbá', 'zu': 'IsiZulu'
+    };
+
+    const allowedLanguages = Object.keys(nativeLanguageMap).join(',');
+
+    new google.translate.TranslateElement({
+      pageLanguage: 'ja',
+      includedLanguages: allowedLanguages,
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    const checkDropdown = setInterval(() => {
+      const select = document.querySelector('.goog-te-combo');
+      if (select && select.options.length > 1) {
+        clearInterval(checkDropdown);
+
+        select.classList.add('notranslate');
+
+        for (let i = select.options.length - 1; i >= 0; i--) {
+          const option = select.options[i];
+          const code = option.value;
+
+          if (!code) continue;
+
+          if (nativeLanguageMap[code]) {
+            option.classList.add('notranslate');
+            option.textContent = nativeLanguageMap[code];
+          } else {
+          select.remove(i);
+          }
+        }
+      }
+    }, 100);
   }
-</script>
-
-<script src="script.js"></script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<script>  
-window.addEventListener('DOMContentLoaded', () => {
-    const iframe = document.getElementById('koboframe');
-    
-    if (iframe) {
-      iframe.addEventListener('load', () => {
-        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
-        const currentY = window.scrollY;
-
-        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
-        if (document.activeElement === iframe) {
-          iframe.blur();
-        }
-
-        // 保持した縦位置に復元（横位置は0固定）
-        window.scrollTo(0, currentY);
-
-        //iframeの読み込みが遅れた場合の対策
-        setTimeout(() => {
-          window.scrollTo(0, currentY);
-        }, 100);
-      });
-    }
-  });
-</script>
-
-
-<script>  
-window.addEventListener('DOMContentLoaded', () => {
-    const iframe = document.getElementById('kobo_opinion');
-    
-    if (iframe) {
-      iframe.addEventListener('load', () => {
-        // Y軸（縦方向）のスクロール位置を記憶。x軸は変化しないため記憶しない。
-        const currentY = window.scrollY;
-
-        // iframeからフォーカスを解除。キーボードが出てくるなどの問題の対策
-        if (document.activeElement === iframe) {
-          iframe.blur();
-        }
-
-        // 保持した縦位置に復元（横位置は0固定）
-        window.scrollTo(0, currentY);
-
-        //iframeの読み込みが遅れた場合の対策
-        setTimeout(() => {
-          window.scrollTo(0, currentY);
-        }, 100);
-      });
-    }
-  });
-</script>
+  </script>
+  
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
