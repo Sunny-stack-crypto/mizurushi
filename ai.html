@@ -5,6 +5,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="translation_style.css" />
 
   <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
   <!-- Google tag (gtag.js) -->
@@ -59,7 +60,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-  <link rel="stylesheet" href="translation_style.css">
+  
   <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った市民調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
 
 <!-- SNSシェア時のカード表示用（OGPタグ） -->
@@ -89,7 +90,7 @@
         <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
         <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
         <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">みんなの調査</a>
-        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
+        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm bg-sky-200">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="30 Day Carbon Challange.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">チャレンジ</a>
         <a href="login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
@@ -112,7 +113,7 @@
       <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
       <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
       <a href="survey.html" class="block rounded-lg px-3 py-2">みんなの調査</a>
-      <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2 bg-sky-200">AI予測</a>
       <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
       <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2">チャレンジ</a>
       <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
@@ -384,14 +385,11 @@ function googleTranslateElementInit() {
         }
       }
 
-      // 画面サイズに応じて翻訳ウィジェットの位置を調整する処理を追加
       relocateTranslateElement();
-      window.addEventListener('resize', relocateTranslateElement);
     }
   }, 100);
 }
 
-// 画面幅に応じて翻訳要素を移動させる関数
 function relocateTranslateElement() {
   const elem = document.getElementById('google_translate_element');
   const desktopWrapper = document.getElementById('translate-wrapper-desktop');

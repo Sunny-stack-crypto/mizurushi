@@ -4,6 +4,8 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="scrollanimation.css">
+  <link rel="stylesheet" href="translation_style.css" />
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -33,17 +35,25 @@
   <meta property="og:image" content="https://sunny-stack-crypto.github.io/mizurushi/pictures/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- OneSignal (プッシュ通知) -->
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-  <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
-        appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
-      });
-    });
-  </script>
+  
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    try {
+      // 許可されたドメイン（GitHub Pages）でのみOneSignalを初期化
+      if (window.location.hostname.includes("sunny-stack-crypto.github.io")) {
+        await OneSignal.init({
+          appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+        });
+      } else {
+        console.warn("OneSignal initialized skipped on non-production domain.");
+      }
+    } catch (e) {
+      console.error("OneSignal initialization error caught:", e);
+    }
+  });
+</script>
 
   <!-- Tailwind CSS & Styles -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -72,7 +82,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="translation_style.css">
+  
 </head>
 
 <body class="bg-sky-50 text-slate-800 font-sans">
@@ -90,7 +100,7 @@
 
       <!-- デスクトップ用ナビゲーション -->
       <nav class="hidden items-center gap-1 md:flex">
-        <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
+        <a href="index.html" class="rounded-lg px-4 py-2 text-sm bg-sky-200">ホーム</a>
         <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
         <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">みんなの調査</a>
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
@@ -113,7 +123,7 @@
 
     <!-- モバイル用ナビゲーション -->
     <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
-      <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
+      <a href="index.html" class="block rounded-lg px-3 py-2 bg-sky-200">ホーム</a>
       <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
       <a href="survey.html" class="block rounded-lg px-3 py-2">みんなの調査</a>
       <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
@@ -121,12 +131,11 @@
       <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2">チャレンジ</a>
       <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
 
-      <!-- スマホ用 翻訳エリア（PCと同じデザイン構造に統一） -->
+      <!-- スマホ用 翻訳エリア -->
       <div class="mt-3 border-t border-sky-100 px-3 pt-3">
         <div id="translate-wrapper-mobile" class="flex items-center gap-2 text-xs font-medium text-slate-600">
           <span>Language</span>
           <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
-          <!-- JSでgoogle_translate_elementをここに移動させます -->
         </div>
       </div>
     </nav>
@@ -757,7 +766,7 @@
     }
   </script>
 
-  <script src="script.js"></script>
+  
 
   <script>  
     window.addEventListener('DOMContentLoaded', () => {
@@ -802,6 +811,7 @@
       }
     });
   </script>
+  
 <script>
 function googleTranslateElementInit() {
   const nativeLanguageMap = {
@@ -818,7 +828,7 @@ function googleTranslateElementInit() {
     'ig': 'Asụsụ Igbo', 'id': 'Bahasa Indonesia', 'ga': 'Gaeilge', 'it': 'Italiano',
     'ja': '日本語', 'jw': 'Basa Jawa', 'kn': 'ಕನ್ನಡ', 'kk': 'Қазақ тілі',
     'km': 'ភាសាខ្មែរ', 'rw': 'Kinyarwanda', 'ko': '한국語', 'ku': 'Kurdî',
-    'ky': 'Кыргызча', 'lo': 'ພາសាລາວ', 'la': 'Latina', 'lv': 'Latviešu',
+    'ky': 'Кыргызча', 'lo': 'ພາສາລາວ', 'la': 'Latina', 'lv': 'Latviešu',
     'lt': 'Lietuvių', 'lb': 'Lëtzebuergesch', 'mk': 'Македонски', 'mg': 'Malagasy',
     'ms': 'Bahasa Melayu', 'ml': 'മലയാളം', 'mt': 'Malti', 'mi': 'Māori',
     'mr': 'मराठी', 'mn': 'Монгол', 'my': 'မြန်မာဘာသာ', 'ne': 'नेपाली',
@@ -831,46 +841,60 @@ function googleTranslateElementInit() {
     'ta': 'தமிழ்', 'tt': 'Татар', 'te': 'తెలుగు', 'th': 'ไทย',
     'tr': 'Türkçe', 'tk': 'Türkmen', 'uk': 'Українська', 'ur': 'اردو',
     'ug': 'ئۇيغۇرچە', 'uz': 'O‘zbekcha', 'vi': 'Tiếng Việt', 'cy': 'Cymraeg',
-    'xh': 'IsiXhosa', 'yi': 'ייִדיש', 'yo': 'Yorùbá', 'zu': 'IsiZulu'
+    'xh': 'IsiXhosa', 'yi': 'ייִדיশ', 'yo': 'Yorùbá', 'zu': 'IsiZulu'
   };
 
   const allowedLanguages = Object.keys(nativeLanguageMap).join(',');
 
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: allowedLanguages,
-    autoDisplay: false
-  }, 'google_translate_element');
+  try {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ja',
+      includedLanguages: allowedLanguages,
+      autoDisplay: false
+    }, 'google_translate_element');
+  } catch (e) {
+    console.error("Google Translate initialization failed:", e);
+  }
 
+  let attempts = 0;
   const checkDropdown = setInterval(() => {
+    attempts++;
     const select = document.querySelector('.goog-te-combo');
     if (select && select.options.length > 1) {
       clearInterval(checkDropdown);
 
-      select.classList.add('notranslate');
+      try {
+        select.classList.add('notranslate');
 
-      for (let i = select.options.length - 1; i >= 0; i--) {
-        const option = select.options[i];
-        const code = option.value;
+        for (let i = select.options.length - 1; i >= 0; i--) {
+          const option = select.options[i];
+          const code = option.value;
 
-        if (!code) continue;
+          if (!code) continue;
 
-        if (nativeLanguageMap[code]) {
-          option.classList.add('notranslate');
-          option.textContent = nativeLanguageMap[code];
-        } else {
-          select.remove(i);
+          if (nativeLanguageMap[code]) {
+            option.classList.add('notranslate');
+            option.textContent = nativeLanguageMap[code];
+          } else {
+            select.remove(i);
+          }
         }
+      } catch (err) {
+        console.error("Error processing translate options:", err);
       }
 
-      // 画面サイズに応じて翻訳ウィジェットの位置を調整する処理を追加
+      // 位置調整とイベント設定
       relocateTranslateElement();
       window.addEventListener('resize', relocateTranslateElement);
+    }
+
+    // 10秒経過しても生成されない場合はタイムアウトで終了
+    if (attempts > 100) {
+      clearInterval(checkDropdown);
     }
   }, 100);
 }
 
-// 画面幅に応じて翻訳要素を移動させる関数
 function relocateTranslateElement() {
   const elem = document.getElementById('google_translate_element');
   const desktopWrapper = document.getElementById('translate-wrapper-desktop');
@@ -889,8 +913,8 @@ function relocateTranslateElement() {
   }
 }
 </script>
-  
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
 
 </body>
 </html>

@@ -5,6 +5,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
+  <link rel="stylesheet" href="translation_style.css" />
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
 <script>
@@ -57,7 +58,7 @@
     }
   </script>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="translation_style.css">
+  
   <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った市民調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
 
 <!-- SNSシェア時のカード表示用（OGPタグ） -->
@@ -85,7 +86,7 @@
       <nav class="hidden items-center gap-1 md:flex">
         <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
         <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
-        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">みんなの調査</a>
+        <a href="survey.html" class="rounded-lg px-4 py-2 text-sm bg-sky-200">みんなの調査</a>
         <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="30 Day Carbon Challange.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">チャレンジ</a>
@@ -108,7 +109,7 @@
     <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
       <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
       <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
-      <a href="survey.html" class="block rounded-lg px-3 py-2">みんなの調査</a>
+      <a href="survey.html" class="block rounded-lg px-3 py-2 bg-sky-200">みんなの調査</a>
       <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
       <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
       <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2">チャレンジ</a>
@@ -644,14 +645,11 @@ function googleTranslateElementInit() {
         }
       }
 
-      // 画面サイズに応じて翻訳ウィジェットの位置を調整する処理を追加
       relocateTranslateElement();
-      window.addEventListener('resize', relocateTranslateElement);
     }
   }, 100);
 }
 
-// 画面幅に応じて翻訳要素を移動させる関数
 function relocateTranslateElement() {
   const elem = document.getElementById('google_translate_element');
   const desktopWrapper = document.getElementById('translate-wrapper-desktop');
@@ -672,3 +670,6 @@ function relocateTranslateElement() {
 </script>
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

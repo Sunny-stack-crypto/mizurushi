@@ -4,29 +4,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="translation_style.css" />
   <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-QE1RW1G56M');
-</script>
+    gtag('config', 'G-QE1RW1G56M');
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>イベント情報 | ミズルシ</title>
 
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "64bbeed1-dd4d-4c35-8024-f8cce603706c",
+      });
     });
-  });
-</script>
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -55,21 +58,20 @@
     }
   </script>
 
-
   <style>
     html {
       scroll-behavior: smooth;
     }
   </style>
-  <link rel="stylesheet" href="translation_style.css">
+  
   <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った市民調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
 
-<!-- SNSシェア時のカード表示用（OGPタグ） -->
-<meta property="og:title" content="ミズルシ | 市民参加型水質調査プロジェクト">
-<meta property="og:description" content="地域の水環境をみんなで見える化。水質マップの閲覧やAI濁度予測が試せます。">
-<meta property="og:image" content="https://sunny-stack-crypto.github.io/mizurushi/pictures/logo.png">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+  <!-- SNSシェア時のカード表示用（OGPタグ） -->
+  <meta property="og:title" content="ミズルシ | 市民参加型水質調査プロジェクト">
+  <meta property="og:description" content="地域の水環境をみんなで見える化。水質マップの閲覧やAI濁度予測が試せます。">
+  <meta property="og:image" content="https://sunny-stack-crypto.github.io/mizurushi/pictures/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="bg-sky-50 text-slate-800 flex flex-col min-h-screen">
@@ -125,12 +127,11 @@
       <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2">チャレンジ</a>
       <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
 
-      <!-- スマホ用 翻訳エリア（PCと同じデザイン構造に統一） -->
+      <!-- スマホ用 翻訳エリア -->
       <div class="mt-3 border-t border-sky-100 px-3 pt-3">
         <div id="translate-wrapper-mobile" class="flex items-center gap-2 text-xs font-medium text-slate-600">
           <span>Language</span>
           <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
-          <!-- JSでgoogle_translate_elementをここに移動させます -->
         </div>
       </div>
     </nav>
@@ -161,6 +162,35 @@
         </article>
       </div>
     </section>
+
+  <footer id="footer" class="border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row">
+        <div class="flex flex-col items-start">
+          <img 
+            src="pictures/logo.png" 
+            alt="Logo" 
+            class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
+          >
+          <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
+        </div>
+
+        <div class="space-y-1 text-sm text-slate-500">
+          <p>お問い合わせはこちらまで: contact.citizen.riverproject [at] gmail.com</p>
+          <div>
+            <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
+          </div>
+          <div>
+            <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
+          </div>
+          <div>
+            <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 <script>
 function googleTranslateElementInit() {
   const nativeLanguageMap = {
@@ -222,30 +252,9 @@ function googleTranslateElementInit() {
         }
       }
 
-      // 画面サイズに応じて翻訳ウィジェットの位置を調整する処理を追加
       relocateTranslateElement();
-      window.addEventListener('resize', relocateTranslateElement);
     }
   }, 100);
-}
-
-// 画面幅に応じて翻訳要素を移動させる関数
-function relocateTranslateElement() {
-  const elem = document.getElementById('google_translate_element');
-  const desktopWrapper = document.getElementById('translate-wrapper-desktop');
-  const mobileWrapper = document.getElementById('translate-wrapper-mobile');
-
-  if (!elem) return;
-
-  if (window.innerWidth < 768) {
-    if (mobileWrapper && !mobileWrapper.contains(elem)) {
-      mobileWrapper.appendChild(elem);
-    }
-  } else {
-    if (desktopWrapper && !desktopWrapper.contains(elem)) {
-      desktopWrapper.appendChild(elem);
-    }
-  }
 }
 
 function relocateTranslateElement() {
@@ -267,35 +276,7 @@ function relocateTranslateElement() {
 }
 </script>
 
-  <footer id="footer" class="border-t border-slate-200 bg-white">
-    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div class="flex flex-col justify-between gap-4 sm:flex-row">
-        <div class="flex flex-col items-start">
-          <img 
-            src="pictures/logo.png" 
-            alt="Logo" 
-            class="footer-bottom-left-img h-10 w-auto max-w-[200px] object-contain"
-          >
-          <p class="mt-2 text-sm text-slate-500">市民参加型水質調査プロジェクト</p>
-        </div>
 
-        <div class="space-y-1 text-sm text-slate-500">
-          <p>お問い合わせはこちらまで: contact.citizen.riverproject [at] gmail.com</p>
-          <div>
-            <a href="https://docs.google.com/document/d/1LoATYyeiXm_O02T6vCnJm3eWSOw5Jg8pDU-5Fkr_0H0/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">プライバシーポリシー（PDF）をダウンロード</a>
-          </div>
-          <div>
-            <a href="https://docs.google.com/document/d/1xv9jD-bMzm4ZBQbrMsyJgue6PZdU-xE6aJ5FTQqaiA8/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">免責事項（PDF）をダウンロード</a>
-          </div>
-          <div>
-            <a href="https://docs.google.com/document/d/1RwIGfMFkii2RFOipCSeUVJt631tnvgv1fXtGN8Ak73w/export?format=pdf" target="_blank" class="text-sky-600 hover:underline">安全マニュアル（PDF）をダウンロード</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-<script src="script.js"></script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>

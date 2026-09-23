@@ -4,6 +4,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="translation_style.css" />
   <meta name="google-site-verification" content="nYcztPod34HPVGMMd2TCdcz6Qdrs3_cg4Jk4EG3gdi8" />
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE1RW1G56M"></script>
@@ -61,7 +62,7 @@
       scroll-behavior: smooth;
     }
   </style>
-  <link rel="stylesheet" href="translation_style.css">
+  
   <meta name="description" content="川や湖の水環境をみんなで調べて見える化するシチズンサイエンスプロジェクト『ミズルシ』。水質GISマップの閲覧、五感を使った市民調査への参加、AI写真画像による濁度（NTU）予測が可能です。">
 
 <!-- SNSシェア時のカード表示用（OGPタグ） -->
@@ -273,7 +274,7 @@
   });
 </script>
 
-<script src="script.js"></script>
+
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>  
@@ -366,14 +367,11 @@ function googleTranslateElementInit() {
         }
       }
 
-      // 画面サイズに応じて翻訳ウィジェットの位置を調整する処理を追加
       relocateTranslateElement();
-      window.addEventListener('resize', relocateTranslateElement);
     }
   }, 100);
 }
 
-// 画面幅に応じて翻訳要素を移動させる関数
 function relocateTranslateElement() {
   const elem = document.getElementById('google_translate_element');
   const desktopWrapper = document.getElementById('translate-wrapper-desktop');
