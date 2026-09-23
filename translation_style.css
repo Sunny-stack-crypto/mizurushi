@@ -56,3 +56,30 @@ html {
 .goog-te-gadget a {
   color: #0284c7 !important;
 }
+
+/* Google翻訳の不要な要素（「提供元: Google 翻訳」テキストやバナーなど）を整える */
+.goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  font-size: 0.875rem !important;
+  color: #334155 !important; 
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important; 
+  border-radius: 0.375rem !important; 
+  padding: 0.25rem 0.5rem !important;
+  outline: none !important;
+  max-width: 100% !important;
+}
+
+body {
+  top: 0 !important;
+}
+.skiptranslate {
+  display: none !important;
+}
+.goog-te-banner-frame {
+  display: none !important;
+}

@@ -72,62 +72,60 @@
 
 <!-- 3. Add font-sans to apply the font globally -->
 <body class="bg-sky-50 text-slate-800 font-sans">
-
 <header class="sticky top-0 z-50 border-b border-sky-100 bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       
       <a href="index.html" class="flex items-center gap-3">
-        <img 
-          src="pictures/logo.png" 
-          alt="Logo" 
-          class="h-9 w-auto object-contain" 
-        />
+        <img src="pictures/logo.png" alt="Logo" class="h-9 w-auto object-contain" />
         <div class="flex flex-col justify-center">
           <div class="font-bold leading-tight text-slate-900">ミズルシ</div>
           <div class="hidden text-xs text-slate-500 sm:block">Citizen Science Water Project</div>
         </div>
       </a>
 
+      <!-- デスクトップ用ナビゲーション -->
       <nav class="hidden items-center gap-1 md:flex">
         <a href="index.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ホーム</a>
         <a href="map.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">マップ</a>
         <a href="survey.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">みんなの調査</a>
-        <a href="ai.html" class="rounded-lg bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700">AI予測</a>
+        <a href="ai.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">AI予測</a>
         <a href="learn.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">学ぶ</a>
         <a href="30 Day Carbon Challange.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">チャレンジ</a>
         <a href="login.html" class="rounded-lg px-4 py-2 text-sm hover:bg-sky-50">ログイン</a>
 
-          <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-            <span>Language</span>
-            <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
-            <div id="google_translate_element"></div>
-          </div>
-        </nav>
+        <!-- PC用 翻訳エリア -->
+        <div id="translate-wrapper-desktop" class="ml-2 flex items-center gap-1.5 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <div id="google_translate_element"></div>
+        </div>
+      </nav>
 
       <button id="menuButton" class="rounded-lg p-2 text-slate-600 md:hidden" aria-label="メニュー">
         ☰
       </button>
     </div>
 
+    <!-- モバイル用ナビゲーション -->
     <nav id="mobileMenu" class="hidden border-t border-sky-100 py-3 md:hidden">
       <a href="index.html" class="block rounded-lg px-3 py-2">ホーム</a>
       <a href="map.html" class="block rounded-lg px-3 py-2">マップ</a>
       <a href="survey.html" class="block rounded-lg px-3 py-2">みんなの調査</a>
-      <a href="ai.html" class="block rounded-lg px-3 py-2 font-bold text-indigo-700">AI予測</a>
+      <a href="ai.html" class="block rounded-lg px-3 py-2">AI予測</a>
       <a href="learn.html" class="block rounded-lg px-3 py-2">学ぶ</a>
       <a href="30 Day Carbon Challange.html" class="block rounded-lg px-3 py-2">チャレンジ</a>
       <a href="login.html" class="block rounded-lg px-3 py-2">ログイン</a>
 
-        <div class="mt-2 border-t border-sky-100 px-3 pt-3">
-          <div class="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-            <span>Language</span>
-            <img src="pictures/world.png" alt="Language Icon" class="h-4 w-4 object-contain"/>
-            <div id="google_translate_element"></div>
-          </div>
-          <div id="translate-wrapper-mobile"></div>
+      <!-- スマホ用 翻訳エリア（PCと同じデザイン構造に統一） -->
+      <div class="mt-3 border-t border-sky-100 px-3 pt-3">
+        <div id="translate-wrapper-mobile" class="flex items-center gap-2 text-xs font-medium text-slate-600">
+          <span>Language</span>
+          <img src="pictures/world.png" alt="Language Icon" class="h-5 w-5 object-contain" />
+          <!-- JSでgoogle_translate_elementをここに移動させます -->
         </div>
-      </nav>
+      </div>
+    </nav>
   </div>
 </header>
 <main>
@@ -325,72 +323,93 @@
     </div>
   </div>
 </footer>
+<script>
+function googleTranslateElementInit() {
+  const nativeLanguageMap = {
+    'af': 'Afrikaans', 'sq': 'Shqip', 'am': 'አማርኛ', 'ar': 'العربية', 'hy': 'Հայերեն',
+    'az': 'Azərbaycan dili', 'eu': 'Euskara', 'be': 'Belaruskaya', 'bn': 'বাংলা',
+    'bs': 'Bosanski', 'bg': 'Български', 'ca': 'Català', 'ceb': 'Cebuan',
+    'ny': 'Chichewa', 'zh-CN': '中文 (简体)', 'zh-TW': '中文 (繁體)', 'co': 'Corsu',
+    'hr': 'Hrvatski', 'cs': 'Čeština', 'da': 'Dansk', 'nl': 'Nederlands',
+    'en': 'English', 'eo': 'Esperanto', 'et': 'Eesti', 'tl': 'Tagalog',
+    'fi': 'Suomi', 'fr': 'Français', 'fy': 'Frysk', 'gl': 'Galego',
+    'ka': 'ქართული', 'de': 'Deutsch', 'el': 'Ελληνικά', 'gu': 'ગુજરાતી',
+    'ht': 'Kreyòl ayisyen', 'ha': 'Hausa', 'haw': 'ʻŌlelo Hawaiʻi', 'iw': 'עברית',
+    'hi': 'हिन्दी', 'hmn': 'Hmoob', 'hu': 'Magyar', 'is': 'Íslenska',
+    'ig': 'Asụsụ Igbo', 'id': 'Bahasa Indonesia', 'ga': 'Gaeilge', 'it': 'Italiano',
+    'ja': '日本語', 'jw': 'Basa Jawa', 'kn': 'ಕನ್ನಡ', 'kk': 'Қазақ тілі',
+    'km': 'ភាសាខ្មែរ', 'rw': 'Kinyarwanda', 'ko': '한국語', 'ku': 'Kurdî',
+    'ky': 'Кыргызча', 'lo': 'ພາសាລາວ', 'la': 'Latina', 'lv': 'Latviešu',
+    'lt': 'Lietuvių', 'lb': 'Lëtzebuergesch', 'mk': 'Македонски', 'mg': 'Malagasy',
+    'ms': 'Bahasa Melayu', 'ml': 'മലയാളം', 'mt': 'Malti', 'mi': 'Māori',
+    'mr': 'मराठी', 'mn': 'Монгол', 'my': 'မြန်မာဘာသာ', 'ne': 'नेपाली',
+    'no': 'Norsk', 'or': 'ଓଡ଼ିଆ', 'ps': 'پښتو', 'fa': 'فارسی',
+    'pl': 'Polski', 'pt': 'Português', 'pa': 'ਪੰਜਾਬੀ', 'ro': 'Română',
+    'ru': 'Русский', 'sm': 'Gagana Samoa', 'gd': 'Gàidhlig', 'sr': 'Српски',
+    'st': 'Sesotho', 'sn': 'ChiShona', 'sd': 'سنڌي', 'si': 'සිංહල',
+    'sk': 'Slovenčina', 'sl': 'Slovenščina', 'so': 'Soomaali', 'es': 'Español',
+    'su': 'Basa Sunda', 'sw': 'Kiswahili', 'sv': 'Svenska', 'tg': 'Тоҷикӣ',
+    'ta': 'தமிழ்', 'tt': 'Татар', 'te': 'తెలుగు', 'th': 'ไทย',
+    'tr': 'Türkçe', 'tk': 'Türkmen', 'uk': 'Українська', 'ur': 'اردو',
+    'ug': 'ئۇيغۇرچە', 'uz': 'O‘zbekcha', 'vi': 'Tiếng Việt', 'cy': 'Cymraeg',
+    'xh': 'IsiXhosa', 'yi': 'ייִדיש', 'yo': 'Yorùbá', 'zu': 'IsiZulu'
+  };
 
+  const allowedLanguages = Object.keys(nativeLanguageMap).join(',');
 
-  <script>
-  function googleTranslateElementInit() {
-    const nativeLanguageMap = {
-      'af': 'Afrikaans', 'sq': 'Shqip', 'am': 'አማርኛ', 'ar': 'العربية', 'hy': 'Հայերեն',
-      'az': 'Azərbaycan dili', 'eu': 'Euskara', 'be': 'Belaruskaya', 'bn': 'বাংলা',
-      'bs': 'Bosanski', 'bg': 'Български', 'ca': 'Català', 'ceb': 'Cebuan',
-      'ny': 'Chichewa', 'zh-CN': '中文 (简体)', 'zh-TW': '中文 (繁體)', 'co': 'Corsu',
-      'hr': 'Hrvatski', 'cs': 'Čeština', 'da': 'Dansk', 'nl': 'Nederlands',
-      'en': 'English', 'eo': 'Esperanto', 'et': 'Eesti', 'tl': 'Tagalog',
-      'fi': 'Suomi', 'fr': 'Français', 'fy': 'Frysk', 'gl': 'Galego',
-      'ka': 'ქართული', 'de': 'Deutsch', 'el': 'Ελληνικά', 'gu': 'ગુજરાતી',
-      'ht': 'Kreyòl ayisyen', 'ha': 'Hausa', 'haw': 'ʻŌlelo Hawaiʻi', 'iw': 'עברית',
-      'hi': 'हिन्दी', 'hmn': 'Hmoob', 'hu': 'Magyar', 'is': 'Íslenska',
-      'ig': 'Asụsụ Igbo', 'id': 'Bahasa Indonesia', 'ga': 'Gaeilge', 'it': 'Italiano',
-      'ja': '日本語', 'jw': 'Basa Jawa', 'kn': 'ಕನ್ನಡ', 'kk': 'Қазақ тілі',
-      'km': 'ភាសាខ្មែរ', 'rw': 'Kinyarwanda', 'ko': '한국語', 'ku': 'Kurdî',
-      'ky': 'Кыргызча', 'lo': 'ພາສາລາວ', 'la': 'Latina', 'lv': 'Latviešu',
-      'lt': 'Lietuvių', 'lb': 'Lëtzebuergesch', 'mk': 'Македонски', 'mg': 'Malagasy',
-      'ms': 'Bahasa Melayu', 'ml': 'മലയാളം', 'mt': 'Malti', 'mi': 'Māori',
-      'mr': 'मराठी', 'mn': 'Монгол', 'my': 'မြန်မာဘာသာ', 'ne': 'नेपाली',
-      'no': 'Norsk', 'or': 'ଓଡ଼ିଆ', 'ps': 'پښتو', 'fa': 'فارسی',
-      'pl': 'Polski', 'pt': 'Português', 'pa': 'ਪੰਜਾਬੀ', 'ro': 'Română',
-      'ru': 'Русский', 'sm': 'Gagana Samoa', 'gd': 'Gàidhlig', 'sr': 'Српски',
-      'st': 'Sesotho', 'sn': 'ChiShona', 'sd': 'سنڌي', 'si': 'සිංહල',
-      'sk': 'Slovenčina', 'sl': 'Slovenščina', 'so': 'Soomaali', 'es': 'Español',
-      'su': 'Basa Sunda', 'sw': 'Kiswahili', 'sv': 'Svenska', 'tg': 'Тоҷикӣ',
-      'ta': 'தமிழ்', 'tt': 'Татар', 'te': 'తెలుగు', 'th': 'ไทย',
-      'tr': 'Türkçe', 'tk': 'Türkmen', 'uk': 'Українська', 'ur': 'اردو',
-      'ug': 'ئۇيغۇرچە', 'uz': 'O‘zbekcha', 'vi': 'Tiếng Việt', 'cy': 'Cymraeg',
-      'xh': 'IsiXhosa', 'yi': 'ייִדיש', 'yo': 'Yorùbá', 'zu': 'IsiZulu'
-    };
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: allowedLanguages,
+    autoDisplay: false
+  }, 'google_translate_element');
 
-    const allowedLanguages = Object.keys(nativeLanguageMap).join(',');
+  const checkDropdown = setInterval(() => {
+    const select = document.querySelector('.goog-te-combo');
+    if (select && select.options.length > 1) {
+      clearInterval(checkDropdown);
 
-    new google.translate.TranslateElement({
-      pageLanguage: 'ja',
-      includedLanguages: allowedLanguages,
-      autoDisplay: false
-    }, 'google_translate_element');
+      select.classList.add('notranslate');
 
-    const checkDropdown = setInterval(() => {
-      const select = document.querySelector('.goog-te-combo');
-      if (select && select.options.length > 1) {
-        clearInterval(checkDropdown);
+      for (let i = select.options.length - 1; i >= 0; i--) {
+        const option = select.options[i];
+        const code = option.value;
 
-        select.classList.add('notranslate');
+        if (!code) continue;
 
-        for (let i = select.options.length - 1; i >= 0; i--) {
-          const option = select.options[i];
-          const code = option.value;
-
-          if (!code) continue;
-
-          if (nativeLanguageMap[code]) {
-            option.classList.add('notranslate');
-            option.textContent = nativeLanguageMap[code];
-          } else {
+        if (nativeLanguageMap[code]) {
+          option.classList.add('notranslate');
+          option.textContent = nativeLanguageMap[code];
+        } else {
           select.remove(i);
-          }
         }
       }
-    }, 100);
+
+      // 画面サイズに応じて翻訳ウィジェットの位置を調整する処理を追加
+      relocateTranslateElement();
+      window.addEventListener('resize', relocateTranslateElement);
+    }
+  }, 100);
+}
+
+// 画面幅に応じて翻訳要素を移動させる関数
+function relocateTranslateElement() {
+  const elem = document.getElementById('google_translate_element');
+  const desktopWrapper = document.getElementById('translate-wrapper-desktop');
+  const mobileWrapper = document.getElementById('translate-wrapper-mobile');
+
+  if (!elem) return;
+
+  if (window.innerWidth < 768) {
+    if (mobileWrapper && !mobileWrapper.contains(elem)) {
+      mobileWrapper.appendChild(elem);
+    }
+  } else {
+    if (desktopWrapper && !desktopWrapper.contains(elem)) {
+      desktopWrapper.appendChild(elem);
+    }
   }
-  </script>
+}
+</script>
 
 <script>  
 window.addEventListener('DOMContentLoaded', () => {
